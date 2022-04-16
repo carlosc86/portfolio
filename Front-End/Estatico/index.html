@@ -148,13 +148,106 @@
                                             <label for="descripcion" class="form-label">Texto....</label>
                                         </div>
                                         <button class="btn btn-secondary shadow" type="button" data-bs-dismiss="modal">Cancelar</button>
-                                    <button class="btn btn-success shadow" type="button" data-bs-dismiss="modal">Aceptar</button>
+                                        <button class="btn btn-success shadow" type="button" data-bs-dismiss="modal">Aceptar</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <article>
+                    <h3 class="col-12 text-decoration-underline fw-bold">Estudios</h3>
+                    <div class="row">
+                        <!--Boton para agregar Estudios-->
+                        <div class="col-12 ocultable">
+                            <img src="assets/AddButton.png" alt="" class="img-fluid btn float-end" data-bs-target="#editStudies" data-bs-toggle="modal">
+                        </div>
+                        <!--Modal para agregar o modificar Estudios-->
+                        <div class="modal fade" id="editStudies" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content modalEdit">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 class="modal-title text-decoration-underline fw-bold">Estudio</h3>
+                                        <form action="">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" name="" id="titulo_estudio" class="form-control" placeholder="Titulo">
+                                                <label for="titulo_estudio" class="form-label">Titulo</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="text" name="" id="institucion" class="form-control" placeholder="Institucion">
+                                                <label for="titulo_estudio" class="form-label">Institucion</label>
+                                            </div>
+                                            <div class="input-group mb-3">
+                                                <input type="file" name="" id="logo_institucion" class="form-control">
+                                                <label for="logo_institucion" class="input-group-text">Logo</label>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="input-group col">
+                                                    <input type="date" name="" id="fechaEstudioInicio" class="form-control">
+                                                    <label for="fechaEstudioInicio" class="input-group-text">Fecha inicio</label>
+                                                </div>
+                                                <div class="input-group col">
+                                                    <input type="date" name="" id="fechaEstudioFin" class="form-control">
+                                                    <label for="fechaEstudioFin" class="input-group-text">Fecha fin</label>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-secondary shadow" type="button" data-bs-dismiss="modal">Cancelar</button>
+                                            <button class="btn btn-success shadow" type="button" data-bs-dismiss="modal">Aceptar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="card mx-auto mt-3 text-white shadow estudios">
+                                <h5 class="card-title text-decoration-underline"><strong>Tecnico Electronico - Automatizacion</strong></h5>
+                                <div class="card-body">
+                                    <img src="assets/electronics.png" alt="" class="card-img rounded-circle">
+                                    <p class="card-text">Escuela Presbitero Constantino Spagnolo</p>
+                                </div>
+                                <div class="card-footer">2002-2006</div>
+                            </div>
+                            <div class="col-12 mt-2 ocultable">
+                                <!--Botones para editar o eliminar Estudio 1-->
+                                <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editStudies" data-bs-toggle="modal">
+                                <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="card mx-auto mt-3 text-white shadow estudios">
+                                <h5 class="card-title text-decoration-underline"><strong>Estudiante Ingenieria en Sistemas</strong></h5>
+                                <div class="card-body">
+                                    <img src="assets/computer.png" alt="" class="card-img rounded-circle">
+                                    <p class="card-text">UTN - Facultad Regional Mendoza</p>
+                                </div>
+                                <div class="card-footer">2006-2010</div>
+                            </div>
+                            <div class="col-12 mt-2 ocultable">
+                                <!--Botones para editar o eliminar Estudio 2-->
+                                <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editStudies" data-bs-toggle="modal">
+                                <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="card mx-auto mt-3 text-white shadow estudios">
+                                <h5 class="card-title text-decoration-underline"><strong>Programador Full Stack Web</strong></h5>
+                                <div class="card-body">
+                                    <img src="assets/network.png" alt="" class="card-img rounded-circle">
+                                    <p class="card-text">Ministerio de Desarrollo Productivo</p>
+                                </div>
+                                <div class="card-footer">2021-2022</div>
+                            </div>
+                            <div class="col-12 mt-2 ocultable">
+                                <!--Botones para editar o eliminar Estudio 3-->
+                                <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editStudies" data-bs-toggle="modal">
+                                <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
 
@@ -175,6 +268,24 @@
                 <img src="assets/StarSeparatorWhite.png" alt="----Soy un separador----" class="img-fluid">
             </div>
         </section>
+
+        <!--Modal de confirmacion para eliminar un elemento-->
+        <div class="modal" id="modalEliminar">
+            <div class="modal-dialog">
+                <div class="modal-content modalEdit">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class="fw-bold mb-5">Seguro que desea eliminar este elemento?</h3>
+                        <button class="btn btn-secondary ms-4 me-4 shadow" type="button"
+                            data-bs-dismiss="modal">Cancelar</button>
+                        <button class="btn btn-danger ms-4 me-4 shadow" type="button"
+                            data-bs-dismiss="modal">Borrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         
 
 
