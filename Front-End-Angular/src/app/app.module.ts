@@ -8,6 +8,7 @@ import { SeccionInicioComponent } from './components/seccion-inicio/seccion-inic
 import { EditarSeccionComponent } from './components/editar-seccion/editar-seccion.component';
 import { SeccionAcercaDeComponent } from './components/seccion-acerca-de/seccion-acerca-de.component';
 import { SeccionComponent } from './components/seccion/seccion.component';
+import { SeccionTrabajosComponent } from './components/seccion-trabajos/seccion-trabajos.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SeccionComponent } from './components/seccion/seccion.component';
     SeccionInicioComponent,
     EditarSeccionComponent,
     SeccionAcercaDeComponent,
-    SeccionComponent
+    SeccionComponent,
+    SeccionTrabajosComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@
                 <img src="{{seccion.urlImagen}}" class="img-fluid col-4 col-md-1">
                 <p class="col-8 col-md-6 align-self-stretch">{{seccion.texto}}</p>
             </div>
-
+            <!--Editor de seccion-->
             <app-editar-seccion [seccion]="seccion" (messageEvent)="editarSeccion($event)"></app-editar-seccion>
             
         </div>
