@@ -26,6 +26,14 @@ export class EditarSeccionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  cargarDatos(){
+    this.forms.setValue({
+      titulo:this.seccion.titulo,
+      texto:this.seccion.texto,
+      urlImagen:this.seccion.urlImagen
+    });
+  }
+
   getTituloSeccion():string{
     return this.seccion.nombre;
   }

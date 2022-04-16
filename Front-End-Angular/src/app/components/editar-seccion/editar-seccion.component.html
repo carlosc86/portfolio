@@ -1,6 +1,6 @@
 <!--Boton para editar la cabecera de la seccion-->
 <div class="col-12 ocultable">
-    <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" [attr.data-bs-target]="'#editSection'+seccion.id" data-bs-toggle="modal">
+    <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" [attr.data-bs-target]="'#editSection'+seccion.id" data-bs-toggle="modal" (click)="cargarDatos()">
 </div>
 <!--Modal para la edicion de la seccion-->
 <div class="modal fade" id="editSection{{seccion.id}}" tabindex="-1">
@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body">
                 <h3 class="modal-title mx-auto mb-3 text-decoration-underline fw-bold">Editar {{getTituloSeccion()}}</h3>
-                <form action="" class="text-secondary" [formGroup]="forms" (ngSubmit)="aceptar()">
+                <form action="" class="text-secondary" [formGroup]="forms" (ngSubmit)="aceptar()"  >
                     <div class="form-floating mb-3">
                         <input type="text" id="titulo" class="form-control" formControlName="titulo" placeholder="Escriba titulo a mostrar">
                         <label for="titulo" class="form-label">Titulo</label>
