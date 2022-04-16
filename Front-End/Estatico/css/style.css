@@ -1,6 +1,28 @@
 #cabecera{
     background-color: #253650;
 }
+
+#home{
+    background-color: #21BE99;
+/*height: 560px;*/
+}
+#cabecera{
+    background-color: #253650;
+}
+
+#about{
+    color:#253650;
+}
+
+#works{
+    background-color: #253650;
+}
+
+#contact{
+    background-color: #21BE99;
+}
+
+
 .modalLogin{
     width: 400px;
     height: 500px;

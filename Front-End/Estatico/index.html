@@ -72,6 +72,7 @@
                 </div>
             </div>
         </div>
+
         <!--Seccion Home-->
         <seccion class="row pt-5 pb-5 text-white" id="home">
             <div class="clo-12 pt-5 pb-5 mt-md-5">
@@ -114,6 +115,68 @@
                 </div>
             </div>
         </seccion>
+
+        <!--Seccion About-->
+        <section class="row pt-5" id="about">
+            <div class="col-12 mt-5">
+                <h1 class="mt-5"><strong>ACERCA DE</strong></h1>
+                <img src="assets/StarSeparatorBlue.png" alt="----Soy un separador----" class="img-fluid">
+                <div class="col-12">
+                    <div class="col-12 pt-3 mx-auto d-inline-flex position-relative justify-content-center">
+                        <img src="assets/portrait.png" class="img-fluid col-4 col-md-1">
+                        <p class="col-8 col-md-6 align-self-stretch">Soy un programador full stack web independiente. Me gusta programar para diferentes dispositivos, en diferentes lenguajes y plataformas.</p>
+                    </div>
+                    <div class="col-12 ocultable">
+                        <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editAbout" data-bs-toggle="modal">
+                    </div>
+                    <!--Modal para la edicion del encabezado de la seccion Acerca de-->
+                    <div class="modal fade" id="editAbout" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content modalEdit">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h3 class="text-decoration-underline fw-bold mb-3">Editar Acerca de</h3>
+                                    <form action="">
+                                        <div class="input-group mb-3">
+                                            <input type="file" name="" id="foto" class="form-control">
+                                            <label for="foto" class="input-group-text">Foto</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <textarea id="descripcion" class="form-control" style="resize: none;height: 150px;" placeholder="Escriba una descripcion de Ud."></textarea>
+                                            <label for="descripcion" class="form-label">Texto....</label>
+                                        </div>
+                                        <button class="btn btn-secondary shadow" type="button" data-bs-dismiss="modal">Cancelar</button>
+                                    <button class="btn btn-success shadow" type="button" data-bs-dismiss="modal">Aceptar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!--Seccion Works-->
+        <section class="row pt-5 text-white" id="works">
+            <div class="col-12 mt-5">
+                <h1 class="mt-5"><strong>TRABAJOS</strong></h1>
+                <img src="assets/StarSeparatorWhite.png" alt="----Soy un separador----" class="img-fluid">
+            </div>
+        </section>
+
+
+        <!--Seccion Contact-->
+        <section class="row pt-5 text-white" id="contact">
+            <div class="col-12 mt-5">
+                <h1 class="mt-5"><strong>CONTACTO</strong></h1>
+                <img src="assets/StarSeparatorWhite.png" alt="----Soy un separador----" class="img-fluid">
+            </div>
+        </section>
+        
+
 
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
