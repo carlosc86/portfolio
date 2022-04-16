@@ -1,0 +1,10 @@
+<section class="row pt-5 text-white" id="contact">
+    <div class="col-12 mt-5">
+        <h1 class="mt-5"><strong>{{seccion.titulo}}</strong></h1>
+        <img src="assets/StarSeparatorWhite.png" alt="----Soy un separador----" class="img-fluid">
+        <p class="col-12">{{seccion.texto}}</p>
+        <!--Editor de seccion-->
+        <app-editar-seccion [seccion]="seccion" (messageEvent)="editarSeccion($event)"></app-editar-seccion>
+
+    </div>
+</section>

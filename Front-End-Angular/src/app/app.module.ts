@@ -9,6 +9,7 @@ import { EditarSeccionComponent } from './components/editar-seccion/editar-secci
 import { SeccionAcercaDeComponent } from './components/seccion-acerca-de/seccion-acerca-de.component';
 import { SeccionComponent } from './components/seccion/seccion.component';
 import { SeccionTrabajosComponent } from './components/seccion-trabajos/seccion-trabajos.component';
+import { SeccionContactoComponent } from './components/seccion-contacto/seccion-contacto.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SeccionTrabajosComponent } from './components/seccion-trabajos/seccion-
     EditarSeccionComponent,
     SeccionAcercaDeComponent,
     SeccionComponent,
-    SeccionTrabajosComponent
+    SeccionTrabajosComponent,
+    SeccionContactoComponent
   ],
   imports: [
     BrowserModule,
