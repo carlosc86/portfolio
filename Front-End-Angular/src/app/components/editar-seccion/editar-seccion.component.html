@@ -1,0 +1,29 @@
+<!--Modal para la edicion de la home page-->
+<div class="modal fade" id="editSection" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content modalEdit" >
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3 class="modal-title mx-auto mb-3 text-decoration-underline fw-bold">Editar {{getTituloSeccion()}}</h3>
+                <form action="" class="text-secondary" [formGroup]="forms" (ngSubmit)="aceptar()">
+                    <div class="form-floating mb-3">
+                        <input type="text" id="titulo" class="form-control" formControlName="titulo" placeholder="Escriba titulo a mostrar">
+                        <label for="titulo" class="form-label">Titulo</label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" id="imagen" class="form-control" formControlName="urlImagen" placeholder="Ingrese imagen a mostrar">
+                        <label for="imagen" class="input-group-text">Imagen</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea id="texto" class="form-control" style="resize: none; height: 150px;" formControlName="texto" placeholder="Escriba el texto de la seccion"></textarea>
+                        <label for="texto" class="form-label">Texto</label>
+                    </div>                    
+                    <button class="btn btn-secondary shadow" type="button" data-bs-dismiss="modal" (click)="cancelar()">Cancelar</button>
+                    <button class="btn btn-success shadow" type="submit" data-bs-dismiss="modal" >Aceptar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -17,6 +17,11 @@ export class SeccionInicioComponent implements OnInit {
     this.seccion.setTexto("Programador Full Stack Web");
     this.seccion.setUrlImagen("../../../assets/portrait.png");
   }
+
+  editarSeccion($event:Seccion){
+    console.log("texto en componente seccion: "+$event.getTitulo());
+    this.seccion=$event;
+  }
   
 
 }

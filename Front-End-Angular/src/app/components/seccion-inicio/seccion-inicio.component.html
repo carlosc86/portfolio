@@ -7,36 +7,8 @@
         <p>{{seccion.getTexto()}}</p>
         <!--Boton para la edicion de la seccion home-->
         <div class="col-12 ocultable" id="editHomeButton">
-            <img src="../../../assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editHome" data-bs-toggle="modal">
+            <img src="../../../assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSection" data-bs-toggle="modal">
         </div>
-        <!--Modal para la edicion de la home page-->
-        <div class="modal fade" id="editHome" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content modalEdit" >
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <h3 class="modal-title mx-auto mb-3 text-decoration-underline fw-bold">Editar Inicio</h3>
-                        <form action="" class="text-secondary">
-                            <div class="input-group mb-3">
-                                <input type="file" id="imagen" class="form-control" placeholder="Ingrese imagen a mostrar">
-                                <label for="imagen" class="input-group-text">Imagen</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" id="titulo" class="form-control" placeholder="Escriba titulo a mostrar">
-                                <label for="titulo" class="form-label">Titulo</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" id="texto" class="form-control" placeholder="Escriba un subtitulo">
-                                <label for="texto" class="form-label">Texto</label>
-                            </div>
-                            <button class="btn btn-secondary shadow" type="button" data-bs-dismiss="modal">Cancelar</button>
-                            <button class="btn btn-success shadow" type="button" data-bs-dismiss="modal">Aceptar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <app-editar-seccion [tituloS]="'Inicio'" [seccion]="seccion" (messageEvent)="editarSeccion($event)"></app-editar-seccion>
     </div>
 </section>
