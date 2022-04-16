@@ -11,3 +11,49 @@
 .modalLogin .modal-header{
     border: none;
 }
+
+#home{
+    background-color: #21BE99;
+/*height: 560px;*/
+}
+
+.modal-header{
+    border: none;
+}
+
+.modalEdit{
+    color: #253650;
+    border-radius: 30px;
+}
+
+.editButton{
+    height: 50px;
+    margin:8px;
+    padding: 0;
+       
+}
+
+.btn-primary{
+    height: 3em;
+    aspect-ratio: 2;
+    border-radius: 8px;
+    font-weight: bolder;
+    background-color: #253650;
+    border:none;
+}
+.btn-secondary{
+    height: 3em;
+    aspect-ratio: 2;
+    border-radius: 8px;
+    font-weight: bolder;
+    background-color: #c4c4c4;
+    border:none;
+}
+.btn-success{
+    height: 3em;
+    aspect-ratio: 2;
+    border-radius: 8px;
+    font-weight: bolder;
+    background-color: #21BE99;
+    border:none;
+}
