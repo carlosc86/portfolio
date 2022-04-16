@@ -248,6 +248,121 @@
                         </div>
                     </div>
                 </article>
+                <article>
+                    <h3 class="col-12 fw-bold text-decoration-underline mt-5">Habilidades</h3>
+                    <!--boton para agregar nuevas habilidades-->
+                    <div class="col-12 ocultable">
+                        <img src="assets/AddButton.png" class="img-fluid btn float-end" data-bs-target="#editSkills" data-bs-toggle="modal">
+                    </div>
+                    <!--Modal para agregar o modificar habilidades-->
+                    <div class="modal fade" id="editSkills" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content modalEdit">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h3 class="fw-bold text-decoration-underline mb-3">Habilidad</h3>
+                                    <form action="">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" id="tituloHab" class="form-control" placeholder="Titulo">
+                                            <label for="tituloHab" class="form-label">Titulo de Habilidad</label>
+                                        </div>
+                                        <div class="mb-3">
+                                            <!--Revisar el estilo de esta parte-->
+                                            <label for="nivelHab" class="form-label fw-bold">Porcentaje</label>
+                                            <input type="range" id="nivelHab" class="form-range" data-bs-toggle="tooltip" databs-placement="top" title="aria-valuenow">
+                                        </div>
+                                        <button class="btn btn-secondary shadow" type="button" data-bs-dismiss="modal">Cancelar</button>
+                                        <button class="btn btn-success shadow" type="button" data-bs-dismiss="modal">Aceptar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row px-5 mb-5">
+                        <div class="col-6 col-md-3 mx-auto px-md-5 mt-2 mb-2">
+                            <h4 class="col-12"><strong>HTML</strong></h4>
+                            <div class="progress shadow">
+                                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="col-12 ocultable">
+                                <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSkills" data-bs-toggle="modal">
+                                <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 mx-auto px-md-5 mt-2 mb-2">
+                            <h4 class="col-12"><strong>CSS</strong></h4>
+                            <div class="progress shadow">
+                                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="col-12 ocultable">
+                                <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSkills" data-bs-toggle="modal">
+                                <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 mx-auto px-md-5 mt-2 mb-2">
+                            <h4 class="col-12"><strong>JavaScript</strong></h4>
+                            <div class="progress shadow">
+                                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="col-12 ocultable">
+                                <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSkills" data-bs-toggle="modal">
+                                <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 mx-auto px-md-5 mt-2 mb-2">
+                            <h4 class="col-12"><strong>Bootstrap</strong></h4>
+                            <div class="progress shadow">
+                                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="col-12 ocultable">
+                                <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSkills" data-bs-toggle="modal">
+                                <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 mx-auto px-md-5 mt-2 mb-2">
+                            <h4 class="col-12"><strong>Angular</strong></h4>
+                            <div class="progress shadow">
+                                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="col-12 ocultable">
+                                <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSkills" data-bs-toggle="modal">
+                                <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 mx-auto px-md-5 mt-2 mb-2">
+                            <h4 class="col-12"><strong>BaseDatos(SQL)</strong></h4>
+                            <div class="progress shadow">
+                                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="col-12 ocultable">
+                                <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSkills" data-bs-toggle="modal">
+                                <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 mx-auto px-md-5 mt-2 mb-2">
+                            <h4 class="col-12"><strong>SpringBoot(JAVA)</strong></h4>
+                            <div class="progress shadow">
+                                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="col-12 ocultable">
+                                <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSkills" data-bs-toggle="modal">
+                                <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 mx-auto px-md-5 mt-2 mb-2">
+                            <h4 class="col-12"><strong>C/C++</strong></h4>
+                            <div class="progress shadow">
+                                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="col-12 ocultable">
+                                <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSkills" data-bs-toggle="modal">
+                                <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
 
