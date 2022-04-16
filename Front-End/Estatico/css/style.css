@@ -117,3 +117,31 @@
     background-color: #21BE99;
     height: 385px;
 }
+
+.barra-titulo{
+    background-color: #253650;
+    color: white;
+    border-radius: 15px 15px 0px 0px;
+    height: 50px;
+}
+
+.list-group-item{
+    color: #253650;
+}
+
+.list-group .active{
+    background-color: #c4c4c4;
+    color: #253650;
+    border:none;
+}
+
+.message-board label{
+    background-color: #253650;
+    color:white;
+    border-radius: 15px;
+    border: none;
+}
+
+.label-info{
+    width: 80px;
+}
