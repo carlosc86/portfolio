@@ -1,6 +1,24 @@
 #cabecera{
     background-color: #253650;
 }
+
+#home{
+    background-color: #21BE99;
+/*height: 560px;*/
+}
+
+#about{
+    color:#253650;
+}
+
+#works{
+    background-color: #253650;
+}
+
+#contact{
+    background-color: #21BE99;
+}
+
 .modalLogin{
     width: 400px;
     height: 500px;
@@ -8,6 +26,129 @@
     color: white;
     border-radius: 30px;    
 }
+
 .modalLogin .modal-header{
     border: none;
+}
+
+.modalEdit{
+    color: #253650;
+    border-radius: 30px;
+}
+
+.editButton{
+    height: 50px;
+    margin:8px;
+    padding: 0;
+       
+}
+
+.btn-primary{
+    height: 3em;
+    aspect-ratio: 2;
+    border-radius: 8px;
+    font-weight: bolder;
+    background-color: #253650;
+    border:none;
+}
+
+.btn-secondary{
+    height: 3em;
+    aspect-ratio: 2;
+    border-radius: 8px;
+    font-weight: bolder;
+    background-color: #c4c4c4;
+    border:none;
+}
+
+.btn-success{
+    height: 3em;
+    aspect-ratio: 2;
+    border-radius: 8px;
+    font-weight: bolder;
+    background-color: #21BE99;
+    border:none;
+}
+
+.btn-danger{
+    height: 3em;
+    aspect-ratio: 2;
+    border-radius: 8px;
+    font-weight: bolder;
+    background-color: #bc4f4f;
+    border:none;
+}
+
+.card{
+    width: 250px;
+    border-radius: 40px;
+}
+
+.card-header, .modal-header{
+    border: none;
+}
+
+.card-footer, .modal-footer{
+    border:none;
+}
+
+.estudios{
+    background-color: #bc4f4f;
+    height: 385px;
+}
+
+.progress{
+    background-color: #253650;
+    border-radius: 0px;
+}
+
+.progress-bar{
+    background-color: #21BE99;
+}
+
+.experiencia{
+    height: 300px;
+    color: #253650;
+}
+
+.modalTrabajo{
+    color: #253650;
+    border-radius: 30px;
+}
+
+.proyecto{
+    background-color: #21BE99;
+    height: 385px;
+}
+
+.barra-titulo{
+    background-color: #253650;
+    color: white;
+    border-radius: 15px 15px 0px 0px;
+    height: 50px;
+}
+
+.list-group-item{
+    color: #253650;
+}
+
+.list-group .active{
+    background-color: #c4c4c4;
+    color: #253650;
+    border:none;
+}
+
+.message-board label{
+    background-color: #253650;
+    color:white;
+    border-radius: 15px;
+    border: none;
+}
+
+.label-info{
+    width: 80px;
+}
+
+footer{
+    background-color: #253650;
 }
