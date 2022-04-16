@@ -262,7 +262,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <h3 class="fw-bold text-decoration-underline mb-3">Habilidad</h3>
+                                    <h3 class="modal-title fw-bold text-decoration-underline mb-3">Habilidad</h3>
                                     <form action="">
                                         <div class="form-floating mb-3">
                                             <input type="text" id="tituloHab" class="form-control" placeholder="Titulo">
@@ -372,9 +372,166 @@
             <div class="col-12 mt-5">
                 <h1 class="mt-5"><strong>TRABAJOS</strong></h1>
                 <img src="assets/StarSeparatorWhite.png" alt="----Soy un separador----" class="img-fluid">
+                <p class="col-12">Algunos trabajos y proyectos para mostrar mis habilidades.</p>
             </div>
-        </section>
 
+            <!--Subseccion Experiencia-->
+            <article>
+                <h3 class="fw-bold text-decoration-underline">Experiencia</h3>
+                <div class="row mb-5">
+                    <!--Boton para agregar nuevas experiencias laborales-->
+                    <div class="col-12 ocultable">
+                        <img src="assets/AddButton.png" alt="" class="img-fluid btn float-end" data-bs-target="#editExperiences" data-bs-toggle="modal">
+                    </div>
+                    <!--Modal para agregar o editar experiencias laborales-->
+                    <div class="modal fade" id="editExperiences" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content modalEdit">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h3 class="modal-title fw-bold text-decoration-underline mb-3">Experiencia Laboral</h3>
+                                    <form action="">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" name="" id="nombreEmpresa" class="form-control" placeholder="Nombre de la Empresa">
+                                            <label for="nombreEmpresa" class="form-label">Nombre de la Empresa</label>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <input type="file" name="" id="logoEmpresa" class="form-control">
+                                            <label for="logoEmpresa" class="input-group-text">Logo</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" name="" id="puestoLaboral" class="form-control" placeholder="Nombre de la Empresa">
+                                            <label for="puestoLaboral" class="form-label">Puesto Laboral</label>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="input-group col">
+                                                <input type="date" name="" id="fechaExpInit" class="form-control">
+                                                <label for="fechaExpInit" class="input-group-text">Fecha inicio</label>
+                                            </div>
+                                            <div class="input-group col">
+                                                <input type="date" name="" id="fechaExpFin" class="form-control">
+                                                <label for="fechaExpFin" class="input-group-text">Fecha fin</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <textarea name="" id="descripcionPuesto" class="form-control" style="resize: none;height: 150px;" placeholder="Que hacia en ese puesto"></textarea>
+                                            <label for="descripcionPuesto" class="form-label">Lo que hacia en ese puesto era...</label>
+                                        </div>
+                                        <button class="btn btn-secondary shadow" type="button" data-bs-dismiss="modal">Cancelar</button>
+                                        <button class="btn btn-success shadow" type="button" data-bs-dismiss="modal">Aceptar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--Tarjeta de experiencia Laboral 1-->
+                    <div class="col-12 col-md-4">
+                        <div class="card mx-auto mt-3 shadow experiencia" data-bs-toggle="modal" data-bs-target="#infoWork01">
+                            <div class="card-body">
+                                <h5 class="card-title text-decoration-underline fw-bold">Programador part-time</h5>
+                                <img src="assets/Logo_Exp.png" alt="" class="card-img position-absolute top-50 start-50 translate-middle">
+                                <div class="card-text position-absolute bottom-0 start-50 translate-middle-x">
+                                    <h5 class="fw-bold">Googles</h5>
+                                    <p>2012-2015</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Botones para modificar o eliminar la tarjeta de experiencia-->
+                        <div class="col-12 mt-2 ocultable">
+                            <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editExperiences" data-bs-toggle="modal"> 
+                            <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                        </div>
+                    </div>
+                    <!--Modal para la tarjeta de experiencia 1-->
+                    <div class="modal fade" id="infoWork01" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content modalTrabajo">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="assets/Logo_Exp.png" alt="" class="img-fluid col-8 mx-auto mb-3">
+                                    <h3 class="col-11 modal-title mx-auto fw-bold text-decoration-underline"><strong>Programador part-time en Googles</strong></h3>
+                                    <h5 class="fw-bold mt-3 mb-3">2012-2015</h5>
+                                    <p class="col-12">Programe y mantuve el codigo para su pagina web, asesoraba sobre la compra de equipos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Tarjeta de experiencia Laboral 2-->
+                    <div class="col-12 col-md-4">
+                        <div class="card mx-auto mt-3 shadow experiencia" data-bs-toggle="modal" data-bs-target="#infoWork01">
+                            <div class="card-body">
+                                <h5 class="card-title text-decoration-underline fw-bold">Tecnico en redes</h5>
+                                <img src="assets/Logo_Exp.png" alt="" class="card-img position-absolute top-50 start-50 translate-middle">
+                                <div class="card-text position-absolute bottom-0 start-50 translate-middle-x">
+                                    <h5 class="fw-bold">Tecnicorp</h5>
+                                    <p>2016-2018</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Botones para modificar o eliminar la tarjeta de experiencia-->
+                        <div class="col-12 mt-2 ocultable">
+                            <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editExperiences" data-bs-toggle="modal"> 
+                            <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                        </div>
+                    </div>
+                    <!--Modal para la tarjeta de experiencia 2-->
+                    <div class="modal fade" id="infoWork01" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content modalTrabajo">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="assets/Logo_Exp.png" alt="" class="img-fluid col-8 mx-auto mb-3">
+                                    <h3 class="col-11 modal-title mx-auto fw-bold text-decoration-underline"><strong>Tecnico en Redes en Tecnicorp</strong></h3>
+                                    <h5 class="fw-bold mt-3 mb-3">2016-2018</h5>
+                                    <p class="col-12">Tendia y mantenia las redes LAN cableadas dentro de la empresa. Mantenia los equipos wireless para las unidades moviles de la empresa.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Tarjeta de experiencia Laboral 3-->
+                    <div class="col-12 col-md-4">
+                        <div class="card mx-auto mt-3 shadow experiencia" data-bs-toggle="modal" data-bs-target="#infoWork01">
+                            <div class="card-body">
+                                <h5 class="card-title text-decoration-underline fw-bold">Encuestador</h5>
+                                <img src="assets/Logo_Exp.png" alt="" class="card-img position-absolute top-50 start-50 translate-middle">
+                                <div class="card-text position-absolute bottom-0 start-50 translate-middle-x">
+                                    <h5 class="fw-bold">Asterix</h5>
+                                    <p>2019-2020</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Botones para modificar o eliminar la tarjeta de experiencia-->
+                        <div class="col-12 mt-2 ocultable">
+                            <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editExperiences" data-bs-toggle="modal"> 
+                            <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                        </div>
+                    </div>
+                    <!--Modal para la tarjeta de experiencia 3-->
+                    <div class="modal fade" id="infoWork01" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content modalTrabajo">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="assets/Logo_Exp.png" alt="" class="img-fluid col-8 mx-auto mb-3">
+                                    <h3 class="col-11 modal-title mx-auto fw-bold text-decoration-underline"><strong>Encuestador en Asterix</strong></h3>
+                                    <h5 class="fw-bold mt-3 mb-3">2019-2020</h5>
+                                    <p class="col-12">Realizaba encuestas de mercadeo para una empresa de comunicaciones.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
 
         <!--Seccion Contact-->
         <section class="row pt-5 text-white" id="contact">
