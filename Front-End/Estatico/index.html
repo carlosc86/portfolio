@@ -531,6 +531,202 @@
                     </div>
                 </div>
             </article>
+            <article>
+                <h3 class="fw-bold text-decoration-underline">Proyectos</h3>
+            <div class="row mb-5">
+                <!--Boton para agregar nuevos Proyectos en los que trabaje -->
+                <div class="col-12 ocultable">
+                    <img src="assets/AddButton.png" class="img-fluid btn float-end" data-bs-target="#editProjects"
+                        data-bs-toggle="modal">
+                </div>
+                <!--Modal para agregar o modificar proyectos-->
+                <div class="modal fade" id="editProjects" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content modalEdit">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h3 class="modal-title fw-bold text-decoration-underline mb-3">Proyecto</h3>
+                                <form action="">
+                                    <div class="row mb-3">
+                                        <div class="form-floating col">
+                                            <input type="text" name="" id="nombreProyecto" class="form-control"
+                                                placeholder="Proyecto en el que participe.">
+                                            <label for="nombreProyecto" class="form-label">Nombre del proyecto</label>
+                                        </div>
+                                        <div class="input-group col">
+                                            <input type="date" class="form-control" id="fechaProy">
+                                            <label for="fechaProy" class="input-group-text">Fecha</label>
+                                        </div>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <input type="file" name="" id="logoProyecto" class="form-control">
+                                        <label for="logoProyecto" class="input-group-text">Logo</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <textarea name="" id="descripcionProyecto" class="form-control"
+                                            style="resize: none; height: 150px;"
+                                            placeholder="Describe el proyecto"></textarea>
+                                        <label for="descripcionProyecto" class="form-label">Descripcion del
+                                            proyecto</label>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <input type="file" name="" id="imagenProyecto" class="form-control">
+                                        <label for="imagenProyecto" class="input-group-text">Imagen</label>
+                                    </div>
+                                    <button class="btn btn-secondary shadow" type="button"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <button class="btn btn-success shadow" type="button"
+                                        data-bs-dismiss="modal">Aceptar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tarjeta de proyecto 1-->
+                <div class="col-12 col-md-4">
+                    <div class="card  mx-auto mt-3 text-white shadow proyecto" data-bs-toggle="modal"
+                        data-bs-target="#infoProject01">
+                        <div class="card-body">
+                            <h5 class="card-title text-decoration-underline"><strong>Mooncakes of the moon</strong></h5>
+                            <img class="card-img rounded-circle" src="assets/mooncake.png">
+                            <div class="card-text">
+                                <p>2015</p>
+                                <p>Clic para más información.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Botones para modificar o eliminar la tarjeta de proyecto-->
+                    <div class="col-12 mt-2 ocultable">
+                        <!--Boton para modificar Proyecto 1-->
+                        <img src="assets/EditButton.png" class="img-fluid btn editButton "
+                            data-bs-target="#editProjects" data-bs-toggle="modal">
+                        <!--Boton para eliminar Proyecto 1-->
+                        <img src="assets/DeleteButton.png" class="img-fluid btn editButton "
+                            data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                    </div>
+                </div>
+                <!--Modal de proyecto 1-->
+                <div id="infoProject01" class="modal fade" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content modalTrabajo">
+                            <div class="modal-header ">
+                                <h3 class="col-11 modal-title mx-auto fw-bold"><strong>Mooncakes of the moon</strong>
+                                </h3>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img class="img-fluid col-8 mx-auto" src="assets/error404.png"
+                                    alt="Aca va una imagen del proyecto">
+                                <p class="col-12">Descripcion del proyecto a fondo, para llamar la atencion, chookitty.
+                                </p>
+                            </div>
+                            <div class="modal-footer col-12 ">
+                                <button type="button" class="btn btn-primary mx-auto">Ir al sitio</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Tarjeta de proyecto 2-->
+                <div class="col-12 col-md-4">
+                    <div class="card  mx-auto mt-3 text-white shadow proyecto" data-bs-toggle="modal"
+                        data-bs-target="#infoProject02">
+                        <div class="card-body">
+                            <h5 class="card-title text-decoration-underline"><strong>Pagina web de consultoria</strong>
+                            </h5>
+                            <img class="card-img rounded-circle" src="assets/consulting.png">
+                            <div class="card-text">
+                                <p>2017</p>
+                                <p>Clic para más informacion.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Botones para modificar o eliminar la tarjeta de proyecto-->
+                    <div class="col-12 mt-2 ocultable">
+                        <!--Boton para modificar Proyecto 2-->
+                        <img src="assets/EditButton.png" class="img-fluid btn editButton "
+                            data-bs-target="#editProjects" data-bs-toggle="modal">
+                        <!--Boton para eliminar Proyecto 2-->
+                        <img src="assets/DeleteButton.png" class="img-fluid btn editButton "
+                            data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                    </div>
+                </div>
+                <!--Modal de proyecto 2-->
+                <div id="infoProject02" class="modal fade" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content modalTrabajo">
+                            <div class="modal-header ">
+                                <h3 class="col-11 modal-title mx-auto fw-bold"><strong>Pagina Web de
+                                        consultorias</strong>
+                                </h3>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img class="img-fluid col-8 mx-auto" src="assets/error404.png"
+                                    alt="Aca va una imagen del proyecto">
+                                <p class="col-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+                                    vulputate
+                                    metus justo. Sed porttitor tempus dolor, nec pretium magna dapibus quis.</p>
+                            </div>
+                            <div class="modal-footer col-12 ">
+                                <button type="button" class="btn btn-primary mx-auto">Ir al sitio</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Tarjeta de proyecto 3-->
+                <div class="col-12 col-md-4 ">
+                    <div class="card mx-auto mt-3 text-white shadow proyecto" data-bs-toggle="modal"
+                        data-bs-target="#infoProject03">
+                        <div class="card-body">
+                            <h5 class="card-title text-decoration-underline"><strong>Aplicacion Web NetCat</strong></h5>
+                            <img class="card-img rounded-circle" src="assets/redcat.png">
+                            <div class="card-text">
+                                <p>2019</p>
+                                <p>Clic para más informacion.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Botones para modificar o eliminar la tarjeta de proyecto-->
+                    <div class="col-12 mt-2 ocultable">
+                        <!--Boton para modificar Proyecto 3-->
+                        <img src="assets/EditButton.png" class="img-fluid btn editButton "
+                            data-bs-target="#editProjects" data-bs-toggle="modal">
+                        <!--Boton para eliminar Proyecto 3-->
+                        <img src="assets/DeleteButton.png" class="img-fluid btn editButton "
+                            data-bs-target="#modalEliminar" data-bs-toggle="modal">
+                    </div>
+                </div>
+                <!--Modal de proyecto 3-->
+                <div id="infoProject03" class="modal fade" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content modalTrabajo">
+                            <div class="modal-header ">
+                                <h3 class="col-11 modal-title mx-auto fw-bold"><strong>Aplicacion web NetCat</strong>
+                                </h3>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img class="img-fluid col-8 mx-auto" src="assets/error404.png"
+                                    alt="Aca va una imagen del proyecto">
+                                <p class="col-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+                                    vulputate
+                                    metus justo. Sed porttitor tempus dolor.</p>
+                            </div>
+                            <div class="modal-footer col-12 ">
+                                <button type="button" class="btn btn-primary mx-auto">Ir al sitio</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </article>
         </section>
 
         <!--Seccion Contact-->
