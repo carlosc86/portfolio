@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
-import { Seccion } from '../seccion';
+import { SeccionData } from '../seccionData';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -10,9 +10,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class EditarSeccionComponent implements OnInit {
 
-  @Input() seccion:Seccion=new Seccion;
-  @Input() tituloS:string="";
-  @Output() messageEvent:EventEmitter<Seccion>=new EventEmitter<Seccion>();
+  @Input() seccion:SeccionData=new SeccionData;
+  
+  @Output() messageEvent:EventEmitter<SeccionData>=new EventEmitter<SeccionData>();
   forms:FormGroup;
 
   constructor( private fb:FormBuilder) { 
@@ -27,13 +27,13 @@ export class EditarSeccionComponent implements OnInit {
   }
 
   getTituloSeccion():string{
-    return this.tituloS;
+    return this.seccion.nombre;
   }
 
   aceptar(){
-    this.seccion.setTitulo(this.forms.value.titulo);
-    this.seccion.setTexto(this.forms.value.texto);
-    this.seccion.setUrlImagen(this.forms.value.urlImagen)
+    this.seccion.titulo=this.forms.value.titulo;
+    this.seccion.texto=this.forms.value.texto;
+    this.seccion.urlImagen=this.forms.value.urlImagen;
     this.messageEvent.emit(this.seccion);
     this.forms.reset();
   }

@@ -1,0 +1,19 @@
+<!--Seccion About-->
+<section class="row pt-5" id="about">
+    <div class="col-12 mt-5">
+        <h1 class="mt-5"><strong>{{seccion.titulo}}</strong></h1>
+        <img src="assets/StarSeparatorBlue.png" alt="----Soy un separador----" class="img-fluid">
+        <div class="col-12">
+            <div class="col-12 pt-3 mx-auto d-inline-flex position-relative justify-content-center">
+                <img src="{{seccion.urlImagen}}" class="img-fluid col-4 col-md-1">
+                <p class="col-8 col-md-6 align-self-stretch">{{seccion.texto}}</p>
+            </div>
+
+            <app-editar-seccion [seccion]="seccion" (messageEvent)="editarSeccion($event)"></app-editar-seccion>
+            
+        </div>
+        <article>
+            <!--Aca habria algo-->
+        </article>
+    </div>
+</section>

@@ -1,5 +1,9 @@
+<!--Boton para editar la cabecera de la seccion Acerca De-->
+<div class="col-12 ocultable">
+    <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" [attr.data-bs-target]="'#editSection'+seccion.id" data-bs-toggle="modal">
+</div>
 <!--Modal para la edicion de la home page-->
-<div class="modal fade" id="editSection" tabindex="-1">
+<div class="modal fade" id="editSection{{seccion.id}}" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content modalEdit" >
             <div class="modal-header">

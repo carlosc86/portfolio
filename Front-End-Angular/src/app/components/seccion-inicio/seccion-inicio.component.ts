@@ -1,27 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { Seccion } from '../seccion';
+import { SeccionComponent } from '../seccion/seccion.component';
+import { SeccionData } from '../seccionData';
 
 @Component({
   selector: 'app-seccion-inicio',
   templateUrl: './seccion-inicio.component.html',
   styleUrls: ['./seccion-inicio.component.css']
 })
-export class SeccionInicioComponent implements OnInit {
+export class SeccionInicioComponent extends SeccionComponent implements OnInit {
 
-  public seccion:Seccion=new Seccion();
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.seccion.setTitulo("CARLOS ALEXANDER CARRICONDO");
-    this.seccion.setTexto("Programador Full Stack Web");
-    this.seccion.setUrlImagen("../../../assets/portrait.png");
+  constructor() { 
+    super();
   }
 
-  editarSeccion($event:Seccion){
-    console.log("texto en componente seccion: "+$event.getTitulo());
-    this.seccion=$event;
-  }
-  
+  override ngOnInit(): void {
+    this.seccion.titulo="CARLOS ALEXANDER CARRICONDO";
+    this.seccion.texto="Programador Full Stack Web";
+    this.seccion.urlImagen="../../../assets/portrait.png";
+    this.seccion.nombre="Inicio";
+    this.seccion.id=1;
+  } 
 
 }

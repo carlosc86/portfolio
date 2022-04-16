@@ -1,14 +1,11 @@
 <!--Seccion Home-->
 <section class="row pt-5 pb-5 text-white" id="home">
     <div class="clo-12 pt-5 pb-5 mt-md-5">
-        <img src="{{seccion.getUrlImagen()}}" alt="Aca va una imagen" class="img-fluid">
-        <h1 class="col-6 fw-bold position-relative start-50 translate-middle-x"><strong>{{seccion.getTitulo()}}</strong></h1>
+        <img src="{{seccion.urlImagen}}" alt="Aca va una imagen" class="img-fluid">
+        <h1 class="col-6 fw-bold position-relative start-50 translate-middle-x"><strong>{{seccion.titulo}}</strong></h1>
         <img src="../../../assets/StarSeparatorWhite.png" class="img-fluid" alt="----Soy un separador----">
-        <p>{{seccion.getTexto()}}</p>
-        <!--Boton para la edicion de la seccion home-->
-        <div class="col-12 ocultable" id="editHomeButton">
-            <img src="../../../assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSection" data-bs-toggle="modal">
-        </div>
-        <app-editar-seccion [tituloS]="'Inicio'" [seccion]="seccion" (messageEvent)="editarSeccion($event)"></app-editar-seccion>
+        <p>{{seccion.texto}}</p>
+        
+        <app-editar-seccion [seccion]="seccion" (messageEvent)="editarSeccion($event)"></app-editar-seccion>
     </div>
 </section>

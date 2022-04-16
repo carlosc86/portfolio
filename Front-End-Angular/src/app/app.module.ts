@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SeccionInicioComponent } from './components/seccion-inicio/seccion-inicio.component';
 import { EditarSeccionComponent } from './components/editar-seccion/editar-seccion.component';
+import { SeccionAcercaDeComponent } from './components/seccion-acerca-de/seccion-acerca-de.component';
+import { SeccionComponent } from './components/seccion/seccion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SeccionInicioComponent,
-    EditarSeccionComponent
+    EditarSeccionComponent,
+    SeccionAcercaDeComponent,
+    SeccionComponent
   ],
   imports: [
     BrowserModule,
