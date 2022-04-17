@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ExperienciaData, experiencias } from '../experienciaData';
 import { SeccionComponent } from '../seccion/seccion.component';
 
 @Component({
@@ -7,6 +8,8 @@ import { SeccionComponent } from '../seccion/seccion.component';
   styleUrls: ['./seccion-trabajos.component.css']
 })
 export class SeccionTrabajosComponent extends SeccionComponent implements OnInit {
+
+  experiencias:ExperienciaData[]=experiencias;
 
   constructor() {
     super();
