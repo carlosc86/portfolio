@@ -1,0 +1,17 @@
+.card{
+    width: 250px;
+    border-radius: 40px;
+}
+
+.card-header, .modal-header{
+    border: none;
+}
+
+.card-footer, .modal-footer{
+    border:none;
+}
+
+.estudios{
+    background-color: #bc4f4f;
+    height: 385px;
+}

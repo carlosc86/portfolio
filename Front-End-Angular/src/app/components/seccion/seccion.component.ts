@@ -10,7 +10,11 @@ import { SeccionData } from '../seccionData';
 })
 export class SeccionComponent implements OnInit {
 
-  public seccion:SeccionData=new SeccionData();
+  public seccion:SeccionData={id:0,
+                              nombre:"",
+                              titulo:"",
+                              texto:"",
+                              urlImagen:""};
 
   llamada:EventEmitter<SeccionData>=new EventEmitter<SeccionData>();
 

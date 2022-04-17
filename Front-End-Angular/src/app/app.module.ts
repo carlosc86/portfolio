@@ -5,21 +5,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SeccionInicioComponent } from './components/seccion-inicio/seccion-inicio.component';
-import { EditarSeccionComponent } from './components/editar-seccion/editar-seccion.component';
+import { EditorSeccionComponent } from './components/editor-seccion/editor-seccion.component';
 import { SeccionAcercaDeComponent } from './components/seccion-acerca-de/seccion-acerca-de.component';
 import { SeccionComponent } from './components/seccion/seccion.component';
 import { SeccionTrabajosComponent } from './components/seccion-trabajos/seccion-trabajos.component';
 import { SeccionContactoComponent } from './components/seccion-contacto/seccion-contacto.component';
+import { EditorEstudioComponent } from './components/editor-estudio/editor-estudio.component';
+import { InfoEstudioComponent } from './components/info-estudio/info-estudio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SeccionInicioComponent,
-    EditarSeccionComponent,
+    EditorSeccionComponent,
     SeccionAcercaDeComponent,
     SeccionComponent,
     SeccionTrabajosComponent,
-    SeccionContactoComponent
+    SeccionContactoComponent,
+    EditorEstudioComponent,
+    InfoEstudioComponent
   ],
   imports: [
     BrowserModule,

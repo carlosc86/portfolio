@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditarSeccionComponent } from './editar-seccion.component';
+import { EditorSeccionComponent } from './editor-seccion.component';
 
 describe('EditarSeccionComponent', () => {
-  let component: EditarSeccionComponent;
-  let fixture: ComponentFixture<EditarSeccionComponent>;
+  let component: EditorSeccionComponent;
+  let fixture: ComponentFixture<EditorSeccionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditarSeccionComponent ]
+      declarations: [ EditorSeccionComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditarSeccionComponent);
+    fixture = TestBed.createComponent(EditorSeccionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

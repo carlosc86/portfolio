@@ -9,8 +9,16 @@
                 <p class="col-8 col-md-6 align-self-stretch">{{seccion.texto}}</p>
             </div>
             <!--Editor de seccion-->
-            <app-editar-seccion [seccion]="seccion" (messageEvent)="editarSeccion($event)"></app-editar-seccion>
-            
+            <app-editor-seccion [seccion]="seccion" (messageEvent)="editarSeccion($event)"></app-editor-seccion>
+            <article>
+                <h3 class="col-12 text-decoration-underline fw-bold">Estudios</h3>
+                <!--Editor de Estudios-->
+                <app-editor-estudio [estudio]="estudioAEditar" (cambiar)="setearEditor($event)" (agregar)="agregarEstudio($event)"></app-editor-estudio>
+
+                <div class="row">                
+                    <app-info-estudio class="col-12 col-md-4"  [estudio]="estudio" (emisor)="setearEditor($event)" *ngFor="let estudio of estudios"></app-info-estudio>
+                </div>
+            </article>
         </div>
         <article>
             <!--Aca habria algo-->

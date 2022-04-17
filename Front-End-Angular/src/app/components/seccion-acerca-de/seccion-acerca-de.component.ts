@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EstudioData, estudios } from '../estudioData';
 import { SeccionComponent } from '../seccion/seccion.component';
-import { SeccionData } from '../seccionData';
 
 @Component({
   selector: 'app-seccion-acerca-de',
@@ -9,6 +9,15 @@ import { SeccionData } from '../seccionData';
 })
 export class SeccionAcercaDeComponent extends SeccionComponent implements OnInit {
 
+  estudios:EstudioData[]=estudios;
+  estudioAEditar:EstudioData={
+    id:-1,
+    titulo:"",
+    institucion:"",
+    urlLogo:"",
+    anioInicio:"",
+    anioFin:""
+  };
 
   constructor() {
     super()
@@ -20,6 +29,15 @@ export class SeccionAcercaDeComponent extends SeccionComponent implements OnInit
     this.seccion.texto="Soy un programador full stack web independiente. Me gusta programar para diferentes dispositivos, en diferentes lenguajes y plataformas.";
     this.seccion.nombre="Acerca de";
     this.seccion.id=2;
+  }
+
+  setearEditor($event:EstudioData){
+    this.estudioAEditar=$event;
+  }
+
+  agregarEstudio($event:EstudioData){
+    $event.id=this.estudios.length;
+    this.estudios.push($event);
   }
 
 }

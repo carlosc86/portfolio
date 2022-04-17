@@ -4,13 +4,17 @@ import { SeccionData } from '../seccionData';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-editar-seccion',
-  templateUrl: './editar-seccion.component.html',
-  styleUrls: ['./editar-seccion.component.css']
+  selector: 'app-editor-seccion',
+  templateUrl: './editor-seccion.component.html',
+  styleUrls: ['./editor-seccion.component.css']
 })
-export class EditarSeccionComponent implements OnInit {
+export class EditorSeccionComponent implements OnInit {
 
-  @Input() seccion:SeccionData=new SeccionData;
+  @Input() seccion:SeccionData={id:0,
+                                nombre:"",
+                                titulo:"",
+                                texto:"",
+                                urlImagen:""};
   
   @Output() messageEvent:EventEmitter<SeccionData>=new EventEmitter<SeccionData>();
   forms:FormGroup;
