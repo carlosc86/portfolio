@@ -12,6 +12,7 @@ export class SeccionAcercaDeComponent extends SeccionComponent implements OnInit
 
   estudios:EstudioData[]=estudios;
   habilidades:HabilidadData[]=habilidades;
+
   estudioAEditar:EstudioData={
     id:-1,
     titulo:"",
@@ -19,6 +20,13 @@ export class SeccionAcercaDeComponent extends SeccionComponent implements OnInit
     urlLogo:"",
     anioInicio:"",
     anioFin:""
+  };
+
+  habilidadAEditar:HabilidadData={
+    id:-1,
+    nombre:"",
+    descripcion:"",
+    porcentaje:50
   };
 
   constructor() {
@@ -33,13 +41,22 @@ export class SeccionAcercaDeComponent extends SeccionComponent implements OnInit
     this.seccion.id=2;
   }
 
-  setearEditor($event:EstudioData){
+  setearEditorEstudio($event:EstudioData){
     this.estudioAEditar=$event;
+  }
+
+  setearEditorHabilidad($event:HabilidadData){
+    this.habilidadAEditar=$event;
   }
 
   agregarEstudio($event:EstudioData){
     $event.id=this.estudios.length;
     this.estudios.push($event);
+  }
+
+  agregarHabilidad($event:HabilidadData){
+    $event.id=this.habilidades.length;
+    this.habilidades.push($event);
   }
 
 }

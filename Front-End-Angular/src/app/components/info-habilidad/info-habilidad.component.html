@@ -4,6 +4,6 @@
         <div class="progress-bar" role="progressbar" [style]="'width: '+habilidad.porcentaje+'%;'" [attr.aria-valuenow]="habilidad.porcentaje" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
     <div class="col-12 ocultable">
-        <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSkills" data-bs-toggle="modal">
+        <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSkills" data-bs-toggle="modal" (click)="buscarEditor()">
         <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminar" data-bs-toggle="modal">
     </div>

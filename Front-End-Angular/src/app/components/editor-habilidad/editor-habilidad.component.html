@@ -1,0 +1,35 @@
+<!--boton para agregar nuevas habilidades-->
+<div class="col-12 ocultable">
+    <img src="assets/AddButton.png" class="img-fluid btn float-end" data-bs-target="#editSkills" data-bs-toggle="modal" (click)="resetear()">
+</div>
+<!--Modal para agregar o modificar habilidades-->
+<div class="modal fade" id="editSkills" tabindex="-1" (focus)="precargar()">
+    <div class="modal-dialog">
+        <div class="modal-content modalEdit">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3 class="modal-title fw-bold text-decoration-underline mb-3">Habilidad</h3>
+                <form action="" [formGroup]="forms" (ngSubmit)="aceptar()">
+                    <div class="form-floating mb-3">
+                        <input type="text" id="tituloHab" class="form-control" formControlName="nombre" placeholder="Titulo">
+                        <label for="tituloHab" class="form-label">Nombre</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" id="descripcionHabilidad" class="form-control" formControlName="descripcion" placeholder="Titulo">
+                        <label for="descripcionHabilidad" class="form-label">Descripcion</label>
+                    </div>
+                    <div class="mb-3">
+                        <!--Revisar el estilo de esta parte-->
+                        <label for="nivelHab" class="form-label fw-bold">Porcentaje</label>
+                        <input type="range" id="nivelHab" class="form-range" data-bs-toggle="tooltip" databs-placement="top" [attr.title]="forms.value.porcentaje"
+                            aria-valuemax="100" aria-valuemin="0" formControlName="porcentaje">
+                    </div>
+                    <button class="btn btn-secondary shadow" type="button" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-success shadow" type="submit" data-bs-dismiss="modal">Aceptar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

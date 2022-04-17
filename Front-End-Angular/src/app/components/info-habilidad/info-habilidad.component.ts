@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { HabilidadData } from '../habilidadData';
 
 @Component({
@@ -15,9 +16,15 @@ export class InfoHabilidadComponent implements OnInit {
     porcentaje:-1
   }
 
+  @Output() emisor:EventEmitter<HabilidadData>=new EventEmitter<HabilidadData>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  buscarEditor(){
+    this.emisor.emit(this.habilidad);
   }
 
 }
