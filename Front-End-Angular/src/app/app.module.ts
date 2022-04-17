@@ -12,6 +12,7 @@ import { SeccionTrabajosComponent } from './components/seccion-trabajos/seccion-
 import { SeccionContactoComponent } from './components/seccion-contacto/seccion-contacto.component';
 import { EditorEstudioComponent } from './components/editor-estudio/editor-estudio.component';
 import { InfoEstudioComponent } from './components/info-estudio/info-estudio.component';
+import { InfoHabilidadComponent } from './components/info-habilidad/info-habilidad.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { InfoEstudioComponent } from './components/info-estudio/info-estudio.com
     SeccionTrabajosComponent,
     SeccionContactoComponent,
     EditorEstudioComponent,
-    InfoEstudioComponent
+    InfoEstudioComponent,
+    InfoHabilidadComponent
   ],
   imports: [
     BrowserModule,

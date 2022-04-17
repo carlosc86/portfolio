@@ -16,7 +16,14 @@
                 <app-editor-estudio [estudio]="estudioAEditar" (cambiar)="setearEditor($event)" (agregar)="agregarEstudio($event)"></app-editor-estudio>
 
                 <div class="row">                
-                    <app-info-estudio class="col-12 col-md-4"  [estudio]="estudio" (emisor)="setearEditor($event)" *ngFor="let estudio of estudios"></app-info-estudio>
+                    <app-info-estudio class="col-12 col-md-4"  [estudio]="study" (emisor)="setearEditor($event)" *ngFor="let study of estudios"></app-info-estudio>
+                </div>
+            </article>
+            <article>
+                <h3 class="col-12 text-decoration-underline fw-bold">Habilidades</h3>
+
+                <div class="row">
+                    <app-info-habilidad class="col-6 col-md-3 mx-auto px-md-5 mt-2 mb-2" [habilidad]="skill" *ngFor="let skill of habilidades"></app-info-habilidad>
                 </div>
             </article>
         </div>

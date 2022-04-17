@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EstudioData, estudios } from '../estudioData';
+import { HabilidadData, habilidades } from '../habilidadData';
 import { SeccionComponent } from '../seccion/seccion.component';
 
 @Component({
@@ -10,6 +11,7 @@ import { SeccionComponent } from '../seccion/seccion.component';
 export class SeccionAcercaDeComponent extends SeccionComponent implements OnInit {
 
   estudios:EstudioData[]=estudios;
+  habilidades:HabilidadData[]=habilidades;
   estudioAEditar:EstudioData={
     id:-1,
     titulo:"",
