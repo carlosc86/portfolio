@@ -16,4 +16,11 @@
             <app-info-experiencia [experiencia]="experience" (emisor)="setearExperiencia($event)" *ngFor="let experience of experiencias" class="col-12 col-md-4"></app-info-experiencia>
         </div>
     </article>
+    <article>
+        <h3 class="fw-bold text-decoration-underline">Proyectos</h3>
+        <div class="row mb-5">
+            
+            <app-info-proyecto [proyecto]="project" *ngFor="let project of proyectos" class="col-12 col-md-4"></app-info-proyecto>
+        </div>
+    </article>
 </section>

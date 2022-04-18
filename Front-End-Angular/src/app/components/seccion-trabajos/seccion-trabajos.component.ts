@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ExperienciaData, experiencias } from '../experienciaData';
+import { ProyectoData, proyectos } from '../proyectoData';
 import { SeccionComponent } from '../seccion/seccion.component';
 
 @Component({
@@ -10,6 +11,8 @@ import { SeccionComponent } from '../seccion/seccion.component';
 export class SeccionTrabajosComponent extends SeccionComponent implements OnInit {
 
   experiencias:ExperienciaData[]=experiencias;
+  proyectos:ProyectoData[]=proyectos;
+  
   experAEditar:ExperienciaData={
     id:-1,
     puesto:"",

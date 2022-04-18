@@ -1,0 +1,44 @@
+
+    <div class="card  mx-auto mt-3 text-white shadow proyecto" data-bs-toggle="modal"
+        [attr.data-bs-target]="'#infoProject'+proyecto.id">
+        <div class="card-body">
+            <h5 class="card-title text-decoration-underline"><strong>{{proyecto.nombre}}</strong></h5>
+            <img class="card-img rounded-circle" src="{{proyecto.urlImagenes[0]}}">
+            <div class="card-text">
+                <p>{{proyecto.anio}}</p>
+                <p>Clic para más información.</p>
+            </div>
+        </div>
+    </div>
+    <!--Botones para modificar o eliminar la tarjeta de proyecto-->
+    <div class="col-12 mt-2 ocultable">
+        <!--Boton para modificar Proyecto 1-->
+        <img src="assets/EditButton.png" class="img-fluid btn editButton "
+            data-bs-target="#editProjects" data-bs-toggle="modal" (click)="buscarEditor()">
+        <!--Boton para eliminar Proyecto 1-->
+        <img src="assets/DeleteButton.png" class="img-fluid btn editButton "
+            data-bs-target="#modalEliminar" data-bs-toggle="modal">
+    </div>
+
+<!--Modal de proyecto 1-->
+<div id="infoProject{{proyecto.id}}" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content modalProyecto">
+            <div class="modal-header ">
+                <h3 class="col-11 modal-title mx-auto fw-bold"><strong>{{proyecto.nombre}}</strong>
+                </h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img class="img-fluid col-6 mx-auto" [src]="imagen"
+                    alt="Aca va una imagen del proyecto" *ngFor="let imagen of proyecto.urlImagenes">
+                <p class="col-12">{{proyecto.descripcion}} </p>
+            </div>
+            <div class="modal-footer col-12 ">
+                <a class="btn btn-primary mx-auto d-flex align-items-center justify-content-center" 
+                    [href]="'https://'+proyecto.link">Ir al sitio</a>
+            </div>
+        </div>
+    </div>
+</div>
