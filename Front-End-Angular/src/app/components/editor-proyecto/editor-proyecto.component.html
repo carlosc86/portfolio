@@ -1,0 +1,59 @@
+<!--Boton para agregar nuevos Proyectos en los que trabaje -->
+<div class="col-12 ocultable">
+    <img src="assets/AddButton.png" class="img-fluid btn float-end" data-bs-target="#editProjects"
+        data-bs-toggle="modal" (click)="resetear()">
+</div>
+<!--Modal para agregar o modificar proyectos-->
+<div class="modal fade" id="editProjects" tabindex="-1" (focus)="precargar()">
+    <div class="modal-dialog">
+        <div class="modal-content modalEdit">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3 class="modal-title fw-bold text-decoration-underline mb-3">Proyecto</h3>
+                <form action="" [formGroup]="forms" (ngSubmit)="aceptar()">
+                    <div class="row mb-3">
+                        <div class="form-floating col">
+                            <input type="text" name="" id="nombreProyecto" class="form-control"
+                                formControlName="nombre" placeholder="Proyecto en el que participe.">
+                            <label for="nombreProyecto" class="form-label">Nombre del proyecto</label>
+                        </div>
+                        <div class="input-group col">
+                            <input type="number" class="form-control" id="fechaProy" formControlName="anio" min="1960" max="2050" aria-valuenow="2022">
+                            <label for="fechaProy" class="input-group-text">Fecha</label>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea name="" id="descripcionProyecto" class="form-control"
+                            style="resize: none; height: 150px;"
+                            placeholder="Describe el proyecto" formControlName="descripcion"></textarea>
+                        <label for="descripcionProyecto" class="form-label">Descripcion del
+                            proyecto</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" name="" id="linkProyecto" class="form-control"
+                            formControlName="link" placeholder="Direccion web del proyecto.">
+                        <label for="linkProyecto" class="form-label">Url del proyecto</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="" id="imagenProyecto" class="form-control" formControlName="urlImagen">
+                        <label for="imagenProyecto" class="input-group-text">Imagen</label>
+                        <button type="button" class="btn btn-primary shadow" (click)="agregarALista()">+</button>
+                    </div>
+                    <div class="input-group" *ngFor="let ruta of listaRutas">
+                        <input type="text" class="form-control" disabled [value]="ruta">
+                        <button type="button" class="btn btn-secondary shadow" (click)="quitarDeLista(ruta)">X</button>
+                    </div>
+                    <div class="mt-3">
+                    <button class="btn btn-secondary shadow" type="button"
+                        data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-success shadow" type="submit"
+                        data-bs-dismiss="modal">Aceptar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

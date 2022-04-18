@@ -24,6 +24,15 @@ export class SeccionTrabajosComponent extends SeccionComponent implements OnInit
     fechaFin:""
   };
 
+  proyectoAEditar:ProyectoData={
+    id:-1,
+    nombre:"",
+    descripcion:"",
+    link:"",
+    anio:"",
+    urlImagenes:[""]
+  }
+
   constructor() {
     super();
    }
@@ -39,9 +48,18 @@ export class SeccionTrabajosComponent extends SeccionComponent implements OnInit
     this.experAEditar=$event;
   }
 
+  setearProyecto($event:ProyectoData){
+    this.proyectoAEditar=$event;
+  }
+
   agregarExperiencia($event:ExperienciaData){
     $event.id=this.experiencias.length;
     this.experiencias.push($event);
+  }
+
+  agregarProyecto($event:ProyectoData){
+    $event.id=this.proyectos.length;
+    this.proyectos.push($event);
   }
   
 
