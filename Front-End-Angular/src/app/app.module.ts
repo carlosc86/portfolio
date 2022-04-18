@@ -15,6 +15,7 @@ import { InfoEstudioComponent } from './components/info-estudio/info-estudio.com
 import { InfoHabilidadComponent } from './components/info-habilidad/info-habilidad.component';
 import { EditorHabilidadComponent } from './components/editor-habilidad/editor-habilidad.component';
 import { InfoExperienciaComponent } from './components/info-experiencia/info-experiencia.component';
+import { EditorExperienciaComponent } from './components/editor-experiencia/editor-experiencia.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { InfoExperienciaComponent } from './components/info-experiencia/info-exp
     InfoEstudioComponent,
     InfoHabilidadComponent,
     EditorHabilidadComponent,
-    InfoExperienciaComponent
+    InfoExperienciaComponent,
+    EditorExperienciaComponent
   ],
   imports: [
     BrowserModule,

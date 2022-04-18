@@ -10,6 +10,16 @@ import { SeccionComponent } from '../seccion/seccion.component';
 export class SeccionTrabajosComponent extends SeccionComponent implements OnInit {
 
   experiencias:ExperienciaData[]=experiencias;
+  experAEditar:ExperienciaData={
+    id:-1,
+    puesto:"",
+    tipoTrabajo:"",
+    descripcion:"",
+    nombreEmpresa:"",
+    urlLogoEmpresa:"",
+    fechaInicio:"",
+    fechaFin:""
+  };
 
   constructor() {
     super();
@@ -21,5 +31,15 @@ export class SeccionTrabajosComponent extends SeccionComponent implements OnInit
     this.seccion.nombre="Trabajos";
     this.seccion.id=3;
   }
+
+  setearExperiencia($event:ExperienciaData){
+    this.experAEditar=$event;
+  }
+
+  agregarExperiencia($event:ExperienciaData){
+    $event.id=this.experiencias.length;
+    this.experiencias.push($event);
+  }
+  
 
 }
