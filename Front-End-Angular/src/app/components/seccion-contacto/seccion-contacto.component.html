@@ -5,6 +5,7 @@
         <p class="col-12">{{seccion.texto}}</p>
         <!--Editor de seccion-->
         <app-editor-seccion [seccion]="seccion" (messageEvent)="editarSeccion($event)"></app-editor-seccion>
-
+        <!--Formulario envio de mensajes-->
+        <app-form-envio-mensaje (cartero)="guardarMensaje($event)"></app-form-envio-mensaje>
     </div>
 </section>

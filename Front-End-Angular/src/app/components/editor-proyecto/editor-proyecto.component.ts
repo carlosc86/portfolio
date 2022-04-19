@@ -78,13 +78,7 @@ export class EditorProyectoComponent implements OnInit {
 
   agregarALista(){
     this.listaRutas.push(this.forms.value.urlImagen);
-    this.forms.setValue({
-      nombre:this.forms.value.nombre,
-      descripcion:this.forms.value.descripcion,
-      link:this.forms.value.link,
-      anio:this.forms.value.anio,
-      urlImagen:""
-    });
+    this.forms.get('urlImagen')!.setValue('');
   }
 
   quitarDeLista(ruta:string){

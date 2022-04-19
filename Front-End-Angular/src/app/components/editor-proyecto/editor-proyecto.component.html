@@ -40,11 +40,11 @@
                     <div class="input-group">
                         <input type="text" name="" id="imagenProyecto" class="form-control" formControlName="urlImagen">
                         <label for="imagenProyecto" class="input-group-text">Imagen</label>
-                        <button type="button" class="btn btn-primary shadow" (click)="agregarALista()">+</button>
+                        <button type="button" class="btn btn-primary shadow" (click)="agregarALista()">Agregar</button>
                     </div>
                     <div class="input-group" *ngFor="let ruta of listaRutas">
                         <input type="text" class="form-control" disabled [value]="ruta">
-                        <button type="button" class="btn btn-secondary shadow" (click)="quitarDeLista(ruta)">X</button>
+                        <button type="button" class="btn btn-secondary shadow" (click)="quitarDeLista(ruta)">Quitar</button>
                     </div>
                     <div class="mt-3">
                     <button class="btn btn-secondary shadow" type="button"

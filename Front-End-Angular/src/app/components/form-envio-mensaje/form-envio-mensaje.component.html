@@ -1,0 +1,87 @@
+<!--Formulario de envio de mensajes, para cuando no se esta logueado-->
+<div class="col-12">
+    <form [formGroup]="formulario" (ngSubmit)="aceptar()" class="col-10 col-md-8 mx-auto text-secondary mb-5 not-ocultable">
+        <div class="form-floating has-validation mb-3">
+            <input type="text" matInput name="nombre" class="form-control" id="nombreVisitante"
+                formControlName="nombre" placeholder="Escriba su nombre." 
+                [ngClass]="{'is-valid': (nombre.touched&&nombre.valid),'is-invalid': nombre.touched&&nombre.invalid }">
+            <label for="nombreVisitante" class="form-label">Nombre</label>
+            <div class="invalid-tooltip"  *ngIf="nombre.touched&&nombre.errors!">
+                <span *ngIf="nombre.errors?.['required']">
+                    El nombre es necesario.
+                </span>
+                <span *ngIf="nombre.errors?.['pattern']">
+                    El nombre no puede contener numeros.
+                </span>
+                <span *ngIf="nombre.errors?.['minlength']">
+                    El nombre debe tener al menos dos letras.
+                </span>
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="apellido"
+                formControlName="apellido" placeholder="Escriba su apellido."
+                [ngClass]="{'is-invalid': apellido.invalid&&(apellido.dirty||apellido.touched) , 
+                            'is-valid':apellido.valid&&(apellido.dirty||apellido.touched)}">
+            <label for="apellido" class="form-label">Apellido</label>
+            <div class="invalid-tooltip"  *ngIf="apellido.touched && apellido.errors!">
+                <span *ngIf="apellido.errors?.['required']">
+                    El apellido es necesario.
+                </span>
+                <span *ngIf="apellido.errors?.['pattern']">
+                    El apellido no puede contener numeros.
+                </span>
+                <span *ngIf="apellido.errors?.['minlength']">
+                    El apellido debe tener al menos dos letras.
+                </span>
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email" 
+                formControlName="email" placeholder="Escriba un email para ponerm en contacto"
+                [ngClass]="{'is-invalid': email.invalid&&(email.dirty||email.touched) , 
+                            'is-valid':email.valid&&(email.dirty||email.touched)}">
+            <label for="email" class="form-label">Email</label>
+            <div class="invalid-tooltip"  *ngIf="email.touched&&email.errors!">
+                <span *ngIf="email.errors?.['required']">
+                    El email es necesario.
+                </span>
+                <span *ngIf="email.errors?.['email']">
+                    El email debe tener el formato valido.
+                </span>
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="asunto" 
+                formControlName="asunto" placeholder="Dejeme saber de que se trata."
+                [ngClass]="{'is-invalid': asunto.invalid&&(asunto.dirty||asunto.touched) , 
+                            'is-valid':asunto.valid&&(asunto.dirty||asunto.touched)}">
+            <label for="asunto" class="form-label">Asunto</label>
+            <div class="invalid-tooltip"  *ngIf="asunto.touched&& asunto.errors!">
+                <span *ngIf="asunto.errors?.['required']">
+                    El asunto es necesario.
+                </span>
+                <span *ngIf="asunto.errors?.['minlength']">
+                    El asunto es muy corto.
+                </span>
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" id="mensaje" placeholder="Cuentemelo todo." 
+                formControlName="mensaje" style="height: 200px;resize: none;"
+                [ngClass]="{'is-invalid': mensaje.invalid&&(mensaje.dirty||mensaje.touched) , 
+                            'is-valid':mensaje.valid&&(mensaje.dirty||mensaje.touched)}">
+            </textarea>
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <div class="invalid-tooltip"  *ngIf="mensaje.touched && mensaje.errors!">
+                <span *ngIf="mensaje.errors?.['required']">
+                    El mensaje es necesario.
+                </span>
+                <span *ngIf="mensaje.errors?.['minlength']">
+                    El mensaje es muy corto.
+                </span>
+            </div>
+        </div>
+        <button  mat-raised-button class="btn btn-primary shadow" type="submit">Enviar</button>
+    </form>
+</div>
