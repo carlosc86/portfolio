@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
 import { SeccionData } from '../seccionData';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { SeccionDataService } from 'src/app/services/seccion-data.service';
 
 @Component({
   selector: 'app-editor-seccion',
@@ -19,7 +20,7 @@ export class EditorSeccionComponent implements OnInit {
   @Output() messageEvent:EventEmitter<SeccionData>=new EventEmitter<SeccionData>();
   forms:FormGroup;
 
-  constructor( private fb:FormBuilder) { 
+  constructor( private fb:FormBuilder,private seccionS:SeccionDataService) { 
     this.forms=fb.group({
       titulo:['',],
       urlImagen:['',],
@@ -46,8 +47,10 @@ export class EditorSeccionComponent implements OnInit {
     this.seccion.titulo=this.forms.value.titulo;
     this.seccion.texto=this.forms.value.texto;
     this.seccion.urlImagen=this.forms.value.urlImagen;
-    this.messageEvent.emit(this.seccion);
-    this.forms.reset();
+    this.seccionS.modificarSeccion(this.seccion).subscribe(respuesta=>{
+      this.messageEvent.emit(this.seccion);
+      this.forms.reset();
+    });    
   }
 
   cancelar(){

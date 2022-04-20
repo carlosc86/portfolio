@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { SeccionDataService } from 'src/app/services/seccion-data.service';
 import { SeccionData } from '../seccionData';
 
 
@@ -10,15 +11,19 @@ import { SeccionData } from '../seccionData';
 })
 export class SeccionComponent implements OnInit {
 
-  public seccion:SeccionData={id:0,
-                              nombre:"",
-                              titulo:"",
-                              texto:"",
-                              urlImagen:""};
+  public seccion:SeccionData={
+    id:-1,
+    nombre:"",
+    titulo:"",
+    texto:"",
+    urlImagen:""
+  };
 
   llamada:EventEmitter<SeccionData>=new EventEmitter<SeccionData>();
 
-  constructor() { }
+  constructor() {
+    
+   }
 
   ngOnInit(): void {
   }

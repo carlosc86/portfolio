@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeccionDataService } from 'src/app/services/seccion-data.service';
 import { EstudioData, estudios } from '../estudioData';
 import { HabilidadData, habilidades } from '../habilidadData';
 import { SeccionComponent } from '../seccion/seccion.component';
@@ -29,16 +30,14 @@ export class SeccionAcercaDeComponent extends SeccionComponent implements OnInit
     porcentaje:50
   };
 
-  constructor() {
+  constructor(private seccionS:SeccionDataService) {
     super()
    }
 
   override ngOnInit(): void {
-    this.seccion.titulo="ACERCA DE";
-    this.seccion.urlImagen="../../../assets/portrait.png";
-    this.seccion.texto="Soy un programador full stack web independiente. Me gusta programar para diferentes dispositivos, en diferentes lenguajes y plataformas.";
-    this.seccion.nombre="Acerca de";
-    this.seccion.id=2;
+    this.seccionS.traerSeccionPorNombre('Acerca de').subscribe(dato=>{
+      this.seccion=dato[0];
+    });
   }
 
   setearEditorEstudio($event:EstudioData){

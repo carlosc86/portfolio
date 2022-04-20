@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { SeccionInicioComponent } from './components/seccion-inicio/seccion-inicio.component';
 import { EditorSeccionComponent } from './components/editor-seccion/editor-seccion.component';
 import { SeccionAcercaDeComponent } from './components/seccion-acerca-de/seccion-acerca-de.component';
@@ -23,6 +25,7 @@ import { FormLecturaMensajeComponent } from './components/form-lectura-mensaje/f
 import { BarraMenuComponent } from './components/barra-menu/barra-menu.component';
 import { InfoMedioContactoComponent } from './components/info-medio-contacto/info-medio-contacto.component';
 import { BarraFooterComponent } from './components/barra-footer/barra-footer.component';
+import { SeccionDataService } from './services/seccion-data.service';
 
 
 @NgModule({
@@ -51,9 +54,10 @@ import { BarraFooterComponent } from './components/barra-footer/barra-footer.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [SeccionDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

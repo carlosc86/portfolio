@@ -1,0 +1,32 @@
+{
+  "Secciones": [
+    {
+      "id": 0,
+      "nombre": "Inicio",
+      "titulo": "Carlos Alexander Carricondo",
+      "texto": "Programador Full Stack Web",
+      "urlImagen": "../../../assets/portrait.png"
+    },
+    {
+      "id": 1,
+      "nombre": "Acerca de",
+      "titulo": "ACERCA DE",
+      "texto": "Soy un programador full stack web independiente. Me gusta programar para diferentes dispositivos, en diferentes lenguajes y plataformas. Atento a las nuevas tecnologias.",
+      "urlImagen": "../../../assets/portrait.png"
+    },
+    {
+      "id": 2,
+      "nombre": "Trabajos",
+      "titulo": "TRABAJOS",
+      "texto": "Algunos trabajos y proyectos para mostrar mis habilidades.",
+      "urlImagen": ""
+    },
+    {
+      "id": 3,
+      "nombre": "Contacto",
+      "titulo": "CONTACTO",
+      "texto": "Si necesita de mis servicios, hagamelo saber. Deje un mensaje",
+      "urlImagen": ""
+    }
+  ]
+}
