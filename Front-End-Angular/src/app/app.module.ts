@@ -20,6 +20,10 @@ import { InfoProyectoComponent } from './components/info-proyecto/info-proyecto.
 import { EditorProyectoComponent } from './components/editor-proyecto/editor-proyecto.component';
 import { FormEnvioMensajeComponent } from './components/form-envio-mensaje/form-envio-mensaje.component';
 import { FormLecturaMensajeComponent } from './components/form-lectura-mensaje/form-lectura-mensaje.component';
+import { BarraMenuComponent } from './components/barra-menu/barra-menu.component';
+import { InfoMedioContactoComponent } from './components/info-medio-contacto/info-medio-contacto.component';
+import { BarraFooterComponent } from './components/barra-footer/barra-footer.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +43,10 @@ import { FormLecturaMensajeComponent } from './components/form-lectura-mensaje/f
     InfoProyectoComponent,
     EditorProyectoComponent,
     FormEnvioMensajeComponent,
-    FormLecturaMensajeComponent
+    FormLecturaMensajeComponent,
+    BarraMenuComponent,
+    InfoMedioContactoComponent,
+    BarraFooterComponent
   ],
   imports: [
     BrowserModule,
