@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MensajeData } from '../mensajeData';
+import * as moment from 'moment';
+import { MensajeData, mensajes } from '../mensajeData';
 import { SeccionComponent } from '../seccion/seccion.component';
 
 @Component({
@@ -9,7 +10,7 @@ import { SeccionComponent } from '../seccion/seccion.component';
 })
 export class SeccionContactoComponent extends SeccionComponent implements OnInit {
 
-  mensajes:MensajeData[]=[];
+  mensajes:MensajeData[]=mensajes;
 
   constructor() { 
     super();
@@ -25,6 +26,7 @@ export class SeccionContactoComponent extends SeccionComponent implements OnInit
   guardarMensaje($event:MensajeData){
     $event.id=this.mensajes.length;
     this.mensajes.push($event);
+    this.mensajes.sort((e,f)=>moment(f.fecha).unix()-moment(e.fecha).unix());
     alert("Mensaje enviado con exito.");//Enviado con el servicio de mensajes
     console.log(this.mensajes[this.mensajes.length-1]);
   }

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, EmailValidator, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
 import { MensajeData } from '../mensajeData';
 
 @Component({
@@ -17,6 +18,7 @@ export class FormEnvioMensajeComponent implements OnInit {
     email:"",
     asunto:"",
     mensaje:"",
+    fecha:"",
     leido:false
   };
 
@@ -51,6 +53,7 @@ export class FormEnvioMensajeComponent implements OnInit {
       this.correo.email=this.formulario.value.email;
       this.correo.asunto=this.formulario.value.asunto;
       this.correo.mensaje=this.formulario.value.mensaje;
+      this.correo.fecha=moment(Date.now()).format("YYYY-MM-DD");
       this.cartero.emit(this.correo);
       this.formulario.reset();
     }

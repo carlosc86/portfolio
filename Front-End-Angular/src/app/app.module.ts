@@ -19,6 +19,7 @@ import { EditorExperienciaComponent } from './components/editor-experiencia/edit
 import { InfoProyectoComponent } from './components/info-proyecto/info-proyecto.component';
 import { EditorProyectoComponent } from './components/editor-proyecto/editor-proyecto.component';
 import { FormEnvioMensajeComponent } from './components/form-envio-mensaje/form-envio-mensaje.component';
+import { FormLecturaMensajeComponent } from './components/form-lectura-mensaje/form-lectura-mensaje.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FormEnvioMensajeComponent } from './components/form-envio-mensaje/form-
     EditorExperienciaComponent,
     InfoProyectoComponent,
     EditorProyectoComponent,
-    FormEnvioMensajeComponent
+    FormEnvioMensajeComponent,
+    FormLecturaMensajeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 <!--Formulario de envio de mensajes, para cuando no se esta logueado-->
 <div class="col-12">
     <form [formGroup]="formulario" (ngSubmit)="aceptar()" class="col-10 col-md-8 mx-auto text-secondary mb-5 not-ocultable">
-        <div class="form-floating has-validation mb-3">
+        <div class="form-floating has-validation mb-4">
             <input type="text" matInput name="nombre" class="form-control" id="nombreVisitante"
                 formControlName="nombre" placeholder="Escriba su nombre." 
                 [ngClass]="{'is-valid': (nombre.touched&&nombre.valid),'is-invalid': nombre.touched&&nombre.invalid }">
@@ -18,7 +18,7 @@
                 </span>
             </div>
         </div>
-        <div class="form-floating mb-3">
+        <div class="form-floating mb-4">
             <input type="text" class="form-control" id="apellido"
                 formControlName="apellido" placeholder="Escriba su apellido."
                 [ngClass]="{'is-invalid': apellido.invalid&&(apellido.dirty||apellido.touched) , 
@@ -36,7 +36,7 @@
                 </span>
             </div>
         </div>
-        <div class="form-floating mb-3">
+        <div class="form-floating mb-4">
             <input type="email" class="form-control" id="email" 
                 formControlName="email" placeholder="Escriba un email para ponerm en contacto"
                 [ngClass]="{'is-invalid': email.invalid&&(email.dirty||email.touched) , 
@@ -51,7 +51,7 @@
                 </span>
             </div>
         </div>
-        <div class="form-floating mb-3">
+        <div class="form-floating mb-4">
             <input type="text" class="form-control" id="asunto" 
                 formControlName="asunto" placeholder="Dejeme saber de que se trata."
                 [ngClass]="{'is-invalid': asunto.invalid&&(asunto.dirty||asunto.touched) , 
@@ -66,7 +66,7 @@
                 </span>
             </div>
         </div>
-        <div class="form-floating mb-3">
+        <div class="form-floating mb-4">
             <textarea class="form-control" id="mensaje" placeholder="Cuentemelo todo." 
                 formControlName="mensaje" style="height: 200px;resize: none;"
                 [ngClass]="{'is-invalid': mensaje.invalid&&(mensaje.dirty||mensaje.touched) , 

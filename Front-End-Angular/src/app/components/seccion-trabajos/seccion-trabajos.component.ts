@@ -44,8 +44,8 @@ export class SeccionTrabajosComponent extends SeccionComponent implements OnInit
     this.seccion.id=3;
   }
 
-  setearExperiencia($event:ExperienciaData){
-    this.experAEditar=$event;
+  setearExperiencia(event:ExperienciaData){
+    this.experAEditar=event;
   }
 
   setearProyecto($event:ProyectoData){

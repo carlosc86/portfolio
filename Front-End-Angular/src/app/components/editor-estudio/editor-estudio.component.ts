@@ -9,7 +9,7 @@ import { EstudioData } from '../estudioData';
 })
 export class EditorEstudioComponent implements OnInit {
 
-  @Input() estudio:EstudioData={
+  @Input() @Output() estudio:EstudioData={
     id:-1,
     titulo:"",
     institucion:"",

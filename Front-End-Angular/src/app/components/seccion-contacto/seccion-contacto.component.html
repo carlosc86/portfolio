@@ -7,5 +7,8 @@
         <app-editor-seccion [seccion]="seccion" (messageEvent)="editarSeccion($event)"></app-editor-seccion>
         <!--Formulario envio de mensajes-->
         <app-form-envio-mensaje (cartero)="guardarMensaje($event)"></app-form-envio-mensaje>
+
+        <!--Formulario o "vista" para leer los mensajes, solo disponible cuando el propietario esta logueado-->
+        <app-form-lectura-mensaje [mensajes]="mensajes"></app-form-lectura-mensaje>
     </div>
 </section>
