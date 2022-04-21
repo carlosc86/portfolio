@@ -19,7 +19,18 @@ export class EditorEstudioComponent implements OnInit {
     anioInicio:"",
     anioFin:""
   };
-   estudios:EstudioData[]=[];
+
+  private copia:EstudioData={
+    id:NaN,
+    titulo:"",
+    institucion:"",
+    urlLogo:"",
+    anioInicio:"",
+    anioFin:""
+  };
+
+  estudios:EstudioData[]=[];
+
 
   forms:FormGroup;
 
@@ -40,23 +51,7 @@ export class EditorEstudioComponent implements OnInit {
     });
   }
 
-  //Cambiar esto por binding directo
-  precargarDatos(){
-    this.forms.setValue({
-      titulo:this.estudio.titulo,
-      institucion:this.estudio.institucion,
-      urlLogo:this.estudio.urlLogo,
-      anioInicio:this.estudio.anioInicio,
-      anioFin:this.estudio.anioFin
-    });
-  }
-
-  submit(){
-    this.estudio.titulo=this.forms.value.titulo;
-    this.estudio.institucion=this.forms.value.institucion;
-    this.estudio.urlLogo=this.forms.value.urlLogo;
-    this.estudio.anioInicio=this.forms.value.anioInicio;
-    this.estudio.anioFin=this.forms.value.anioFin;
+  aceptar(){
     //Llamar al servicio Api para guardar 
     if(isNaN(this.estudio.id)){
         this.estudioService.agregarEstudio(this.estudio).subscribe(dato=>{
@@ -73,6 +68,14 @@ export class EditorEstudioComponent implements OnInit {
   }
 
   cancelar(){
+    if(!isNaN(this.estudio.id)){
+      //Restauro los valores previos
+      this.estudio.titulo=this.copia.titulo;
+      this.estudio.institucion=this.copia.institucion;
+      this.estudio.urlLogo=this.copia.urlLogo;
+      this.estudio.anioInicio=this.copia.anioInicio;
+      this.estudio.anioFin=this.copia.anioFin;
+    }
     this.resetForm();
   }
 
@@ -89,8 +92,14 @@ export class EditorEstudioComponent implements OnInit {
     
   }
   
-  setActivo($event:EstudioData){
-    this.estudio=$event;
+  setActivo(estudio:EstudioData){
+    this.estudio=estudio;
+    //realizo una copia de seguridad por si no deseo cambiar nada
+    this.copia.titulo=estudio.titulo;
+    this.copia.institucion=estudio.institucion;
+    this.copia.urlLogo=estudio.urlLogo;
+    this.copia.anioInicio=estudio.anioInicio;
+    this.copia.anioFin=estudio.anioFin;
   }
 
   eliminarEstudio(){

@@ -3,7 +3,7 @@
     <img src="assets/AddButton.png" alt="" class="img-fluid btn float-end" data-bs-target="#editStudies" data-bs-toggle="modal" (click)="resetForm()">
 </div>
 <!--Modal para agregar o modificar Estudios-->
-<div class="modal fade" id="editStudies" tabindex="-1" (focus)="precargarDatos()">
+<div class="modal fade" id="editStudies" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content modalEdit">
             <div class="modal-header">
@@ -11,26 +11,26 @@
             </div>
             <div class="modal-body">
                 <h3 class="modal-title text-decoration-underline fw-bold">Estudio</h3>
-                <form action="" [formGroup]="forms" (ngSubmit)="submit()">
+                <form action="" [formGroup]="forms" (ngSubmit)="aceptar()">
                     <div class="form-floating mb-3">
-                        <input type="text" name="" id="titulo_estudio" class="form-control" formControlName="titulo" placeholder="Titulo">
+                        <input type="text" [(ngModel)]="estudio.titulo" name="" id="titulo_estudio" class="form-control" formControlName="titulo" placeholder="Titulo">
                         <label for="titulo_estudio" class="form-label">Titulo</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" name="" id="institucion" class="form-control" formControlName="institucion" placeholder="Institucion">
+                        <input type="text" [(ngModel)]="estudio.institucion"  id="institucion" class="form-control" formControlName="institucion" placeholder="Institucion">
                         <label for="titulo_estudio" class="form-label">Institucion</label>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="" id="logo_institucion" class="form-control" formControlName="urlLogo">
+                        <input type="text" [(ngModel)]="estudio.urlLogo"  id="logo_institucion" class="form-control" formControlName="urlLogo">
                         <label for="logo_institucion" class="input-group-text">Logo</label>
                     </div>
                     <div class="row mb-3">
                         <div class="input-group col">
-                            <input type="number" name="" id="fechaEstudioInicio" class="form-control" formControlName="anioInicio" min="1960" max="2022" aria-valuenow="2022">
+                            <input type="number" [(ngModel)]="estudio.anioInicio"  id="fechaEstudioInicio" class="form-control" formControlName="anioInicio" min="1960" max="2022" aria-valuenow="2022">
                             <label for="fechaEstudioInicio" class="input-group-text">Fecha inicio</label>
                         </div>
                         <div class="input-group col">
-                            <input type="number" name="" id="fechaEstudioFin" class="form-control" formControlName="anioFin" min="1960" max="2022" aria-valuenow="2022">
+                            <input type="number" [(ngModel)]="estudio.anioFin"  id="fechaEstudioFin" class="form-control" formControlName="anioFin" min="1960" max="2022" aria-valuenow="2022">
                             <label for="fechaEstudioFin" class="input-group-text">Fecha fin</label>
                         </div>
                     </div>

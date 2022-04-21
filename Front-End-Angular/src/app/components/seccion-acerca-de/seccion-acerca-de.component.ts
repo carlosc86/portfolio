@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EstudioDataService } from 'src/app/services/estudio-data.service';
 import { SeccionDataService } from 'src/app/services/seccion-data.service';
-import { EstudioData } from '../estudioData';
-import { HabilidadData, habilidades } from '../habilidadData';
 import { SeccionComponent } from '../seccion/seccion.component';
 
 @Component({
@@ -12,17 +9,7 @@ import { SeccionComponent } from '../seccion/seccion.component';
 })
 export class SeccionAcercaDeComponent extends SeccionComponent implements OnInit {
 
-  habilidades:HabilidadData[]=habilidades;
-
-  habilidadAEditar:HabilidadData={
-    id:NaN,
-    nombre:"",
-    descripcion:"",
-    porcentaje:50
-  };
-
-  constructor(private seccionS:SeccionDataService,
-              private estudioService:EstudioDataService) {
+  constructor(private seccionS:SeccionDataService) {
     super()
    }
 
@@ -31,18 +18,4 @@ export class SeccionAcercaDeComponent extends SeccionComponent implements OnInit
       this.seccion=dato[0];
     });
   }
-
-  setearEditorHabilidad($event:HabilidadData){
-    this.habilidadAEditar=$event;
-  }
-
-  agregarHabilidad($event:HabilidadData){
-    $event.id=this.habilidades.length;
-    this.habilidades.push($event);
-  }
-
-  eliminarHabilidad(){
-    console.log("Habilidoso el tuyo");
-  }
-
 }

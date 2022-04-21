@@ -23,7 +23,7 @@ export class InfoHabilidadComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  buscarEditor(){
+  activar(){
     this.emisor.emit(this.habilidad);
   }
 

@@ -18,11 +18,7 @@
             <article>                
                 <h3 class="col-12 text-decoration-underline fw-bold">Habilidades</h3>
                 <!--Editor de habilidades-->
-                <app-editor-habilidad [habilidad]="habilidadAEditar" (cambiar)="setearEditorHabilidad($event)" (agregar)="agregarHabilidad($event)" ></app-editor-habilidad>
-                <div class="row">
-                    <app-info-habilidad class="col-6 col-md-3 mx-auto px-md-5 mt-2 mb-2" [habilidad]="skill" (emisor)="setearEditorHabilidad($event)" *ngFor="let skill of habilidades"></app-info-habilidad>
-                </div>
-                <app-form-borrar-elemento [elemento]="'Habilidad'" (confirmar)="eliminarHabilidad()" ></app-form-borrar-elemento>
+                <app-editor-habilidad></app-editor-habilidad>
             </article>
         </div>
     </div>
