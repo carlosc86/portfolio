@@ -56,19 +56,11 @@
     },
     {
       "id": 3,
-      "titulo": "VoIp",
-      "institucion": "Linksys Corp",
-      "urlLogo": "../../../assets/network.png",
-      "anioInicio": 2005,
-      "anioFin": 2005
-    },
-    {
-      "id": 4,
       "titulo": "Medidor Astrologico",
       "institucion": "Naza",
       "urlLogo": "../../../assets/mooncake.png",
-      "anioInicio": 2012,
-      "anioFin": 2013
+      "anioInicio": 2010,
+      "anioFin": 2019
     }
   ]
 }

@@ -24,7 +24,7 @@ export class InfoEstudioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  buscarEditor(){
+  activar(){
     this.emisor.emit(this.estudio);
   }
 

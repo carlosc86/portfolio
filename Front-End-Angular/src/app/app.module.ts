@@ -26,6 +26,7 @@ import { BarraMenuComponent } from './components/barra-menu/barra-menu.component
 import { InfoMedioContactoComponent } from './components/info-medio-contacto/info-medio-contacto.component';
 import { BarraFooterComponent } from './components/barra-footer/barra-footer.component';
 import { SeccionDataService } from './services/seccion-data.service';
+import { FormBorrarElementoComponent } from './components/form-borrar-elemento/form-borrar-elemento.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { SeccionDataService } from './services/seccion-data.service';
     FormLecturaMensajeComponent,
     BarraMenuComponent,
     InfoMedioContactoComponent,
-    BarraFooterComponent
+    BarraFooterComponent,
+    FormBorrarElementoComponent
   ],
   imports: [
     BrowserModule,

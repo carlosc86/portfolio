@@ -12,17 +12,7 @@ import { SeccionComponent } from '../seccion/seccion.component';
 })
 export class SeccionAcercaDeComponent extends SeccionComponent implements OnInit {
 
-  estudios:EstudioData[]=[];
   habilidades:HabilidadData[]=habilidades;
-
-  estudioAEditar:EstudioData={
-    id:NaN,
-    titulo:"",
-    institucion:"",
-    urlLogo:"",
-    anioInicio:"",
-    anioFin:""
-  };
 
   habilidadAEditar:HabilidadData={
     id:NaN,
@@ -40,28 +30,19 @@ export class SeccionAcercaDeComponent extends SeccionComponent implements OnInit
     this.seccionS.traerSeccionPorNombre('Acerca de').subscribe(dato=>{
       this.seccion=dato[0];
     });
-    this.estudioService.traerEstudios().subscribe(dato=>{
-      this.estudios=dato;
-    });
-  }
-
-  setearEditorEstudio($event:EstudioData){
-    console.log("He seteado: "+$event.id);
-    this.estudioAEditar=$event;
   }
 
   setearEditorHabilidad($event:HabilidadData){
     this.habilidadAEditar=$event;
   }
 
-  agregarEstudio($event:EstudioData){
-    $event.id=this.estudios.length;
-    this.estudios.push($event);
-  }
-
   agregarHabilidad($event:HabilidadData){
     $event.id=this.habilidades.length;
     this.habilidades.push($event);
+  }
+
+  eliminarHabilidad(){
+    console.log("Habilidoso el tuyo");
   }
 
 }

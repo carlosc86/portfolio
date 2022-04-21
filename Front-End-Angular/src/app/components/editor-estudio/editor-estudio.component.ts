@@ -11,7 +11,7 @@ import { EstudioData } from '../estudioData';
 })
 export class EditorEstudioComponent implements OnInit {
 
-  @Input() estudio:EstudioData={
+  estudio:EstudioData={
     id:NaN,
     titulo:"",
     institucion:"",
@@ -19,8 +19,7 @@ export class EditorEstudioComponent implements OnInit {
     anioInicio:"",
     anioFin:""
   };
-  @Output() cambiar:EventEmitter<EstudioData>=new EventEmitter<EstudioData>();
-  @Output() agregar:EventEmitter<EstudioData>=new EventEmitter<EstudioData>();
+   estudios:EstudioData[]=[];
 
   forms:FormGroup;
 
@@ -36,8 +35,12 @@ export class EditorEstudioComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.estudioService.traerEstudios().subscribe(dato=>{
+      this.estudios=dato;
+    });
   }
 
+  //Cambiar esto por binding directo
   precargarDatos(){
     this.forms.setValue({
       titulo:this.estudio.titulo,
@@ -56,19 +59,19 @@ export class EditorEstudioComponent implements OnInit {
     this.estudio.anioFin=this.forms.value.anioFin;
     //Llamar al servicio Api para guardar 
     if(isNaN(this.estudio.id)){
-      this.estudioService.agregarEstudio(this.estudio).subscribe(data=>{
-        this.agregar.emit(this.estudio);
+        this.estudioService.agregarEstudio(this.estudio).subscribe(dato=>{
+          this.estudio.id=dato.id;
+          this.estudios.push(this.estudio);
+          this.resetForm();
+        });  
+    }      
+    else{
+      this.estudioService.modificarEstudio(this.estudio).subscribe(dato=>{
         this.resetForm();
       });      
     }      
-    else{
-      this.estudioService.modificarEstudio(this.estudio).subscribe(data=>{
-        this.cambiar.emit(this.estudio);
-        this.resetForm();
-      });
-      
-    }      
   }
+
   cancelar(){
     this.resetForm();
   }
@@ -83,7 +86,18 @@ export class EditorEstudioComponent implements OnInit {
       anioFin:""
     };
     this.forms.reset();    
-    this.cambiar.emit(this.estudio);
+    
+  }
+  
+  setActivo($event:EstudioData){
+    this.estudio=$event;
+  }
+
+  eliminarEstudio(){
+    this.estudioService.borrarEstudio(this.estudio).subscribe(dato=>{
+      let indice=this.estudios.indexOf(this.estudio);
+      this.estudios.splice(indice,1);
+    });
   }
 
 }

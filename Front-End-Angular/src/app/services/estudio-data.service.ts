@@ -17,7 +17,6 @@ export class EstudioDataService {
   }
 
   modificarEstudio(estudio:EstudioData){
-    console.log(this.endpointRoot+"/"+estudio.id);
     return this.api.putUrl(this.endpointRoot+"/"+estudio.id,estudio);
   }
 

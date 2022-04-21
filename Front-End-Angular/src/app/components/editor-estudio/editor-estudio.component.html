@@ -41,3 +41,7 @@
         </div>
     </div>
 </div>
+<app-form-borrar-elemento [elemento]="'Estudio'" (confirmar)="eliminarEstudio()" ></app-form-borrar-elemento>
+<div class="row">                
+    <app-info-estudio class="col-12 col-md-4"  [estudio]="study" (emisor)="setActivo($event)" *ngFor="let study of estudios"></app-info-estudio>
+</div>
