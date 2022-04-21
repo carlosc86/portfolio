@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { EstudioDataService } from 'src/app/services/estudio-data.service';
 import { SeccionDataService } from 'src/app/services/seccion-data.service';
-import { EstudioData, estudios } from '../estudioData';
+import { EstudioData } from '../estudioData';
 import { HabilidadData, habilidades } from '../habilidadData';
 import { SeccionComponent } from '../seccion/seccion.component';
 
@@ -11,11 +12,11 @@ import { SeccionComponent } from '../seccion/seccion.component';
 })
 export class SeccionAcercaDeComponent extends SeccionComponent implements OnInit {
 
-  estudios:EstudioData[]=estudios;
+  estudios:EstudioData[]=[];
   habilidades:HabilidadData[]=habilidades;
 
   estudioAEditar:EstudioData={
-    id:-1,
+    id:NaN,
     titulo:"",
     institucion:"",
     urlLogo:"",
@@ -24,13 +25,14 @@ export class SeccionAcercaDeComponent extends SeccionComponent implements OnInit
   };
 
   habilidadAEditar:HabilidadData={
-    id:-1,
+    id:NaN,
     nombre:"",
     descripcion:"",
     porcentaje:50
   };
 
-  constructor(private seccionS:SeccionDataService) {
+  constructor(private seccionS:SeccionDataService,
+              private estudioService:EstudioDataService) {
     super()
    }
 
@@ -38,9 +40,13 @@ export class SeccionAcercaDeComponent extends SeccionComponent implements OnInit
     this.seccionS.traerSeccionPorNombre('Acerca de').subscribe(dato=>{
       this.seccion=dato[0];
     });
+    this.estudioService.traerEstudios().subscribe(dato=>{
+      this.estudios=dato;
+    });
   }
 
   setearEditorEstudio($event:EstudioData){
+    console.log("He seteado: "+$event.id);
     this.estudioAEditar=$event;
   }
 

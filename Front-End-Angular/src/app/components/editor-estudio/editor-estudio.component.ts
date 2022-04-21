@@ -1,5 +1,7 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { EstudioDataService } from 'src/app/services/estudio-data.service';
 import { EstudioData } from '../estudioData';
 
 @Component({
@@ -9,8 +11,8 @@ import { EstudioData } from '../estudioData';
 })
 export class EditorEstudioComponent implements OnInit {
 
-  @Input() @Output() estudio:EstudioData={
-    id:-1,
+  @Input() estudio:EstudioData={
+    id:NaN,
     titulo:"",
     institucion:"",
     urlLogo:"",
@@ -22,7 +24,8 @@ export class EditorEstudioComponent implements OnInit {
 
   forms:FormGroup;
 
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder,
+              private estudioService:EstudioDataService) {
     this.forms=fb.group({
       titulo:[''],
       institucion:[''],
@@ -52,10 +55,19 @@ export class EditorEstudioComponent implements OnInit {
     this.estudio.anioInicio=this.forms.value.anioInicio;
     this.estudio.anioFin=this.forms.value.anioFin;
     //Llamar al servicio Api para guardar 
-    if(this.estudio.id>=0)
-      this.cambiar.emit(this.estudio);
-    else
-      this.agregar.emit(this.estudio);
+    if(isNaN(this.estudio.id)){
+      this.estudioService.agregarEstudio(this.estudio).subscribe(data=>{
+        this.agregar.emit(this.estudio);
+        this.resetForm();
+      });      
+    }      
+    else{
+      this.estudioService.modificarEstudio(this.estudio).subscribe(data=>{
+        this.cambiar.emit(this.estudio);
+        this.resetForm();
+      });
+      
+    }      
   }
   cancelar(){
     this.resetForm();
@@ -63,7 +75,7 @@ export class EditorEstudioComponent implements OnInit {
 
   resetForm(){
     this.estudio={
-      id:-1,
+      id:NaN,
       titulo:"",
       institucion:"",
       urlLogo:"",

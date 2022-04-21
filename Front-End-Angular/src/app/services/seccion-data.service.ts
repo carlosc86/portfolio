@@ -21,6 +21,6 @@ export class SeccionDataService {
 
   //Modificar una seccion
   modificarSeccion(seccion:SeccionData):Observable<any>{
-    return this.api.putUrl(this.endpointRoot,seccion);
+    return this.api.putUrl(this.endpointRoot+"/"+seccion.id,seccion);
   }
 }

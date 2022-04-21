@@ -1,5 +1,5 @@
 {
-  "Secciones": [
+  "secciones": [
     {
       "id": 0,
       "nombre": "Inicio",
@@ -11,7 +11,7 @@
       "id": 1,
       "nombre": "Acerca de",
       "titulo": "ACERCA DE",
-      "texto": "Soy un programador full stack web independiente. Me gusta programar para diferentes dispositivos, en diferentes lenguajes y plataformas. Atento a las nuevas tecnologias.",
+      "texto": "Soy un programador full stack web independiente. Me gusta programar para diferentes dispositivos, en diferentes lenguajes y plataformas. ",
       "urlImagen": "../../../assets/portrait.png"
     },
     {
@@ -27,6 +27,48 @@
       "titulo": "CONTACTO",
       "texto": "Si necesita de mis servicios, hagamelo saber. Deje un mensaje",
       "urlImagen": ""
+    }
+  ],
+  "estudios": [
+    {
+      "id": 0,
+      "titulo": "Tecnico Electronico - Automatizacion",
+      "institucion": "Escuela Presbitero Constantino Spagnolo",
+      "urlLogo": "../../../assets/electronics.png",
+      "anioInicio": "2002",
+      "anioFin": "2006"
+    },
+    {
+      "id": 1,
+      "titulo": "Estudiante Ingenieria en Sistemas",
+      "institucion": "UTN - Facultad Regional Mendoza",
+      "urlLogo": "../../../assets/computer.png",
+      "anioInicio": "2006",
+      "anioFin": "2010"
+    },
+    {
+      "id": 2,
+      "titulo": "Programado Full Stack Web",
+      "institucion": "Ministerio de Desarrollo Productivo",
+      "urlLogo": "../../../assets/network.png",
+      "anioInicio": "2021",
+      "anioFin": "2022"
+    },
+    {
+      "id": 3,
+      "titulo": "VoIp",
+      "institucion": "Linksys Corp",
+      "urlLogo": "../../../assets/network.png",
+      "anioInicio": 2005,
+      "anioFin": 2005
+    },
+    {
+      "id": 4,
+      "titulo": "Medidor Astrologico",
+      "institucion": "Naza",
+      "urlLogo": "../../../assets/mooncake.png",
+      "anioInicio": 2012,
+      "anioFin": 2013
     }
   ]
 }
