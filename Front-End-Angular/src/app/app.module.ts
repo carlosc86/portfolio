@@ -29,6 +29,7 @@ import { SeccionDataService } from './services/seccion-data.service';
 import { FormBorrarElementoComponent } from './components/form-borrar-elemento/form-borrar-elemento.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

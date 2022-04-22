@@ -37,7 +37,7 @@ export class EditorHabilidadComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.habilidadService.traerHabilidades().subscribe(datos=>{
+    this.habilidadService.traer<HabilidadData>().subscribe(datos=>{
       this.habilidades=datos;
     });
   }
@@ -57,13 +57,13 @@ export class EditorHabilidadComponent implements OnInit {
     this.habilidad.descripcion=this.forms.value.descripcion;
     this.habilidad.porcentaje=this.forms.value.porcentaje;
     if(isNaN(this.habilidad.id))
-      this.habilidadService.agregarHabilidad(this.habilidad).subscribe(dato=>{
+      this.habilidadService.agregar<HabilidadData>(this.habilidad).subscribe(dato=>{
         this.habilidad.id=dato.id;
         this.habilidades.push(this.habilidad);
         this.resetForm();
       });
     else  
-      this.habilidadService.modificarHabilidad(this.habilidad).subscribe(dato=>{
+      this.habilidadService.modificar<HabilidadData>(this.habilidad).subscribe(dato=>{
         this.resetForm();
       });
   }
@@ -83,7 +83,7 @@ export class EditorHabilidadComponent implements OnInit {
   }
 
   eliminarHabilidad(){
-    this.habilidadService.borrarHabilidad(this.habilidad).subscribe(dato=>{
+    this.habilidadService.borrar<HabilidadData>(this.habilidad).subscribe(dato=>{
       let indice=this.habilidades.indexOf(this.habilidad);
       this.habilidades.splice(indice,1);
     });

@@ -1,31 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { HabilidadData } from '../components/habilidadData';
 import { ApiComunicationService } from './api-comunication.service';
+import { DataService } from './dataService';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HabilidadDataService {
+export class HabilidadDataService extends DataService {
 
-  private endpointRoot:string="/habilidades"
+  protected override endpointRoot:string=environment.endpoint_habilidades;
 
-  constructor(private api:ApiComunicationService) { }
+  constructor(protected override api:ApiComunicationService) {
+      super(api);
+   }
 
-  traerHabilidades():Observable<HabilidadData[]>{
-    return this.api.getUrl(this.endpointRoot);
-  }
-
-  agregarHabilidad(habilidad:HabilidadData){
-    return this.api.postUrl(this.endpointRoot,habilidad);
-  }
-
-  modificarHabilidad(habilidad:HabilidadData){
-    return this.api.putUrl(this.endpointRoot+"/"+habilidad.id,habilidad);
-  }
-
-  borrarHabilidad(habilidad:HabilidadData){
-    return this.api.deleteUrl(this.endpointRoot+"/"+habilidad.id);
-  }
 
 }

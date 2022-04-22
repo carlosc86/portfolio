@@ -1,5 +1,5 @@
 import { ThisReceiver } from '@angular/compiler';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Type } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EstudioDataService } from 'src/app/services/estudio-data.service';
 import { EstudioData } from '../estudioData';
@@ -36,6 +36,7 @@ export class EditorEstudioComponent implements OnInit {
 
   constructor(private fb:FormBuilder,
               private estudioService:EstudioDataService) {
+                
     this.forms=fb.group({
       titulo:[''],
       institucion:[''],
@@ -46,22 +47,24 @@ export class EditorEstudioComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.estudioService.traerEstudios().subscribe(dato=>{
+    this.estudioService.traer<EstudioData>().subscribe(dato=>{
       this.estudios=dato;
     });
+
+    console.log(this.estudio.toString());
   }
 
   aceptar(){
     //Llamar al servicio Api para guardar 
     if(isNaN(this.estudio.id)){
-        this.estudioService.agregarEstudio(this.estudio).subscribe(dato=>{
+        this.estudioService.agregar<EstudioData>(this.estudio).subscribe(dato=>{
           this.estudio.id=dato.id;
           this.estudios.push(this.estudio);
           this.resetForm();
         });  
     }      
     else{
-      this.estudioService.modificarEstudio(this.estudio).subscribe(dato=>{
+      this.estudioService.modificar<EstudioData>(this.estudio).subscribe(dato=>{
         this.resetForm();
       });      
     }      
@@ -103,7 +106,7 @@ export class EditorEstudioComponent implements OnInit {
   }
 
   eliminarEstudio(){
-    this.estudioService.borrarEstudio(this.estudio).subscribe(dato=>{
+    this.estudioService.borrar<EstudioData>(this.estudio).subscribe(dato=>{
       let indice=this.estudios.indexOf(this.estudio);
       this.estudios.splice(indice,1);
     });

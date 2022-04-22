@@ -4,7 +4,14 @@
 
 export const environment = {
   production: false,
-  urlServicio:"http://localhost:3000"
+  urlServicio:"http://localhost:3000",
+  endpoint_seccion:"/secciones",
+  endpoint_estudios:"/estudios",
+  endpoint_habilidades:"/habilidades",
+  endpoint_experiencias:"/experiencias",
+  endpoint_proyectos:"/proyectos",
+  endpoint_mensajes:"/mensajes",
+  endpoint_medios_contacto:"/medios_contacto"
 };
 
 /*

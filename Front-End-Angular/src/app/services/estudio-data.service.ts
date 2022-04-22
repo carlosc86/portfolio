@@ -1,30 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { EstudioData } from '../components/estudioData';
+import { environment } from 'src/environments/environment';
 import { ApiComunicationService } from './api-comunication.service';
+import { DataService } from './dataService';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EstudioDataService {
+export class EstudioDataService extends DataService {
 
-  private endpointRoot:string="/estudios"
+  protected override endpointRoot:string=environment.endpoint_estudios; //El unico drama en esta historia
 
-  constructor(private api:ApiComunicationService) { }
-
-  traerEstudios():Observable<EstudioData[]>{
-    return this.api.getUrl(this.endpointRoot);
-  }
-
-  modificarEstudio(estudio:EstudioData){
-    return this.api.putUrl(this.endpointRoot+"/"+estudio.id,estudio);
-  }
-
-  agregarEstudio(estudio:EstudioData){
-    return this.api.postUrl(this.endpointRoot,estudio);
-  }
-
-  borrarEstudio(estudio:EstudioData){
-    return this.api.deleteUrl(this.endpointRoot+"/"+estudio.id);
-  }
+  constructor(protected override api:ApiComunicationService) {
+    super(api);
+   }
 }
