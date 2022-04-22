@@ -11,19 +11,8 @@ import { SeccionComponent } from '../seccion/seccion.component';
 })
 export class SeccionTrabajosComponent extends SeccionComponent implements OnInit {
 
-  experiencias:ExperienciaData[]=experiencias;
-  proyectos:ProyectoData[]=proyectos;
   
-  experAEditar:ExperienciaData={
-    id:-1,
-    puesto:"",
-    tipoTrabajo:"",
-    descripcion:"",
-    nombreEmpresa:"",
-    urlLogoEmpresa:"",
-    fechaInicio:"",
-    fechaFin:""
-  };
+  proyectos:ProyectoData[]=proyectos;
 
   proyectoAEditar:ProyectoData={
     id:-1,
@@ -44,17 +33,8 @@ export class SeccionTrabajosComponent extends SeccionComponent implements OnInit
     });
   }
 
-  setearExperiencia(event:ExperienciaData){
-    this.experAEditar=event;
-  }
-
   setearProyecto($event:ProyectoData){
     this.proyectoAEditar=$event;
-  }
-
-  agregarExperiencia($event:ExperienciaData){
-    $event.id=this.experiencias.length;
-    this.experiencias.push($event);
   }
 
   agregarProyecto($event:ProyectoData){

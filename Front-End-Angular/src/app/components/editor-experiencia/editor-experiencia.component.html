@@ -1,52 +1,57 @@
 <div class="col-12 ocultable">
-    <img src="assets/AddButton.png" alt="" class="img-fluid btn float-end" data-bs-target="#editExperiences" data-bs-toggle="modal" (click)="resetear()">
+    <img src="assets/AddButton.png" alt="" class="img-fluid btn float-end" data-bs-target="#editExperiences" data-bs-toggle="modal" (click)="resetForm()">
 </div>
 <!--Modal para agregar o editar experiencias laborales-->
-<div class="modal fade" id="editExperiences" tabindex="-1" (focus)="precargar()">
+<div class="modal fade" id="editExperiences" tabindex="-1" >
     <div class="modal-dialog">
         <div class="modal-content modalEdit">
             <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cancelar()"></button>
             </div>
             <div class="modal-body">
                 <h3 class="modal-title fw-bold text-decoration-underline mb-3">Experiencia Laboral</h3>
                 <form action="" [formGroup]="forms" (ngSubmit)="aceptar()">
                     <div class="form-floating mb-3">
-                        <input type="text" name="" id="nombreEmpresa" class="form-control" formControlName="nombreEmpresa" placeholder="Nombre de la Empresa">
+                        <input type="text" [(ngModel)]="experiencia.nombreEmpresa" id="nombreEmpresa" class="form-control" formControlName="nombreEmpresa" placeholder="Nombre de la Empresa">
                         <label for="nombreEmpresa" class="form-label">Nombre de la Empresa</label>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="" id="logoEmpresa" class="form-control" formControlName="urlLogoEmpresa">
+                        <input type="text" [(ngModel)]="experiencia.urlLogoEmpresa" id="logoEmpresa" class="form-control" formControlName="urlLogoEmpresa">
                         <label for="logoEmpresa" class="input-group-text">Logo</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" name="" id="puestoLaboral" class="form-control" formControlName="puesto" placeholder="Puesto en el que trabajaba">
+                        <input type="text" [(ngModel)]="experiencia.puesto" id="puestoLaboral" class="form-control" formControlName="puesto" placeholder="Puesto en el que trabajaba">
                         <label for="puestoLaboral" class="form-label">Puesto Laboral</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" name="" id="tipoTrabajo" class="form-control" formControlName="tipoTrabajo" placeholder="Tipo de trabajo que realizaba">
+                        <input type="text" [(ngModel)]="experiencia.tipoTrabajo" id="tipoTrabajo" class="form-control" formControlName="tipoTrabajo" placeholder="Tipo de trabajo que realizaba">
                         <label for="tipoTrabajo" class="form-label">Tipo de Trabajo</label>
                     </div>
                     <div class="row mb-3">
                         <div class="input-group col">
-                            <input type="number" name="" id="fechaExpInit" class="form-control" formControlName="fechaInicio"
+                            <input type="number" [(ngModel)]="experiencia.fechaInicio" id="fechaExpInit" class="form-control" formControlName="fechaInicio"
                                 min="1960" max="2050" aria-valuenow="2022">
                             <label for="fechaExpInit" class="input-group-text">Fecha inicio</label>
                         </div>
                         <div class="input-group col">
-                            <input type="number" name="" id="fechaExpFin" class="form-control" formControlName="fechaFin"
+                            <input type="number" [(ngModel)]="experiencia.fechaFin" id="fechaExpFin" class="form-control" formControlName="fechaFin"
                                 min="1960" max="2050" aria-valuenow="2022">
                             <label for="fechaExpFin" class="input-group-text">Fecha fin</label>
                         </div>
                     </div>
                     <div class="form-floating mb-3">
-                        <textarea name="" id="descripcionPuesto" class="form-control" style="resize: none;height: 150px;" formControlName="descripcion" placeholder="Que hacia en ese puesto"></textarea>
+                        <textarea [(ngModel)]="experiencia.descripcion" id="descripcionPuesto" class="form-control" style="resize: none;height: 150px;" formControlName="descripcion" placeholder="Que hacia en ese puesto"></textarea>
                         <label for="descripcionPuesto" class="form-label">Lo que hacia en ese puesto era...</label>
                     </div>
-                    <button class="btn btn-secondary shadow" type="button" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-secondary shadow" type="button" data-bs-dismiss="modal" (click)="cancelar()">Cancelar</button>
                     <button class="btn btn-success shadow" type="submit" data-bs-dismiss="modal">Aceptar</button>
                 </form>
             </div>
         </div>
     </div>
+</div>
+
+<app-form-borrar-elemento [elemento]="'Experiencia'" (confirmar)="eliminarExperiencia()"></app-form-borrar-elemento>
+<div class="row">
+    <app-info-experiencia [experiencia]="experience" (emisor)="setActivo($event)" *ngFor="let experience of experiencias" class="col-12 col-md-4"></app-info-experiencia>
 </div>

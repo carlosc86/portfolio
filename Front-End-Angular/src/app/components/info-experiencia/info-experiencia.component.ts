@@ -9,7 +9,7 @@ import { ExperienciaData } from '../experienciaData';
 export class InfoExperienciaComponent implements OnInit {
 
   @Input() experiencia:ExperienciaData={
-    id:-1,
+    id:NaN,
     puesto:"",
     tipoTrabajo:"",
     descripcion:"",
@@ -26,7 +26,7 @@ export class InfoExperienciaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  buscarEditor(){
+  activar(){
     this.emisor.emit(this.experiencia);
   }
 

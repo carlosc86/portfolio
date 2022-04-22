@@ -11,9 +11,9 @@
     <article>
         <h3 class="fw-bold text-decoration-underline">Experiencia</h3>
         <div class="row mb-5">
+            
             <!--Editor de Experiencias Laborales-->
-            <app-editor-experiencia [experiencia]="experAEditar" (cambiar)="setearExperiencia($event)" (agregar)="agregarExperiencia($event)"></app-editor-experiencia>
-            <app-info-experiencia [experiencia]="experience" (emisor)="setearExperiencia($event)" *ngFor="let experience of experiencias" class="col-12 col-md-4"></app-info-experiencia>
+            <app-editor-experiencia></app-editor-experiencia>
         </div>
     </article>
     <article>

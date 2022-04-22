@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ExperienciaDataService } from 'src/app/services/experiencia-data.service';
 import { ExperienciaData } from '../experienciaData';
 
 @Component({
@@ -9,8 +10,10 @@ import { ExperienciaData } from '../experienciaData';
 })
 export class EditorExperienciaComponent implements OnInit {
 
-  @Input() experiencia:ExperienciaData={
-    id:-1,
+  experiencias:ExperienciaData[]=[];
+
+  experiencia:ExperienciaData={
+    id:NaN,
     puesto:"",
     tipoTrabajo:"",
     descripcion:"",
@@ -20,12 +23,21 @@ export class EditorExperienciaComponent implements OnInit {
     fechaFin:""
   };
 
-  @Output() cambiar:EventEmitter<ExperienciaData>=new EventEmitter<ExperienciaData>();
-  @Output() agregar:EventEmitter<ExperienciaData>=new EventEmitter<ExperienciaData>();
+  copia:ExperienciaData={
+    id:NaN,
+    puesto:"",
+    tipoTrabajo:"",
+    descripcion:"",
+    nombreEmpresa:"",
+    urlLogoEmpresa:"",
+    fechaInicio:"",
+    fechaFin:""
+  };
 
   forms:FormGroup;
 
-  constructor(private fb:FormBuilder) { 
+  constructor(private fb:FormBuilder,
+              private experienciaService:ExperienciaDataService) { 
     this.forms=fb.group({
       puesto:[''],
       tipoTrabajo:[''],
@@ -38,24 +50,27 @@ export class EditorExperienciaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  precargar(){
-    this.forms.setValue({
-      puesto:this.experiencia.puesto,
-      tipoTrabajo:this.experiencia.tipoTrabajo,
-      descripcion:this.experiencia.descripcion,
-      nombreEmpresa:this.experiencia.nombreEmpresa,
-      urlLogoEmpresa:this.experiencia.urlLogoEmpresa,
-      fechaInicio:this.experiencia.fechaInicio,
-      fechaFin:this.experiencia.fechaFin
+    this.experienciaService.traer<ExperienciaData>().subscribe(dato=>{
+      this.experiencias=dato;
     });
+  }
+
+  cancelar(){
+    this.experiencia.puesto=this.copia.puesto;
+    this.experiencia.tipoTrabajo=this.copia.tipoTrabajo;
+    this.experiencia.descripcion=this.copia.descripcion;
+    this.experiencia.nombreEmpresa=this.copia.nombreEmpresa;
+    this.experiencia.urlLogoEmpresa=this.copia.urlLogoEmpresa;
+    this.experiencia.fechaInicio=this.copia.fechaInicio;
+    this.experiencia.fechaFin=this.copia.fechaFin;
+
+    this.resetForm();
 
   }
 
-  resetear(){
+  resetForm(){
     this.experiencia={
-      id:-1,
+      id:NaN,
       puesto:"",
       tipoTrabajo:"",
       descripcion:"",
@@ -65,7 +80,6 @@ export class EditorExperienciaComponent implements OnInit {
       fechaFin:""
     };
     this.forms.reset();
-    this.cambiar.emit(this.experiencia);
   }
 
   aceptar(){
@@ -76,10 +90,37 @@ export class EditorExperienciaComponent implements OnInit {
     this.experiencia.urlLogoEmpresa=this.forms.value.urlLogoEmpresa;
     this.experiencia.fechaInicio=this.forms.value.fechaInicio;
     this.experiencia.fechaFin=this.forms.value.fechaFin;
-    if(this.experiencia.id>=0)
-      this.cambiar.emit(this.experiencia);
+    if(isNaN(this.experiencia.id))
+      this.experienciaService.agregar<ExperienciaData>(this.experiencia).subscribe(dato=>{
+        this.experiencia.id=dato.id;
+        this.experiencias.push(this.experiencia);
+        this.resetForm();
+      });
     else
-      this.agregar.emit(this.experiencia);
+      this.experienciaService.modificar<ExperienciaData>(this.experiencia).subscribe(dato=>{
+        this.resetForm();
+      });
+  }
+
+
+  setActivo(experiencia:ExperienciaData){
+    this.experiencia=experiencia;
+
+    this.copia.puesto=experiencia.puesto;
+    this.copia.tipoTrabajo=experiencia.tipoTrabajo;
+    this.copia.nombreEmpresa=experiencia.nombreEmpresa;
+    this.copia.urlLogoEmpresa=experiencia.urlLogoEmpresa;
+    this.copia.descripcion=experiencia.descripcion;
+    this.copia.fechaInicio=experiencia.fechaInicio;
+    this.copia.fechaFin=experiencia.fechaFin;
+  }
+
+  eliminarExperiencia(){
+    this.experienciaService.borrar<ExperienciaData>(this.experiencia).subscribe(dato=>{
+      let indice=this.experiencias.indexOf(this.experiencia);
+      this.experiencias.splice(indice,1);
+    });
+
   }
 
 }
