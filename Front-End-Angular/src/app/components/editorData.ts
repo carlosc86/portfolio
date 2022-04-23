@@ -66,7 +66,7 @@ export abstract class EditorData<T extends DataPortfolio> implements OnInit{
     }
 
     protected  copiarElemento(dato:T):T{
-        return Object.assign({},dato);
+        return JSON.parse(JSON.stringify(dato));
     }
 
     protected abstract borrarElemento():T; //Devuelve un elemento limpio

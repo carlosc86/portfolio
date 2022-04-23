@@ -23,8 +23,8 @@
         <h3 class="fw-bold text-decoration-underline">Proyectos</h3>
         <div class="row mb-5">
             <!--Editor de Colaboracion en Proyectos-->
-            <app-editor-proyecto [proyecto]="proyectoAEditar" (cambiar)="setearProyecto($event)" (agregar)="agregarProyecto($event)"></app-editor-proyecto>
-            <app-info-proyecto [proyecto]="project" (emisor)="setearProyecto($event)" *ngFor="let project of proyectos" class="col-12 col-md-4"></app-info-proyecto>
+            <app-editor-proyecto></app-editor-proyecto>
+        
         </div>
     </article>
 </section>

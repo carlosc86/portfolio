@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ProyectoDataService } from 'src/app/services/proyecto-data.service';
+import { EditorData } from '../editorData';
 import { ProyectoData } from '../proyectoData';
 
 @Component({
@@ -7,24 +9,12 @@ import { ProyectoData } from '../proyectoData';
   templateUrl: './editor-proyecto.component.html',
   styleUrls: ['./editor-proyecto.component.css']
 })
-export class EditorProyectoComponent implements OnInit {
-
-  @Input() proyecto:ProyectoData={
-    id:-1,
-    nombre:"",
-    descripcion:"",
-    link:"",
-    anio:"",
-    urlImagenes:[""]
-  };
+export class EditorProyectoComponent extends EditorData<ProyectoData> implements OnInit {
+ 
   listaRutas:string[]=[];
-
-  @Output() cambiar:EventEmitter<ProyectoData>=new EventEmitter<ProyectoData>();
-  @Output() agregar:EventEmitter<ProyectoData>=new EventEmitter<ProyectoData>();
-
-  forms:FormGroup;
-  
-  constructor(private fb:FormBuilder) {
+    
+  constructor(private fb:FormBuilder, private proyectoService:ProyectoDataService) {
+    super(proyectoService);
     this.forms=fb.group({
       nombre:[''],
       descripcion:[''],
@@ -33,59 +23,39 @@ export class EditorProyectoComponent implements OnInit {
       urlImagen:[''] //CUIDADO ACA SE DEBE INGRESAR UN ARRAY
     });
    }
-
-  ngOnInit(): void {
+  override setActivo(dato: ProyectoData): void {
+    super.setActivo(dato);
+    this.listaRutas=dato.urlImagenes;
   }
 
-  precargar(){
-    this.forms.setValue({
-      nombre:this.proyecto.nombre,
-      descripcion:this.proyecto.descripcion,
-      link:this.proyecto.link,
-      anio:this.proyecto.anio,
-      urlImagen:""
-    });
-    this.listaRutas=this.proyecto.urlImagenes;
-
-  }
-
-  resetear(){
-    this.proyecto={
-      id:-1,
-      nombre:"",
-      descripcion:"",
-      link:"",
-      anio:"",
-      urlImagenes:[]
-    };
+  override resetForm(): void {
+    super.resetForm();
     this.listaRutas=[];
-    this.forms.reset();
-    this.cambiar.emit(this.proyecto);
   }
 
-  aceptar(){
-    this.proyecto.nombre=this.forms.value.nombre;
-    this.proyecto.descripcion=this.forms.value.descripcion;
-    this.proyecto.link=this.forms.value.link;
-    this.proyecto.anio=this.forms.value.anio;
-    this.proyecto.urlImagenes=this.listaRutas;
-    if(this.proyecto.id>-1)
-      this.cambiar.emit(this.proyecto);
-    else
-      this.agregar.emit(this.proyecto);
-
+  protected borrarElemento(): ProyectoData {
+    return {
+        id:NaN,
+        nombre:"",
+        descripcion:"",
+        link:"",
+        anio:"",
+        urlImagenes:[""]
+      }
   }
 
   agregarALista(){
     this.listaRutas.push(this.forms.value.urlImagen);
-    this.forms.get('urlImagen')!.setValue('');
+    this.forms.get('urlImagen')?.reset();
   }
 
   quitarDeLista(ruta:string){
-    let indice:number=this.listaRutas.indexOf(ruta);
-    if(indice>-1){
-      this.listaRutas.splice(indice,1);
-    }
+    let indice=this.listaRutas.indexOf(ruta);
+    this.listaRutas.splice(indice,1);
   }
 
+  confirmarCambios(){
+    this.elemento.urlImagenes=this.listaRutas;
+    this.aceptar();
+  }
 }

@@ -9,7 +9,7 @@ import { ProyectoData } from '../proyectoData';
 export class InfoProyectoComponent implements OnInit {
 
   @Input() proyecto:ProyectoData={
-    id:-1,
+    id:NaN,
     nombre:"",
     descripcion:"",
     link:"",
@@ -24,7 +24,7 @@ export class InfoProyectoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  buscarEditor(){
+  activar(){
     this.emisor.emit(this.proyecto);
   }
 
