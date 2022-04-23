@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import { MensajeDataService } from 'src/app/services/mensaje-data.service';
 import { MensajeData, mensajes } from '../mensajeData';
 
 @Component({
@@ -9,9 +10,9 @@ import { MensajeData, mensajes } from '../mensajeData';
 })
 export class FormLecturaMensajeComponent implements OnInit {
 
-  @Input() mensajes:MensajeData[]=[];
+  mensajes:MensajeData[]=[];
   mensajeActivo:MensajeData={
-    id:-1,
+    id:NaN,
     nombre:"",
     apellido:"",
     email:"",
@@ -21,10 +22,16 @@ export class FormLecturaMensajeComponent implements OnInit {
     leido:false
   };
 
-  constructor() { }
+  constructor(private mensajeService:MensajeDataService) {
+
+   }
 
   ngOnInit(): void {
     moment.locale('es');
+    this.mensajeService.traer().subscribe(dato=>{
+      this.mensajes=dato;
+      this.mensajes.sort((e,f)=>moment(f.fecha).unix()-moment(e.fecha).unix());
+    });
   }
 
   darFormatoFecha(fecha:string,completa:boolean){
@@ -37,9 +44,12 @@ export class FormLecturaMensajeComponent implements OnInit {
   }
 
   leerMensaje(id:number){
-    this.mensajeActivo=mensajes.find(e => e.id==id)!;
-    if(this.mensajeActivo!=null){
+    this.mensajeActivo=this.mensajes.find(e => e.id===id)!;
+    if(this.mensajeActivo!=null && !this.mensajeActivo.leido){
       this.mensajeActivo.leido=true;
+      this.mensajeService.modificar(this.mensajeActivo).subscribe(dato=>{
+        
+      });
     }    
   }
 
@@ -47,9 +57,7 @@ export class FormLecturaMensajeComponent implements OnInit {
     let indice=this.mensajes.indexOf(this.mensajeActivo);
     if(indice+1<this.mensajes.length){
       this.mensajeActivo=this.mensajes[indice+1];
-      if(!this.mensajeActivo.leido){
-        this.mensajeActivo.leido=true;
-      }
+      this.leerMensaje(this.mensajeActivo.id);
     }
   }
 
@@ -57,9 +65,7 @@ export class FormLecturaMensajeComponent implements OnInit {
     let indice=this.mensajes.indexOf(this.mensajeActivo);
     if(indice-1>=0){
       this.mensajeActivo=this.mensajes[indice-1];
-      if(!this.mensajeActivo.leido){
-        this.mensajeActivo.leido=true;
-      }
+      this.leerMensaje(this.mensajeActivo.id);
     }
 
   }

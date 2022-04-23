@@ -10,7 +10,6 @@ import { SeccionComponent } from '../seccion/seccion.component';
 })
 export class SeccionContactoComponent extends SeccionComponent implements OnInit {
 
-  mensajes:MensajeData[]=mensajes;
 
   constructor() { 
     super();
@@ -18,14 +17,6 @@ export class SeccionContactoComponent extends SeccionComponent implements OnInit
 
   override ngOnInit(): void {
     
-  }
-
-  guardarMensaje($event:MensajeData){
-    $event.id=this.mensajes.length;
-    this.mensajes.push($event);
-    this.mensajes.sort((e,f)=>moment(f.fecha).unix()-moment(e.fecha).unix());
-    alert("Mensaje enviado con exito.");//Enviado con el servicio de mensajes
-    console.log(this.mensajes[this.mensajes.length-1]);
   }
 
 }

@@ -8,9 +8,9 @@
             <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSection" data-bs-toggle="modal" (click)="llamarEditor()">
         </div>
         <!--Formulario envio de mensajes-->
-        <app-form-envio-mensaje (cartero)="guardarMensaje($event)"></app-form-envio-mensaje>
+        <app-form-envio-mensaje></app-form-envio-mensaje>
 
         <!--Formulario o "vista" para leer los mensajes, solo disponible cuando el propietario esta logueado-->
-        <app-form-lectura-mensaje [mensajes]="mensajes"></app-form-lectura-mensaje>
+        <app-form-lectura-mensaje></app-form-lectura-mensaje>
     </div>
 </section>

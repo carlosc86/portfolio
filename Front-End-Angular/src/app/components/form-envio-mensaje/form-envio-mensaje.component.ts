@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, EmailValidator, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
+import { MensajeDataService } from 'src/app/services/mensaje-data.service';
 import { MensajeData } from '../mensajeData';
 
 @Component({
@@ -10,9 +11,8 @@ import { MensajeData } from '../mensajeData';
 })
 export class FormEnvioMensajeComponent implements OnInit {
 
-  @Output() cartero:EventEmitter<MensajeData>=new EventEmitter<MensajeData>();
   correo:MensajeData={
-    id:-1,
+    id:NaN,
     nombre:"",
     apellido:"",
     email:"",
@@ -24,7 +24,7 @@ export class FormEnvioMensajeComponent implements OnInit {
 
   formulario:FormGroup;
 
-  constructor(private fb:FormBuilder) { 
+  constructor(private fb:FormBuilder, protected mensajeService:MensajeDataService) { 
     let soloLetras="[A-Za-z ]*"; //Expresion regular para solo letras
     this.formulario=fb.group({
       nombre:['', [Validators.required,Validators.minLength(2),Validators.pattern(soloLetras)]],
@@ -48,14 +48,11 @@ export class FormEnvioMensajeComponent implements OnInit {
   aceptar(){
     this.formulario.markAllAsTouched();
     if(this.formulario.valid){
-      this.correo.nombre=this.formulario.value.nombre;
-      this.correo.apellido=this.formulario.value.apellido;
-      this.correo.email=this.formulario.value.email;
-      this.correo.asunto=this.formulario.value.asunto;
-      this.correo.mensaje=this.formulario.value.mensaje;
       this.correo.fecha=moment(Date.now()).format("YYYY-MM-DD");
-      this.cartero.emit(this.correo);
-      this.formulario.reset();
+      this.mensajeService.agregar(this.correo).subscribe(data=>{
+        this.formulario.reset();
+      })
+      
     }
     
   }
