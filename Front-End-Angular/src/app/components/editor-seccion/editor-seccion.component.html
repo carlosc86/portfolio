@@ -1,27 +1,23 @@
-<!--Boton para editar la cabecera de la seccion-->
-<div class="col-12 ocultable">
-    <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" [attr.data-bs-target]="'#editSection'+seccion.id" data-bs-toggle="modal" (click)="cargarDatos()">
-</div>
 <!--Modal para la edicion de la seccion-->
-<div class="modal fade" id="editSection{{seccion.id}}" tabindex="-1">
+<div class="modal fade" id="editSection" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content modalEdit" >
             <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cancelar()"></button>
             </div>
             <div class="modal-body">
-                <h3 class="modal-title mx-auto mb-3 text-decoration-underline fw-bold">Editar {{getTituloSeccion()}}</h3>
+                <h3 class="modal-title mx-auto mb-3 text-decoration-underline fw-bold">Editar {{elemento.nombre}}</h3>
                 <form action="" class="text-secondary" [formGroup]="forms" (ngSubmit)="aceptar()"  >
                     <div class="form-floating mb-3">
-                        <input type="text" id="titulo" class="form-control" formControlName="titulo" placeholder="Escriba titulo a mostrar">
+                        <input type="text" [(ngModel)]="elemento.titulo" id="titulo" class="form-control" formControlName="titulo" placeholder="Escriba titulo a mostrar">
                         <label for="titulo" class="form-label">Titulo</label>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" id="imagen" class="form-control" formControlName="urlImagen" placeholder="Ingrese imagen a mostrar">
+                        <input type="text" [(ngModel)]="elemento.urlImagen"  id="imagen" class="form-control" formControlName="urlImagen" placeholder="Ingrese imagen a mostrar">
                         <label for="imagen" class="input-group-text">Imagen</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <textarea id="texto" class="form-control" style="resize: none; height: 150px;" formControlName="texto" placeholder="Escriba el texto de la seccion"></textarea>
+                        <textarea id="texto" [(ngModel)]="elemento.texto"  class="form-control" style="resize: none; height: 150px;" formControlName="texto" placeholder="Escriba el texto de la seccion"></textarea>
                         <label for="texto" class="form-label">Texto</label>
                     </div>                    
                     <button class="btn btn-secondary shadow" type="button" data-bs-dismiss="modal" (click)="cancelar()">Cancelar</button>
@@ -31,3 +27,8 @@
         </div>
     </div>
 </div>
+
+<app-seccion-inicio [seccion]="getSeccionPorNombre('Inicio')" (activar)="setActivo($event)"></app-seccion-inicio>
+<app-seccion-acerca-de [seccion]="getSeccionPorNombre('Acerca de')" (activar)="setActivo($event)"></app-seccion-acerca-de>
+<app-seccion-trabajos [seccion]="getSeccionPorNombre('Trabajos')" (activar)="setActivo($event)"></app-seccion-trabajos>
+<app-seccion-contacto [seccion]="getSeccionPorNombre('Contacto')" (activar)="setActivo($event)"></app-seccion-contacto>

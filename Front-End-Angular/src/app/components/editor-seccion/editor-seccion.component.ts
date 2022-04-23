@@ -3,24 +3,18 @@ import { Input, Output, EventEmitter } from '@angular/core';
 import { SeccionData } from '../seccionData';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SeccionDataService } from 'src/app/services/seccion-data.service';
+import { EditorData } from '../editorData';
 
 @Component({
   selector: 'app-editor-seccion',
   templateUrl: './editor-seccion.component.html',
   styleUrls: ['./editor-seccion.component.css']
 })
-export class EditorSeccionComponent implements OnInit {
-
-  @Input() seccion:SeccionData={id:0,
-                                nombre:"",
-                                titulo:"",
-                                texto:"",
-                                urlImagen:""};
+export class EditorSeccionComponent extends EditorData<SeccionData> implements OnInit {
   
-  @Output() messageEvent:EventEmitter<SeccionData>=new EventEmitter<SeccionData>();
-  forms:FormGroup;
 
   constructor( private fb:FormBuilder,private seccionS:SeccionDataService) { 
+    super(seccionS);
     this.forms=fb.group({
       titulo:['',],
       urlImagen:['',],
@@ -28,34 +22,16 @@ export class EditorSeccionComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  protected borrarElemento(): SeccionData {
+    return {id:NaN,
+      nombre:"",
+      titulo:"",
+      texto:"",
+      urlImagen:""};
   }
 
-  cargarDatos(){
-    this.forms.setValue({
-      titulo:this.seccion.titulo,
-      texto:this.seccion.texto,
-      urlImagen:this.seccion.urlImagen
-    });
+  getSeccionPorNombre(nombre:string):SeccionData{
+    let seccionEncontrada=this.lista.find(e=>e.nombre===nombre);
+    return seccionEncontrada? seccionEncontrada : this.borrarElemento();
   }
-
-  getTituloSeccion():string{
-    return this.seccion.nombre;
-  }
-
-  aceptar(){
-    this.seccion.titulo=this.forms.value.titulo;
-    this.seccion.texto=this.forms.value.texto;
-    this.seccion.urlImagen=this.forms.value.urlImagen;
-    this.seccionS.modificarSeccion(this.seccion).subscribe(respuesta=>{
-      this.messageEvent.emit(this.seccion);
-      this.forms.reset();
-    });    
-  }
-
-  cancelar(){
-    this.forms.reset();
-  }
-
-
 }

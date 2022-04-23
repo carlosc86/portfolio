@@ -8,8 +8,11 @@
                 <img src="{{seccion.urlImagen}}" class="img-fluid col-4 col-md-1">
                 <p class="col-8 col-md-6 align-self-stretch">{{seccion.texto}}</p>
             </div>
+            <!--Boton para editar la cabecera de la seccion-->
+            <div class="col-12 ocultable">
+                <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSection" data-bs-toggle="modal" (click)="llamarEditor()">
+            </div>
             <!--Editor de seccion-->
-            <app-editor-seccion [seccion]="seccion" (messageEvent)="editarSeccion($event)"></app-editor-seccion>
             <article>
                 <h3 class="col-12 text-decoration-underline fw-bold">Estudios</h3>
                 <!--Editor de Estudios-->

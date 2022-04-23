@@ -13,17 +13,17 @@
                 <h3 class="modal-title fw-bold text-decoration-underline mb-3">Habilidad</h3>
                 <form action="" [formGroup]="forms" (ngSubmit)="aceptar()">
                     <div class="form-floating mb-3">
-                        <input type="text" [(ngModel)]="habilidad.nombre" id="tituloHab" class="form-control" formControlName="nombre" placeholder="Titulo">
+                        <input type="text" [(ngModel)]="elemento.nombre" id="tituloHab" class="form-control" formControlName="nombre" placeholder="Titulo">
                         <label for="tituloHab" class="form-label">Nombre</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" [(ngModel)]="habilidad.descripcion" id="descripcionHabilidad" class="form-control" formControlName="descripcion" placeholder="Titulo">
+                        <input type="text" [(ngModel)]="elemento.descripcion" id="descripcionHabilidad" class="form-control" formControlName="descripcion" placeholder="Titulo">
                         <label for="descripcionHabilidad" class="form-label">Descripcion</label>
                     </div>
                     <div class="mb-3">
                         <!--Revisar el estilo de esta parte-->
                         <label for="nivelHab" class="form-label fw-bold">Porcentaje</label>
-                        <input type="range" [(ngModel)]="habilidad.porcentaje" id="nivelHab" class="form-range" data-bs-toggle="tooltip" databs-placement="top" [attr.title]="habilidad.porcentaje"
+                        <input type="range" [(ngModel)]="elemento.porcentaje" id="nivelHab" class="form-range" data-bs-toggle="tooltip" databs-placement="top" [attr.title]="elemento.porcentaje"
                             aria-valuemax="100" aria-valuemin="0" formControlName="porcentaje">
                     </div>
                     <button class="btn btn-secondary shadow" type="button" data-bs-dismiss="modal" (click)="cancelar()">Cancelar</button>
@@ -33,7 +33,7 @@
         </div>
     </div>
 </div>
-<app-form-borrar-elemento [elemento]="'Habilidad'" (confirmar)="eliminarHabilidad()"></app-form-borrar-elemento>
+<app-form-borrar-elemento [elemento]="'Habilidad'" (confirmar)="eliminar()"></app-form-borrar-elemento>
 <div class="row">
-    <app-info-habilidad class="col-6 col-md-3 mx-auto px-md-5 mt-2 mb-2" [habilidad]="skill" (emisor)="setActivo($event)" *ngFor="let skill of habilidades"></app-info-habilidad>
+    <app-info-habilidad class="col-6 col-md-3 mx-auto px-md-5 mt-2 mb-2" [habilidad]="skill" (emisor)="setActivo($event)" *ngFor="let skill of lista"></app-info-habilidad>
 </div>

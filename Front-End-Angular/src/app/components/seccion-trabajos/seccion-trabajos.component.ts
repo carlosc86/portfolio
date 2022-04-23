@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SeccionDataService } from 'src/app/services/seccion-data.service';
-import { ExperienciaData, experiencias } from '../experienciaData';
 import { ProyectoData, proyectos } from '../proyectoData';
 import { SeccionComponent } from '../seccion/seccion.component';
 
@@ -23,14 +21,12 @@ export class SeccionTrabajosComponent extends SeccionComponent implements OnInit
     urlImagenes:[""]
   }
 
-  constructor(private seccionS:SeccionDataService) {
+  constructor() {
     super();
    }
 
   override ngOnInit(): void {
-    this.seccionS.traerSeccionPorNombre("Trabajos").subscribe(dato=>{
-      this.seccion=dato[0];
-    });
+    
   }
 
   setearProyecto($event:ProyectoData){

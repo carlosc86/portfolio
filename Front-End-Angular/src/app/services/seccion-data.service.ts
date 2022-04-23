@@ -4,23 +4,21 @@ import { Observable, of } from 'rxjs';
 
 import { ApiComunicationService } from './api-comunication.service';
 import { SeccionData } from '../components/seccionData';
+import { DataService } from './dataService';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SeccionDataService {
+export class SeccionDataService extends DataService<SeccionData> {
 
-  private endpointRoot:string='/secciones'
+  protected override endpointRoot:string='/secciones'
 
-  constructor(private api:ApiComunicationService) { }
+  constructor(protected override api:ApiComunicationService) { 
+    super(api);
+  }
 
-  //Obtener seccion por el nombre
-  traerSeccionPorNombre(nombre:string):Observable<SeccionData[]>{
+  traerSeccionPorNombre(nombre:string){
     return this.api.getUrl(this.endpointRoot+"?nombre="+nombre);
   }
 
-  //Modificar una seccion
-  modificarSeccion(seccion:SeccionData):Observable<any>{
-    return this.api.putUrl(this.endpointRoot+"/"+seccion.id,seccion);
-  }
 }

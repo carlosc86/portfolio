@@ -8,7 +8,7 @@ import { DataService } from './dataService';
 @Injectable({
   providedIn: 'root'
 })
-export class HabilidadDataService extends DataService {
+export class HabilidadDataService extends DataService<HabilidadData> {
 
   protected override endpointRoot:string=environment.endpoint_habilidades;
 

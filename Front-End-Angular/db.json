@@ -53,14 +53,6 @@
       "urlLogo": "../../../assets/network.png",
       "anioInicio": "2021",
       "anioFin": "2022"
-    },
-    {
-      "id": 3,
-      "titulo": "Medidor Astrologico",
-      "institucion": "Naza",
-      "urlLogo": "../../../assets/mooncake.png",
-      "anioInicio": 2021,
-      "anioFin": 2022
     }
   ],
   "habilidades": [

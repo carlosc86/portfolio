@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
-import { SeccionDataService } from 'src/app/services/seccion-data.service';
 import { MensajeData, mensajes } from '../mensajeData';
 import { SeccionComponent } from '../seccion/seccion.component';
 
@@ -13,14 +12,12 @@ export class SeccionContactoComponent extends SeccionComponent implements OnInit
 
   mensajes:MensajeData[]=mensajes;
 
-  constructor(private seccionS:SeccionDataService) { 
+  constructor() { 
     super();
   }
 
   override ngOnInit(): void {
-    this.seccionS.traerSeccionPorNombre('Contacto').subscribe(dato=>{
-      this.seccion=dato[0];
-    });
+    
   }
 
   guardarMensaje($event:MensajeData){

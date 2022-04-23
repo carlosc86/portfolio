@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SeccionDataService } from 'src/app/services/seccion-data.service';
 import { SeccionComponent } from '../seccion/seccion.component';
 
 @Component({
@@ -9,13 +8,11 @@ import { SeccionComponent } from '../seccion/seccion.component';
 })
 export class SeccionAcercaDeComponent extends SeccionComponent implements OnInit {
 
-  constructor(private seccionS:SeccionDataService) {
+  constructor() {
     super()
    }
 
   override ngOnInit(): void {
-    this.seccionS.traerSeccionPorNombre('Acerca de').subscribe(dato=>{
-      this.seccion=dato[0];
-    });
+    
   }
 }

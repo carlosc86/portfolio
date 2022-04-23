@@ -3,8 +3,10 @@
         <h1 class="mt-5 text-uppercase"><strong>{{seccion.titulo}}</strong></h1>
         <img src="assets/StarSeparatorWhite.png" alt="----Soy un separador----" class="img-fluid">
         <p class="col-12">{{seccion.texto}}</p>
-        <!--Editor de seccion-->
-        <app-editor-seccion [seccion]="seccion" (messageEvent)="editarSeccion($event)"></app-editor-seccion>
+        <!--Boton para editar la cabecera de la seccion-->
+        <div class="col-12 ocultable">
+            <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSection" data-bs-toggle="modal" (click)="llamarEditor()">
+        </div>
         <!--Formulario envio de mensajes-->
         <app-form-envio-mensaje (cartero)="guardarMensaje($event)"></app-form-envio-mensaje>
 

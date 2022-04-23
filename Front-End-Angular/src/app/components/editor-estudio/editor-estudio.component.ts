@@ -1,7 +1,7 @@
-import { ThisReceiver } from '@angular/compiler';
-import { Component, EventEmitter, Input, OnInit, Output, Type } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
+import { FormBuilder} from '@angular/forms';
 import { EstudioDataService } from 'src/app/services/estudio-data.service';
+import { EditorData } from '../editorData';
 import { EstudioData } from '../estudioData';
 
 @Component({
@@ -9,34 +9,10 @@ import { EstudioData } from '../estudioData';
   templateUrl: './editor-estudio.component.html',
   styleUrls: ['./editor-estudio.component.css']
 })
-export class EditorEstudioComponent implements OnInit {
+export class EditorEstudioComponent extends EditorData<EstudioData> implements OnInit{
 
-  estudio:EstudioData={
-    id:NaN,
-    titulo:"",
-    institucion:"",
-    urlLogo:"",
-    anioInicio:"",
-    anioFin:""
-  };
-
-  private copia:EstudioData={
-    id:NaN,
-    titulo:"",
-    institucion:"",
-    urlLogo:"",
-    anioInicio:"",
-    anioFin:""
-  };
-
-  estudios:EstudioData[]=[];
-
-
-  forms:FormGroup;
-
-  constructor(private fb:FormBuilder,
-              private estudioService:EstudioDataService) {
-                
+  constructor(private fb:FormBuilder, private estudioService:EstudioDataService) {
+    super(estudioService);           
     this.forms=fb.group({
       titulo:[''],
       institucion:[''],
@@ -46,44 +22,8 @@ export class EditorEstudioComponent implements OnInit {
     });
    }
 
-  ngOnInit(): void {
-    this.estudioService.traer<EstudioData>().subscribe(dato=>{
-      this.estudios=dato;
-    });
-
-    console.log(this.estudio.toString());
-  }
-
-  aceptar(){
-    //Llamar al servicio Api para guardar 
-    if(isNaN(this.estudio.id)){
-        this.estudioService.agregar<EstudioData>(this.estudio).subscribe(dato=>{
-          this.estudio.id=dato.id;
-          this.estudios.push(this.estudio);
-          this.resetForm();
-        });  
-    }      
-    else{
-      this.estudioService.modificar<EstudioData>(this.estudio).subscribe(dato=>{
-        this.resetForm();
-      });      
-    }      
-  }
-
-  cancelar(){
-    if(!isNaN(this.estudio.id)){
-      //Restauro los valores previos
-      this.estudio.titulo=this.copia.titulo;
-      this.estudio.institucion=this.copia.institucion;
-      this.estudio.urlLogo=this.copia.urlLogo;
-      this.estudio.anioInicio=this.copia.anioInicio;
-      this.estudio.anioFin=this.copia.anioFin;
-    }
-    this.resetForm();
-  }
-
-  resetForm(){
-    this.estudio={
+  protected borrarElemento(){
+    return {
       id:NaN,
       titulo:"",
       institucion:"",
@@ -91,25 +31,6 @@ export class EditorEstudioComponent implements OnInit {
       anioInicio:"",
       anioFin:""
     };
-    this.forms.reset();    
-    
-  }
-  
-  setActivo(estudio:EstudioData){
-    this.estudio=estudio;
-    //realizo una copia de seguridad por si no deseo cambiar nada
-    this.copia.titulo=estudio.titulo;
-    this.copia.institucion=estudio.institucion;
-    this.copia.urlLogo=estudio.urlLogo;
-    this.copia.anioInicio=estudio.anioInicio;
-    this.copia.anioFin=estudio.anioFin;
-  }
-
-  eliminarEstudio(){
-    this.estudioService.borrar<EstudioData>(this.estudio).subscribe(dato=>{
-      let indice=this.estudios.indexOf(this.estudio);
-      this.estudios.splice(indice,1);
-    });
   }
 
 }
