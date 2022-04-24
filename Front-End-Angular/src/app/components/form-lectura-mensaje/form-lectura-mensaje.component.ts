@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { MensajeDataService } from 'src/app/services/mensaje-data.service';
-import { MensajeData, mensajes } from '../mensajeData';
+import { MensajeData } from '../mensajeData';
 
 @Component({
   selector: 'app-form-lectura-mensaje',

@@ -233,5 +233,25 @@
       "fecha": "2022-04-23",
       "leido": false
     }
+  ],
+  "medios_contacto": [
+    {
+      "id": 1,
+      "url": "https://github.com/carlosc86",
+      "empresa": "Github?",
+      "urlLogo": "../../../assets/Github.png"
+    },
+    {
+      "id": 2,
+      "url": "https://linkedin.com/carlosc86",
+      "empresa": "Linkedin",
+      "urlLogo": "../../../assets/Linkedin.png"
+    },
+    {
+      "id": 3,
+      "url": "mailto:c.carricondo@gmail.com",
+      "empresa": "Google",
+      "urlLogo": "../../../assets/google_social.png"
+    }
   ]
 }

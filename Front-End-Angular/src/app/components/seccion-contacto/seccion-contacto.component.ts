@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
-import { MensajeData, mensajes } from '../mensajeData';
 import { SeccionComponent } from '../seccion/seccion.component';
 
 @Component({

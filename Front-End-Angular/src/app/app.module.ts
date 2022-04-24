@@ -27,7 +27,7 @@ import { InfoMedioContactoComponent } from './components/info-medio-contacto/inf
 import { BarraFooterComponent } from './components/barra-footer/barra-footer.component';
 import { SeccionDataService } from './services/seccion-data.service';
 import { FormBorrarElementoComponent } from './components/form-borrar-elemento/form-borrar-elemento.component';
-
+import { EditorMedioContactoComponent } from './components/editor-medio-contacto/editor-medio-contacto.component';
 
 
 @NgModule({
@@ -52,7 +52,8 @@ import { FormBorrarElementoComponent } from './components/form-borrar-elemento/f
     BarraMenuComponent,
     InfoMedioContactoComponent,
     BarraFooterComponent,
-    FormBorrarElementoComponent
+    FormBorrarElementoComponent,
+    EditorMedioContactoComponent
   ],
   imports: [
     BrowserModule,

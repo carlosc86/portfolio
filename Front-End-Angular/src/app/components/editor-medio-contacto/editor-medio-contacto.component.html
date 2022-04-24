@@ -1,0 +1,43 @@
+    <div class="modal fade" tabindex="-1" id="modalEditMedioContacto">
+        <div class="modal-dialog">
+            <div class="modal-content modalEdit">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cancelar()"></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="modal-title text-decoration-underline fw-bold mb-3">Medios de contactos</h3>
+                    <form [formGroup]="forms" (ngSubmit)="aceptar()">
+                        <div class="input-group mb-3">
+                            <input type="text" [(ngModel)]="elemento.url" class="form-control" id="url" formControlName="url">
+                            <label for="url" class="input-group-text">Link</label>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" [(ngModel)]="elemento.empresa" class="form-control" id="empresa" formControlName="empresa">
+                            <label for="empresa" class="input-group-text">empresa</label>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" [(ngModel)]="elemento.urlLogo" class="form-control" id="urlLogo" formControlName="urlLogo">
+                            <label for="urlLogo" class="input-group-text">Logo</label>
+                        </div>
+                        <div class="col mb-3">
+                            <button type="button" class="btn btn-primary ms-1 " (click)="resetForm()">Nuevo</button>
+                            
+                            <button type="button" class="btn btn-secondary ms-1 " data-bs-dismiss="modal" (click)="cancelar()">Cancelar</button>
+                            <button type="button" class="btn btn-success ms-1 " data-bs-dismiss="modal" (click)="agregarMedio()">Aceptar</button>
+                        </div>
+                        <div class="input-group mb-1" *ngFor="let medio of lista">
+                            <input type="button" [value]="medio.url" class="form-control btn-primary" id="urlLista" 
+                                (click)="setActivo(medio)">
+                            <!--<label for="urlLista" class="input-group-text">{{medio.id}}</label>-->
+                            <button type="button" class="btn btn-secondary ms-1 " data-bs-toggle="modal" data-bs-target="#modalEliminarRed" (click)="setActivo(medio)">Quitar</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-form-borrar-elemento [elemento]="'Red'" (confirmar)="borrarMedio()"></app-form-borrar-elemento>
+    
+
+

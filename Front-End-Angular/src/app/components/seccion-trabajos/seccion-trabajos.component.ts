@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProyectoData, proyectos } from '../proyectoData';
 import { SeccionComponent } from '../seccion/seccion.component';
 
 @Component({

@@ -1,4 +1,4 @@
- <!--Menu principal-->
+  <!--Menu principal-->
  <header class="navbar navbar-expand-md fixed-top navbar-dark text-white" id="cabecera">
     <nav class="container-fluid">
         <img class="navbar-brand img-fluid" src="assets/APLogo.png">
@@ -12,11 +12,11 @@
         <div class="collapse navbar-collapse flex-column" id="navbarSupportedContent">
             <div class="col-12">
                 <ul class="nav navbar-nav flex-row justify-content-md-end">
-                    <li class="nav-item col-4 col-md-auto ms-0 me-0" *ngFor="let medio of mediosContacto">
+                    <li class="nav-item col col-md-auto ms-0 me-0 mt-2 ocultable"><div><img src="../../../assets/EditButton.png" class="img-fluid" data-bs-toggle="modal" data-bs-target="#modalEditMedioContacto" style="height: 45px;"></div></li>
+                    <li class="nav-item col col-md-auto  ms-0 me-0" *ngFor="let medio of mediosContacto">
                         <app-info-medio-contacto [medioContacto]="medio" class="nav-link"></app-info-medio-contacto>
                     </li>
                 </ul>
-
             </div>
             <div class="col-12">
                 <ul class="nav navbar-nav justify-content-end">
@@ -44,6 +44,8 @@
         </div>
     </nav>
 </header>
+<!-- Modal para editar las redes sociales-->
+<app-editor-medio-contacto [lista]="mediosContacto" (actualizar)="cargarLista($event)"></app-editor-medio-contacto>
 <!--Modal con el formulario de login-->
 <div class="modal fade" id="siginmodal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">

@@ -49,10 +49,13 @@ export abstract class EditorData<T extends DataPortfolio> implements OnInit{
     }
 
     eliminar(){
-        this.dataService.borrar(this.elemento).subscribe(dato=>{
-            let indice=this.lista.indexOf(this.elemento);
-            this.lista.splice(indice,1);
-        });
+        if(!isNaN(this.elemento.id)){
+            this.dataService.borrar(this.elemento).subscribe(dato=>{
+                let indice=this.lista.indexOf(this.elemento);
+                this.lista.splice(indice,1);
+                this.resetForm();
+            });
+        }
     }
     
     setActivo(dato:T){

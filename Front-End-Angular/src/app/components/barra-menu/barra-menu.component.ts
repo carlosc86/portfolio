@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MedioContactoData, mediosContacto } from '../medioContactoData';
+import { MedioContactoDataService } from 'src/app/services/medio-contacto-data.service';
+import { MedioContactoData } from '../medioContactoData';
 
 @Component({
   selector: 'app-barra-menu',
@@ -7,17 +8,23 @@ import { MedioContactoData, mediosContacto } from '../medioContactoData';
   styleUrls: ['./barra-menu.component.css']
 })
 export class BarraMenuComponent implements OnInit {
-
+  mediosContacto:MedioContactoData[]=[];
   usuario:string="Carlos";
-  mediosContacto:MedioContactoData[]=mediosContacto;
 
-  constructor() { }
+  constructor(private mediosContactoService:MedioContactoDataService) { }
 
   ngOnInit(): void {
+    this.mediosContactoService.traer().subscribe(dato=>{
+      this.mediosContacto=dato;
+    });
   }
 
   isLogin(){
     return this.usuario.length>0;
+  }
+
+  cargarLista(medios:MedioContactoData[]){
+    this.mediosContacto=medios;
   }
 
 }
