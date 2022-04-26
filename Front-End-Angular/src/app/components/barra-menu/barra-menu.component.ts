@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MedioContactoDataService } from 'src/app/services/medio-contacto-data.service';
+import { PortfolioDTOService } from 'src/app/services/portfolio-dto.service';
 import { MedioContactoData } from '../medioContactoData';
 
 @Component({
@@ -11,9 +12,12 @@ export class BarraMenuComponent implements OnInit {
   mediosContacto:MedioContactoData[]=[];
   usuario:string="Carlos";
 
-  constructor(private mediosContactoService:MedioContactoDataService) { }
+  constructor(private mediosContactoService:MedioContactoDataService, private pdto:PortfolioDTOService) { }
 
   ngOnInit(): void {
+    this.pdto.obtener<MedioContactoData>("medios_contacto").subscribe(dato=>{
+      this.mediosContacto=dato
+    });
   }
 
   isLogin(){

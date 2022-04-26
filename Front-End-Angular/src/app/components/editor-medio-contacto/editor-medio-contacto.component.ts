@@ -25,9 +25,6 @@ export class EditorMedioContactoComponent extends EditorData<MedioContactoData> 
   }
 
   override ngOnInit(): void {
-    this.pdto.obtener<MedioContactoData>("medios_contacto").subscribe(dato=>{
-      this.lista=dato
-    });;
   }
 
   protected borrarElemento(): MedioContactoData {
