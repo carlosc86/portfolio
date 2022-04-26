@@ -12,7 +12,9 @@ export const environment = {
   endpoint_proyectos:"/proyectos",
   endpoint_mensajes:"/mensajes",
   endpoint_medios_contacto:"/medios_contacto",
-  endpoint_portfolio:"/portfolio"
+  endpoint_portfolio:"/portfolio",
+  endpoint_autorizacion:"/auth",
+  sessionTokenName:"tokenP"
 };
 
 /*

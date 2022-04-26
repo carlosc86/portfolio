@@ -1,0 +1,43 @@
+<!--Modal con el formulario de login-->
+<div class="modal fade" id="siginmodal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modalLogin mx-auto">
+            <div class="modal-header">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3 class="modal-title col-11 mx-auto fw-bold text-decoration-underline mb-5">LOGIN</h3>
+                <form [formGroup]="form" class="col-10 mx-auto text-secondary mt-5" (ngSubmit)="login($event)">
+                    <div class="form-floating mb-5">
+                        <input type="text" id="usuario" class="form-control" [(ngModel)]="credenciales.user"
+                            formControlName="usuario"placeholder="Usuario" 
+                            [ngClass]="{'is-invalid': usuario.invalid&&(usuario.touched||usuario.dirty),
+                                        'is-valid': usuario.valid&&(usuario.touched||usuario.dirty)} ">
+                        <label for="usuario" class="form-label">Usuario</label>
+                        <div class="invalid-tooltip"  *ngIf="usuario.touched&&usuario.errors!">
+                            <span *ngIf="usuario.errors?.['required']">
+                                El usuario es necesario.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" id="contraseña" class="form-control" [(ngModel)]="credenciales.password"
+                            formControlName="password" placeholder="contraseña"
+                            [ngClass]="{'is-invalid': password.invalid&&(password.touched||password.dirty),
+                                        'is-valid': password.valid&&(password.touched||password.dirty)} " >
+                        <label for="contraseña" class="form-label">Password</label>
+                        <div class="invalid-tooltip"  *ngIf="password.touched && password.errors!">
+                            <span *ngIf="password.errors?.['required']">
+                                El password es necesario.
+                            </span>
+                            <span *ngIf="password.errors?.['minlength']">
+                                El password debe tener por lo menos 8 caracteres.
+                            </span>
+                        </div>
+                    </div>                    
+                    <button type="submit" class="btn btn-primary shadow mb-3 mt-5" data-bs-dismiss="modal">Ingresar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

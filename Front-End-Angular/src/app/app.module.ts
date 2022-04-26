@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { SeccionInicioComponent } from './components/seccion-inicio/seccion-inicio.component';
 import { EditorSeccionComponent } from './components/editor-seccion/editor-seccion.component';
@@ -28,6 +28,17 @@ import { BarraFooterComponent } from './components/barra-footer/barra-footer.com
 import { SeccionDataService } from './services/seccion-data.service';
 import { FormBorrarElementoComponent } from './components/form-borrar-elemento/form-borrar-elemento.component';
 import { EditorMedioContactoComponent } from './components/editor-medio-contacto/editor-medio-contacto.component';
+import { FormLoginComponent } from './components/form-login/form-login.component';
+import { InterceptorService } from './services/interceptor.service';
+import { ApiComunicationService } from './services/api-comunication.service';
+import { DataService } from './services/dataService';
+import { AuthenticationService } from './services/authentication.service';
+import { EstudioDataService } from './services/estudio-data.service';
+import { ExperienciaDataService } from './services/experiencia-data.service';
+import { HabilidadDataService } from './services/habilidad-data.service';
+import { MedioContactoDataService } from './services/medio-contacto-data.service';
+import { PortfolioDTOService } from './services/portfolio-dto.service';
+import { ProyectoDataService } from './services/proyecto-data.service';
 
 
 @NgModule({
@@ -53,7 +64,8 @@ import { EditorMedioContactoComponent } from './components/editor-medio-contacto
     InfoMedioContactoComponent,
     BarraFooterComponent,
     FormBorrarElementoComponent,
-    EditorMedioContactoComponent
+    EditorMedioContactoComponent,
+    FormLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +73,16 @@ import { EditorMedioContactoComponent } from './components/editor-medio-contacto
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [SeccionDataService],
+  providers: [ApiComunicationService,
+              AuthenticationService,
+              EstudioDataService,
+              ExperienciaDataService,
+              HabilidadDataService,
+              MedioContactoDataService,
+              PortfolioDTOService,
+              ProyectoDataService,
+              SeccionDataService,
+              {provide:HTTP_INTERCEPTORS,useClass:InterceptorService, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

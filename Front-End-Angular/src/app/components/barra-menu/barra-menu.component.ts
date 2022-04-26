@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { MedioContactoDataService } from 'src/app/services/medio-contacto-data.service';
 import { PortfolioDTOService } from 'src/app/services/portfolio-dto.service';
 import { MedioContactoData } from '../medioContactoData';
@@ -12,7 +13,9 @@ export class BarraMenuComponent implements OnInit {
   mediosContacto:MedioContactoData[]=[];
   usuario:string="Carlos";
 
-  constructor(private mediosContactoService:MedioContactoDataService, private pdto:PortfolioDTOService) { }
+  constructor(private mediosContactoService:MedioContactoDataService, 
+              private pdto:PortfolioDTOService,
+              private authService:AuthenticationService) { }
 
   ngOnInit(): void {
     this.pdto.obtener<MedioContactoData>("medios_contacto").subscribe(dato=>{
@@ -21,7 +24,14 @@ export class BarraMenuComponent implements OnInit {
   }
 
   isLogin(){
-    return this.usuario.length>0;
+    return this.authService.isLogin();
+  }
+
+  logout(){
+    //this.usuario="";
+    this.authService.logout().subscribe(data=>{
+      console.log("Deslogueado");
+    });
   }
 
   cargarLista(medios:MedioContactoData[]){
