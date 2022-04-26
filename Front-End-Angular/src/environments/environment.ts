@@ -11,7 +11,8 @@ export const environment = {
   endpoint_experiencias:"/experiencias",
   endpoint_proyectos:"/proyectos",
   endpoint_mensajes:"/mensajes",
-  endpoint_medios_contacto:"/medios_contacto"
+  endpoint_medios_contacto:"/medios_contacto",
+  endpoint_portfolio:"/portfolio"
 };
 
 /*

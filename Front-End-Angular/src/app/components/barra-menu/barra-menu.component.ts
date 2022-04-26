@@ -14,9 +14,6 @@ export class BarraMenuComponent implements OnInit {
   constructor(private mediosContactoService:MedioContactoDataService) { }
 
   ngOnInit(): void {
-    this.mediosContactoService.traer().subscribe(dato=>{
-      this.mediosContacto=dato;
-    });
   }
 
   isLogin(){

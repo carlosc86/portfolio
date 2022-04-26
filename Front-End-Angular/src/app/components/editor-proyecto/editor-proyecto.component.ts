@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { PortfolioDTOService } from 'src/app/services/portfolio-dto.service';
 import { ProyectoDataService } from 'src/app/services/proyecto-data.service';
 import { EditorData } from '../editorData';
 import { ProyectoData } from '../proyectoData';
@@ -13,7 +14,7 @@ export class EditorProyectoComponent extends EditorData<ProyectoData> implements
  
   listaRutas:string[]=[];
     
-  constructor(private fb:FormBuilder, private proyectoService:ProyectoDataService) {
+  constructor(private fb:FormBuilder, private proyectoService:ProyectoDataService, private pdto:PortfolioDTOService) {
     super(proyectoService);
     this.forms=fb.group({
       nombre:[''],
@@ -23,6 +24,12 @@ export class EditorProyectoComponent extends EditorData<ProyectoData> implements
       urlImagen:[''] //CUIDADO ACA SE DEBE INGRESAR UN ARRAY
     });
    }
+
+   override ngOnInit(): void {
+    this.pdto.obtener<ProyectoData>("proyectos").subscribe(dato=>{
+      this.lista=dato
+    });
+  }
   override setActivo(dato: ProyectoData): void {
     super.setActivo(dato);
     this.listaRutas=dato.urlImagenes;

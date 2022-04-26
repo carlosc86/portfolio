@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { FormBuilder} from '@angular/forms';
 import { EstudioDataService } from 'src/app/services/estudio-data.service';
+import { PortfolioDTOService } from 'src/app/services/portfolio-dto.service';
 import { EditorData } from '../editorData';
 import { EstudioData } from '../estudioData';
 
@@ -11,7 +12,7 @@ import { EstudioData } from '../estudioData';
 })
 export class EditorEstudioComponent extends EditorData<EstudioData> implements OnInit{
 
-  constructor(private fb:FormBuilder, private estudioService:EstudioDataService) {
+  constructor(private fb:FormBuilder, private estudioService:EstudioDataService, private pdto:PortfolioDTOService) {
     super(estudioService);           
     this.forms=fb.group({
       titulo:[''],
@@ -21,6 +22,11 @@ export class EditorEstudioComponent extends EditorData<EstudioData> implements O
       anioFin:['']
     });
    }
+  override ngOnInit(): void {
+    this.pdto.obtener<EstudioData>("estudios").subscribe(dato=>{
+      this.lista=dato
+    });
+  }
 
   protected borrarElemento(){
     return {

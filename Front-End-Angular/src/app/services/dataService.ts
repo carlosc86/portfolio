@@ -2,6 +2,7 @@ import { Observable } from "rxjs";
 import { ApiComunicationService } from "./api-comunication.service";
 import { DataPortfolio } from "./data";
 
+
 /* Clase generica para hacer servicios */
 
 export class DataService<T extends DataPortfolio> {
@@ -24,4 +25,5 @@ export class DataService<T extends DataPortfolio> {
     borrar(dato:T):Observable<T>{
         return this.api.deleteUrl(this.endpointRoot+"/"+dato.id);
     };
+
 }

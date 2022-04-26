@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { DataPortfolio } from "../services/data";
 import { DataService } from "../services/dataService";
+import { PortfolioDTOService } from "../services/portfolio-dto.service";
 
 /* Clase generica para el manejo de edicion de elementos */
 
@@ -17,13 +18,19 @@ export abstract class EditorData<T extends DataPortfolio> implements OnInit{
     public copia:T;
     public forms!:FormGroup;
 
-    constructor(protected dataService:DataService<T>){
+    constructor(protected dataService:DataService<T>,
+                /*protected onLoadService:PortfolioDTOService*/){
         this.elemento=this.borrarElemento();
         this.copia=this.borrarElemento();
 
     } 
 
     ngOnInit(){
+        /* //Habilitar cuando este la api resuelta
+       this.onLoadService.traer().subscribe(dato=>{
+            this.lista=obtenerDatos(dato);
+       });
+       */
         this.dataService.traer().subscribe(dato=>{
             this.lista=dato;
         });

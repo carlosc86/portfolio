@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Input, Output, EventEmitter } from '@angular/core';
 import { SeccionData } from '../seccionData';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SeccionDataService } from 'src/app/services/seccion-data.service';
 import { EditorData } from '../editorData';
+import { PortfolioDTOService } from 'src/app/services/portfolio-dto.service';
 
 @Component({
   selector: 'app-editor-seccion',
@@ -13,12 +13,17 @@ import { EditorData } from '../editorData';
 export class EditorSeccionComponent extends EditorData<SeccionData> implements OnInit {
   
 
-  constructor( private fb:FormBuilder,private seccionS:SeccionDataService) { 
+  constructor( private fb:FormBuilder,private seccionS:SeccionDataService,private pdto:PortfolioDTOService) { 
     super(seccionS);
     this.forms=fb.group({
       titulo:['',],
       urlImagen:['',],
       texto:['',]
+    });
+  }
+  override ngOnInit(): void {
+    this.pdto.obtener<SeccionData>('secciones').subscribe(dato=>{
+      this.lista=dato
     });
   }
 
