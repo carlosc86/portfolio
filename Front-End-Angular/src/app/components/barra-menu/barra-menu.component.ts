@@ -27,10 +27,11 @@ export class BarraMenuComponent implements OnInit {
     return this.authService.isLogin();
   }
 
-  logout(){
+  logout(evento:Event){
     //this.usuario="";
+    evento.preventDefault();
     this.authService.logout().subscribe(data=>{
-      console.log("Deslogueado");
+      console.log(`Se deslogueo exitosamente ${data}`);
     });
   }
 

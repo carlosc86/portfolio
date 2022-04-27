@@ -21,7 +21,7 @@ export class InfoUsuarioComponent implements OnInit {
   constructor(private authService:AuthenticationService) { }
 
   ngOnInit(): void {
-      this.authService.getUsuario().subscribe(data=>{
+      this.authService.usuario.subscribe(data=>{
         this.usuario=data;
       });
   }

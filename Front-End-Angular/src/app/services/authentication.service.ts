@@ -50,7 +50,7 @@ export class AuthenticationService {
     return this.currentTokenSubject.value;
   }
 
-  getUsuario(){
+  get usuario(){
     return this.currentUserSubject.asObservable();
   }
 }

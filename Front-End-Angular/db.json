@@ -191,7 +191,7 @@
       "asunto": "Single Page Application - Miravista",
       "mensaje": "Hola, mi nombre es Pablo. Te consultaba por el proyecto Miravista. Es una app para android, que ofrece a los usuarios la posibilidad de....",
       "fecha": "2022-04-08",
-      "leido": false
+      "leido": true
     },
     {
       "id": 2,
@@ -453,20 +453,23 @@
   ],
   "auth": {
     "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiIxMjM0NTY3ODkwIiwidXN1YXJpbyI6IkpvaG4gRG9lIiwicHJpdmlsZWdpb3MiOiJhZG1pbiJ9.37sIl0A7VV18A5S4mIOK1c_BIZqyG2v9QncXx36IKYc",
-    "usuario":{ "id":1,
-      "nombre":"Carlos",
-      "apellido":"Carricondo",
-      "email":"c.carricondo@gmail.com",
-      "privilegios":"admistrador",
-      "urlIcono":"assets/Star 1.png"  
+    "usuario": {
+      "id": 1,
+      "nombre": "Carlos",
+      "apellido": "Carricondo",
+      "email": "c.carricondo@gmail.com",
+      "privilegios": "admistrador",
+      "urlIcono": "assets/Star 1.png"
     }
   },
-  "usuarios":[{ "id":1,
-                "nombre":"Carlos",
-                "apellido":"Carricondo",
-                "email":"c.carricondo@gmail.com",
-                "privilegios":"admistrador",
-                "urlIcono":"assets/Star 1.png"
-              }
-  ]  
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Carlos",
+      "apellido": "Carricondo",
+      "email": "c.carricondo@gmail.com",
+      "privilegios": "admistrador",
+      "urlIcono": "assets/Star 1.png"
+    }
+  ]
 }
