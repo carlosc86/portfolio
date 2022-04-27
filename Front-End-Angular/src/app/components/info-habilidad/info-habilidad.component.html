@@ -3,7 +3,7 @@
     <div class="progress shadow">
         <div class="progress-bar" role="progressbar" [style]="'width: '+habilidad.porcentaje+'%;'" [attr.aria-valuenow]="habilidad.porcentaje" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-    <div class="col-12 ocultable">
-        <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSkills" data-bs-toggle="modal" (click)="activar()">
-        <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminarHabilidad" data-bs-toggle="modal" (click)="activar()">
-    </div>
+    <div class="col-12 ">
+        <app-elemento-boton [imagen]="'assets/EditButton.png'" [target]="'#editSkills'" (click)="activar()" class="editButton"></app-elemento-boton>
+        <app-elemento-boton [imagen]="'assets/DeleteButton.png'" [target]="'#modalEliminarHabilidad'" (click)="activar()" class="editButton"></app-elemento-boton>
+        </div>

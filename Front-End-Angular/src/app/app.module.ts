@@ -39,6 +39,7 @@ import { HabilidadDataService } from './services/habilidad-data.service';
 import { MedioContactoDataService } from './services/medio-contacto-data.service';
 import { PortfolioDTOService } from './services/portfolio-dto.service';
 import { ProyectoDataService } from './services/proyecto-data.service';
+import { ElementoBotonComponent } from './components/elemento-boton/elemento-boton.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { ProyectoDataService } from './services/proyecto-data.service';
     BarraFooterComponent,
     FormBorrarElementoComponent,
     EditorMedioContactoComponent,
-    FormLoginComponent
+    FormLoginComponent,
+    ElementoBotonComponent
   ],
   imports: [
     BrowserModule,

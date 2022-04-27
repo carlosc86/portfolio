@@ -1,6 +1,6 @@
 <!--boton para agregar nuevas habilidades-->
-<div class="col-12 ocultable">
-    <img src="assets/AddButton.png" class="img-fluid btn float-end" data-bs-target="#editSkills" data-bs-toggle="modal" (click)="resetForm()">
+<div class="col-12">
+    <app-elemento-boton [imagen]="'assets/AddButton.png'" [target]="'#editSkills'" (click)="resetForm()" class="float-end"></app-elemento-boton>
 </div>
 <!--Modal para agregar o modificar habilidades-->
 <div class="modal fade" id="editSkills" tabindex="-1">

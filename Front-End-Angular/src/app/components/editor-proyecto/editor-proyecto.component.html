@@ -1,7 +1,6 @@
 <!--Boton para agregar nuevos Proyectos en los que trabaje -->
-<div class="col-12 ocultable">
-    <img src="assets/AddButton.png" class="img-fluid btn float-end" data-bs-target="#editProjects"
-        data-bs-toggle="modal" (click)="resetForm()">
+<div class="col-12 ">
+    <app-elemento-boton [imagen]="'assets/AddButton.png'" [target]="'#editProjects'" (click)="resetForm()" class="float-end"></app-elemento-boton>
 </div>
 <!--Modal para agregar o modificar proyectos-->
 <div class="modal fade" id="editProjects" tabindex="-1">

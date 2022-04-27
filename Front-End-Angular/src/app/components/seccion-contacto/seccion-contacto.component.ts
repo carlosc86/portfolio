@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { SeccionComponent } from '../seccion/seccion.component';
 
 @Component({
@@ -9,12 +10,16 @@ import { SeccionComponent } from '../seccion/seccion.component';
 export class SeccionContactoComponent extends SeccionComponent implements OnInit {
 
 
-  constructor() { 
+  constructor(private authService:AuthenticationService) { 
     super();
   }
 
   override ngOnInit(): void {
     
+  }
+
+  isUser():boolean{
+    return this.authService.isLogin();
   }
 
 }

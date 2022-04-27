@@ -2,7 +2,7 @@
  <header class="navbar navbar-expand-md fixed-top navbar-dark text-white" id="cabecera">
     <nav class="container-fluid">
         <img class="navbar-brand img-fluid" src="assets/APLogo.png">
-        <div class="col-2 col-md-1 mt-3 mx-auto ocultable" id="usuario_logueado" *ngIf="isLogin()">
+        <div class="col-2 col-md-1 mt-3 mx-auto" id="usuario_logueado" *ngIf="isLogin()">
             <img src="assets/Star 1.png" class="img-fluid" >
             <p class="text-uppercase">{{usuario}}</p>
         </div>
@@ -12,7 +12,9 @@
         <div class="collapse navbar-collapse flex-column" id="navbarSupportedContent">
             <div class="col-12">
                 <ul class="nav navbar-nav flex-row justify-content-md-end">
-                    <li class="nav-item col col-md-auto ms-0 me-0 mt-2 ocultable" *ngIf="isLogin()"><div><img src="../../../assets/EditButton.png" class="img-fluid" data-bs-toggle="modal" data-bs-target="#modalEditMedioContacto" style="height: 45px;"></div></li>
+                    <li class="nav-item col col-md-auto ms-0 me-0 mt-0" *ngIf="isLogin()">
+                            <app-elemento-boton [imagen]="'assets/EditButton.png'" [target]="'#modalEditMedioContacto'" [estilo]="'height: 60px;'"></app-elemento-boton>
+                    </li>
                     <li class="nav-item col col-md-auto  ms-0 me-0" *ngFor="let medio of mediosContacto">
                         <app-info-medio-contacto [medioContacto]="medio" class="nav-link"></app-info-medio-contacto>
                     </li>

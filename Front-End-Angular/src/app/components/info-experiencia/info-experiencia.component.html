@@ -11,9 +11,9 @@
         </div>
     </div>
     <!--Botones para modificar o eliminar la tarjeta de experiencia-->
-    <div class="col-12 mt-2 ocultable">
-        <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editExperiences" data-bs-toggle="modal" (click)="activar()"> 
-        <img src="assets/DeleteButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#modalEliminarExperiencia" data-bs-toggle="modal" (click)="activar()">
+    <div class="col-12 mt-2 ">
+        <app-elemento-boton [imagen]="'assets/EditButton.png'" [target]="'#editExperiences'" (click)="activar()" class="editButton"></app-elemento-boton>
+        <app-elemento-boton [imagen]="'assets/DeleteButton.png'" [target]="'#modalEliminarExperiencia'" (click)="activar()" class="editButton"></app-elemento-boton>
     </div>
 
 <!--Modal para la tarjeta de experiencia 1-->

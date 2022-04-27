@@ -1,5 +1,5 @@
-<div class="col-12 ocultable">
-    <img src="assets/AddButton.png" alt="" class="img-fluid btn float-end" data-bs-target="#editExperiences" data-bs-toggle="modal" (click)="resetForm()">
+<div class="col-12">
+    <app-elemento-boton [imagen]="'assets/AddButton.png'" [target]="'#editExperiences'" (click)="resetForm()" class="float-end"></app-elemento-boton>
 </div>
 <!--Modal para agregar o editar experiencias laborales-->
 <div class="modal fade" id="editExperiences" tabindex="-1" >

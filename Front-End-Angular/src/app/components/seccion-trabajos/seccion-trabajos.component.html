@@ -7,8 +7,8 @@
     </div>
     <!--Editor de seccion-->
     <!--Boton para editar la cabecera de la seccion-->
-    <div class="col-12 ocultable">
-        <img src="assets/EditButton.png" alt="" class="img-fluid btn editButton" data-bs-target="#editSection" data-bs-toggle="modal" (click)="llamarEditor()">
+    <div class="col-12 ">
+        <app-elemento-boton [imagen]="'assets/EditButton.png'" [target]="'#editSection'" (click)="llamarEditor()" class="editButton"></app-elemento-boton>
     </div>
 
     <article>

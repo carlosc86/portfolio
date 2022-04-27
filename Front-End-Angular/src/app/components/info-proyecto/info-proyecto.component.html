@@ -11,13 +11,9 @@
         </div>
     </div>
     <!--Botones para modificar o eliminar la tarjeta de proyecto-->
-    <div class="col-12 mt-2 ocultable">
-        <!--Boton para modificar Proyecto 1-->
-        <img src="assets/EditButton.png" class="img-fluid btn editButton "
-            data-bs-target="#editProjects" data-bs-toggle="modal" (click)="activar()">
-        <!--Boton para eliminar Proyecto 1-->
-        <img src="assets/DeleteButton.png" class="img-fluid btn editButton "
-            data-bs-target="#modalEliminarProyecto" data-bs-toggle="modal" (click)="activar()">
+    <div class="col-12 mt-2">
+        <app-elemento-boton [imagen]="'assets/EditButton.png'" [target]="'#editProjects'" (click)="activar()" class="editButton"></app-elemento-boton>
+        <app-elemento-boton [imagen]="'assets/DeleteButton.png'" [target]="'#modalEliminarProyecto'" (click)="activar()" class="editButton"></app-elemento-boton>
     </div>
 
 <!--Modal de proyecto 1-->
