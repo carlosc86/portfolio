@@ -1,0 +1,14 @@
+<div class="card mx-auto mt-3 text-white shadow estudios">
+    <h5 class="card-title text-decoration-underline"><strong>{{estudio.titulo}}</strong></h5>
+    <div class="card-body">
+        <img src="{{estudio.urlLogo}}" alt="" class="card-img rounded-circle">
+        <p class="card-text">{{estudio.institucion}}</p>
+    </div>
+    <div class="card-footer">{{estudio.anioInicio + '-' + estudio.anioFin}}</div>
+</div>
+<div class="col-12 mt-2">
+    <!--Botones para editar o eliminar Estudio -->
+    <app-elemento-boton [imagen]="'assets/EditButton.png'" [target]="'#editStudies'" (click)="activar()" class="editButton"></app-elemento-boton>
+    <app-elemento-boton [imagen]="'assets/DeleteButton.png'" [target]="'#modalEliminarEstudio'" (click)="activar()" class="editButton"></app-elemento-boton>
+    
+</div>

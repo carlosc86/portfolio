@@ -1,0 +1,39 @@
+<!--boton para agregar nuevas habilidades-->
+<div class="col-12">
+    <app-elemento-boton [imagen]="'assets/AddButton.png'" [target]="'#editSkills'" (click)="resetForm()" class="float-end"></app-elemento-boton>
+</div>
+<!--Modal para agregar o modificar habilidades-->
+<div class="modal fade" id="editSkills" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content modalEdit">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cancelar()"></button>
+            </div>
+            <div class="modal-body">
+                <h3 class="modal-title fw-bold text-decoration-underline mb-3">Habilidad</h3>
+                <form action="" [formGroup]="forms" (ngSubmit)="aceptar()">
+                    <div class="form-floating mb-3">
+                        <input type="text" [(ngModel)]="elemento.nombre" id="tituloHab" class="form-control" formControlName="nombre" placeholder="Titulo">
+                        <label for="tituloHab" class="form-label">Nombre</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" [(ngModel)]="elemento.descripcion" id="descripcionHabilidad" class="form-control" formControlName="descripcion" placeholder="Titulo">
+                        <label for="descripcionHabilidad" class="form-label">Descripcion</label>
+                    </div>
+                    <div class="mb-3">
+                        <!--Revisar el estilo de esta parte-->
+                        <label for="nivelHab" class="form-label fw-bold">Porcentaje</label>
+                        <input type="range" [(ngModel)]="elemento.porcentaje" id="nivelHab" class="form-range" data-bs-toggle="tooltip" databs-placement="top" [attr.title]="elemento.porcentaje"
+                            aria-valuemax="100" aria-valuemin="0" formControlName="porcentaje">
+                    </div>
+                    <button class="btn btn-secondary shadow" type="button" data-bs-dismiss="modal" (click)="cancelar()">Cancelar</button>
+                    <button class="btn btn-success shadow" type="submit" data-bs-dismiss="modal">Aceptar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<app-form-borrar-elemento [elemento]="'Habilidad'" (confirmar)="eliminar()"></app-form-borrar-elemento>
+<div class="row">
+    <app-info-habilidad class="col-6 col-md-3 mx-auto px-md-5 mt-2 mb-2" [habilidad]="skill" (emisor)="setActivo($event)" *ngFor="let skill of lista"></app-info-habilidad>
+</div>

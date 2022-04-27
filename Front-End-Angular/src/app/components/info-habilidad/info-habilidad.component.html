@@ -1,0 +1,9 @@
+
+    <h4 class="col-12" data-bs-toggle="tooltip" data-bs-placement="top" [title]="habilidad.descripcion"><strong>{{habilidad.nombre}}</strong></h4>
+    <div class="progress shadow">
+        <div class="progress-bar" role="progressbar" [style]="'width: '+habilidad.porcentaje+'%;'" [attr.aria-valuenow]="habilidad.porcentaje" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="col-12 ">
+        <app-elemento-boton [imagen]="'assets/EditButton.png'" [target]="'#editSkills'" (click)="activar()" class="editButton"></app-elemento-boton>
+        <app-elemento-boton [imagen]="'assets/DeleteButton.png'" [target]="'#modalEliminarHabilidad'" (click)="activar()" class="editButton"></app-elemento-boton>
+        </div>

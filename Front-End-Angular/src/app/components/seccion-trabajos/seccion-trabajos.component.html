@@ -1,0 +1,30 @@
+<!--Seccion Works-->
+<section class="row pt-5 text-white" id="works">
+    <div class="col-12 mt-5">
+        <h1 class="text-uppercase mt-5"><strong>{{seccion.titulo}}</strong></h1>
+        <img src="assets/StarSeparatorWhite.png" alt="----Soy un separador----" class="img-fluid">
+        <p class="col-12">{{seccion.texto}}</p>
+    </div>
+    <!--Editor de seccion-->
+    <!--Boton para editar la cabecera de la seccion-->
+    <div class="col-12 ">
+        <app-elemento-boton [imagen]="'assets/EditButton.png'" [target]="'#editSection'" (click)="llamarEditor()" class="editButton"></app-elemento-boton>
+    </div>
+
+    <article>
+        <h3 class="fw-bold text-decoration-underline">Experiencia</h3>
+        <div class="row mb-5">
+            
+            <!--Editor de Experiencias Laborales-->
+            <app-editor-experiencia></app-editor-experiencia>
+        </div>
+    </article>
+    <article>
+        <h3 class="fw-bold text-decoration-underline">Proyectos</h3>
+        <div class="row mb-5">
+            <!--Editor de Colaboracion en Proyectos-->
+            <app-editor-proyecto></app-editor-proyecto>
+        
+        </div>
+    </article>
+</section>
