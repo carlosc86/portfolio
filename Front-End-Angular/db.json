@@ -4,7 +4,7 @@
       "id": 0,
       "nombre": "Inicio",
       "titulo": "Carlos Alexander Carricondo",
-      "texto": "Programador Full Stack Web",
+      "texto": "Programador Full Stack Web?",
       "urlImagen": "../../../assets/portrait.png"
     },
     {
@@ -452,6 +452,21 @@
     }
   ],
   "auth": {
-    "bearer":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiIxMjM0NTY3ODkwIiwidXN1YXJpbyI6IkpvaG4gRG9lIiwicHJpdmlsZWdpb3MiOiJhZG1pbiJ9.37sIl0A7VV18A5S4mIOK1c_BIZqyG2v9QncXx36IKYc"
-  }
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiIxMjM0NTY3ODkwIiwidXN1YXJpbyI6IkpvaG4gRG9lIiwicHJpdmlsZWdpb3MiOiJhZG1pbiJ9.37sIl0A7VV18A5S4mIOK1c_BIZqyG2v9QncXx36IKYc",
+    "usuario":{ "id":1,
+      "nombre":"Carlos",
+      "apellido":"Carricondo",
+      "email":"c.carricondo@gmail.com",
+      "privilegios":"admistrador",
+      "urlIcono":"assets/Star 1.png"  
+    }
+  },
+  "usuarios":[{ "id":1,
+                "nombre":"Carlos",
+                "apellido":"Carricondo",
+                "email":"c.carricondo@gmail.com",
+                "privilegios":"admistrador",
+                "urlIcono":"assets/Star 1.png"
+              }
+  ]  
 }

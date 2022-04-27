@@ -2,10 +2,7 @@
  <header class="navbar navbar-expand-md fixed-top navbar-dark text-white" id="cabecera">
     <nav class="container-fluid">
         <img class="navbar-brand img-fluid" src="assets/APLogo.png">
-        <div class="col-2 col-md-1 mt-3 mx-auto" id="usuario_logueado" *ngIf="isLogin()">
-            <img src="assets/Star 1.png" class="img-fluid" >
-            <p class="text-uppercase">{{usuario}}</p>
-        </div>
+        <app-info-usuario></app-info-usuario>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

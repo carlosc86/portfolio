@@ -1,44 +1,56 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { CredencialData } from '../components/credencialData';
+import { UsuarioData } from '../components/usuarioData';
 import { ApiComunicationService } from './api-comunication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  currentUserSubject:BehaviorSubject<any>;
+  currentTokenSubject:BehaviorSubject<any>;
+  currentUserSubject:BehaviorSubject<UsuarioData>;
   private endpointRoot=environment.endpoint_autorizacion;
-  private tokenName=environment.sessionTokenName;
+  private tokenKey=environment.sessionTokenName;
+  private userKey=environment.sessionUserName;
 
   constructor(private api:ApiComunicationService) { 
-    this.currentUserSubject=new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem(this.tokenName)||'{}'));
+    this.currentTokenSubject=new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem(this.tokenKey)||'{}'));
+    this.currentUserSubject=new BehaviorSubject<UsuarioData>(JSON.parse(sessionStorage.getItem(this.userKey)||'{}'));
   }
 
   login(credenciales:CredencialData):Observable<any>{
     //CAMBIAR ESTO POR UN POST
     return this.api.getUrl(this.endpointRoot/*,credenciales*/).pipe(map(data=>{
-      sessionStorage.setItem(this.tokenName,JSON.stringify(data));//guardo el token en el sessionStorage.
-      this.currentUserSubject.next(JSON.parse(sessionStorage.getItem(this.tokenName)!));
+      sessionStorage.setItem(this.tokenKey,JSON.stringify(data.accessToken));//guardo el token en el sessionStorage.
+      sessionStorage.setItem(this.userKey,JSON.stringify(data.usuario));
+      this.currentTokenSubject.next(JSON.parse(sessionStorage.getItem(this.tokenKey)!));
+      this.currentUserSubject.next(JSON.parse(sessionStorage.getItem(this.userKey)!));
       return data;
     }));
   }
 
   logout():Observable<any>{
     return this.api.getUrl(this.endpointRoot).pipe(map(data=>{
-      sessionStorage.removeItem(this.tokenName);
+      sessionStorage.removeItem(this.tokenKey);
+      sessionStorage.removeItem(this.userKey);
+      this.currentTokenSubject.next(JSON.parse('{}'));//no hay nada lo acabo de borrar
       this.currentUserSubject.next(JSON.parse('{}'));//no hay nada lo acabo de borrar
       return data;
     }));
   }
 
   isLogin():boolean{
-    return sessionStorage.getItem(this.tokenName)? true:false; //Por ahora si no hay token no estas logueado, sin tener en cuenta la expiracion.
+    return sessionStorage.getItem(this.tokenKey)? true:false; //Por ahora si no hay token no estas logueado, sin tener en cuenta la expiracion.
   }
 
-  get usuarioAutenticado(){
-    return this.currentUserSubject.value;
+  get tokenUsuario(){
+    return this.currentTokenSubject.value;
+  }
+
+  getUsuario(){
+    return this.currentUserSubject.asObservable();
   }
 }

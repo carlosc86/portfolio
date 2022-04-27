@@ -40,6 +40,7 @@ import { MedioContactoDataService } from './services/medio-contacto-data.service
 import { PortfolioDTOService } from './services/portfolio-dto.service';
 import { ProyectoDataService } from './services/proyecto-data.service';
 import { ElementoBotonComponent } from './components/elemento-boton/elemento-boton.component';
+import { InfoUsuarioComponent } from './components/info-usuario/info-usuario.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { ElementoBotonComponent } from './components/elemento-boton/elemento-bot
     FormBorrarElementoComponent,
     EditorMedioContactoComponent,
     FormLoginComponent,
-    ElementoBotonComponent
+    ElementoBotonComponent,
+    InfoUsuarioComponent
   ],
   imports: [
     BrowserModule,

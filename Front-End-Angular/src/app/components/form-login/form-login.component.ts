@@ -36,7 +36,6 @@ export class FormLoginComponent implements OnInit {
     if(this.form.valid){
       this.authService.login(this.credenciales).subscribe(data=>{
         console.log("Se inicio sesion exitosamente ");
-        console.log(data);        
       });
     }
   }
