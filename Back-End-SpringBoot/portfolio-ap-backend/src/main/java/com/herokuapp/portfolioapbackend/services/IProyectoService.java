@@ -15,7 +15,7 @@ import java.util.List;
 public interface IProyectoService {
     public List<Proyecto> traer();
     public Proyecto traer(Long id);
-    public void guardar(Proyecto proyecto);
+    public Proyecto guardar(Proyecto proyecto);
     public void modificar(Proyecto proyecto);
     public void borrar(Long id);
     

@@ -15,7 +15,7 @@ import java.util.List;
 public interface IEstudioService {
     public List<Estudio> traer();
     public Estudio traer(Long id);
-    public void guardar(Estudio estudio);
+    public Estudio guardar(Estudio estudio);
     public void modificar(Estudio estudio);
     public void borrar(Long id);
     

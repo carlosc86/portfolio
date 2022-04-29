@@ -15,7 +15,7 @@ import java.util.List;
 public interface IPrivilegioService {
     public List<Privilegio> traer();
     public Privilegio traer(Long id);
-    public void guardar(Privilegio privilegio);
+    public Privilegio guardar(Privilegio privilegio);
     public void modificar(Privilegio privilegio);
     public void borrar(Long id);
     

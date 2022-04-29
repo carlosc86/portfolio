@@ -15,7 +15,7 @@ import java.util.List;
 public interface IInstitucionService {
     public List<Institucion> traer();
     public Institucion traer(Long id);
-    public void guardar(Institucion institucion);
+    public Institucion guardar(Institucion institucion);
     public void modificar(Institucion institucion);
     public void borrar(Long id);
     

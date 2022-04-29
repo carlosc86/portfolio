@@ -16,7 +16,7 @@ public interface IUsuarioService {
     public List<Usuario> traer();
     public Usuario traer(Long id);
     public Usuario traer(String nombreUsuario);
-    public void guardar(Usuario usuario);
+    public Usuario guardar(Usuario usuario);
     public void modificar(Usuario usuario);
     public void borrar(Long id);
     

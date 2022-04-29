@@ -15,7 +15,7 @@ import java.util.List;
 public interface ITrabajoService {
     public List<Trabajo> traer();
     public Trabajo traer(Long id);
-    public void guardar(Trabajo trabajo);
+    public Trabajo guardar(Trabajo trabajo);
     public void modificar(Trabajo trabajo);
     public void borrar(Long id);
     

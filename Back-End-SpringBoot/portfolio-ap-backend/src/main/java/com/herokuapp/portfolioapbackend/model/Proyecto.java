@@ -33,10 +33,9 @@ public class Proyecto {
     
     private Usuario persona;
     
-    @Setter(AccessLevel.NONE)//Omito el seter directo para esta propiedad
     private List<ImagenProyecto> imagenes=new ArrayList();
     
-    //Genero el setter para las imagenes
+    //Genero otro setter para las imagenes
     public void setImagen(String url,String pie){
         this.imagenes.add(new ImagenProyecto(url,pie));
     }

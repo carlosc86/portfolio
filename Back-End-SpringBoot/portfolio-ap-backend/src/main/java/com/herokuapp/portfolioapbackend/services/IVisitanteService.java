@@ -15,7 +15,7 @@ import java.util.List;
 public interface IVisitanteService {
     public List<Visitante> traer();
     public Visitante traer(Long id);
-    public void guardar(Visitante visitante);
+    public Visitante guardar(Visitante visitante);
     public void modificar(Visitante visitante);
     public void borrar(Long id);
     

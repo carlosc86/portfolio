@@ -15,7 +15,7 @@ import java.util.List;
 public interface IImagenProyectoService {
     public List<ImagenProyecto> traer();
     public ImagenProyecto traer(Long id);
-    public void guardar(ImagenProyecto imagen);
+    public ImagenProyecto guardar(ImagenProyecto imagen);
     public void modificar(ImagenProyecto imagen);
     public void borrar(Long id);
     

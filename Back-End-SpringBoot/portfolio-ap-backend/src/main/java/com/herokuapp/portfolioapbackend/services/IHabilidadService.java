@@ -15,7 +15,7 @@ import java.util.List;
 public interface IHabilidadService {
     public List<Habilidad> traer();
     public Habilidad traer(Long id);
-    public void guardar(Habilidad habilidad);
+    public Habilidad guardar(Habilidad habilidad);
     public void modificar(Habilidad habilidad);
     public void borrar(Long id);
     

@@ -15,7 +15,7 @@ import java.util.List;
 public interface IMensajeService {
     public List<Mensaje> traer();
     public Mensaje traer(Long id);
-    public void guardar(Mensaje mensaje);
+    public Mensaje guardar(Mensaje mensaje);
     public void modificar(Mensaje mensaje);
     public void borrar(Long id);
     

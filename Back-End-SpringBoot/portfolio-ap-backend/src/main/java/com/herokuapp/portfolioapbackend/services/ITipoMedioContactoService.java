@@ -15,7 +15,7 @@ import java.util.List;
 public interface ITipoMedioContactoService {
     public List<TipoMedioContacto> traer();
     public TipoMedioContacto traer(Long id);
-    public void guardar(TipoMedioContacto tipo);
+    public TipoMedioContacto guardar(TipoMedioContacto tipo);
     public void modificar(TipoMedioContacto tipo);
     public void borrar(Long id);
     

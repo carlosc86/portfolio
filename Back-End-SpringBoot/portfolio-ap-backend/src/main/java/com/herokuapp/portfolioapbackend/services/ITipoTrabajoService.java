@@ -15,7 +15,7 @@ import java.util.List;
 public interface ITipoTrabajoService {
     public List<TipoTrabajo> traer();
     public TipoTrabajo traer(Long id);
-    public void guardar(TipoTrabajo tipo);
+    public TipoTrabajo guardar(TipoTrabajo tipo);
     public void modificar(TipoTrabajo tipo);
     public void borrar(Long id);
     

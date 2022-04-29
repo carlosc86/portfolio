@@ -15,7 +15,8 @@ import java.util.List;
 public interface ISeccionService {
     public List<Seccion> traer();
     public Seccion traer(Long id);
-    public void guardar(Seccion seccion);
+    public Seccion traer(String nombre);
+    public Seccion guardar(Seccion seccion);
     public void modificar(Seccion seccion);
     public void borrar(Long id);
     
