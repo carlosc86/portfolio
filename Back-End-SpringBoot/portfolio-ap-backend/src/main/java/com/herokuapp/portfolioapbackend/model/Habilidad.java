@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +20,7 @@ import lombok.Setter;
  */
 @Getter @Setter
 @Entity
+@Table(name="Habilidades")
 public class Habilidad {
     
     @Id
@@ -27,6 +30,8 @@ public class Habilidad {
     private String nombre;
     private String descripcion;
     private int porcentaje;
+    
+    @ManyToOne
     private Usuario persona;
     
 }

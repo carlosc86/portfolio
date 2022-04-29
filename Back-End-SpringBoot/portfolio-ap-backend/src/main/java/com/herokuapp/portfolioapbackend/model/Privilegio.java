@@ -5,9 +5,11 @@
  */
 package com.herokuapp.portfolioapbackend.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +18,8 @@ import lombok.Setter;
  * @author carlos
  */
 @Getter @Setter
+@Entity
+@Table(name="Privilegios")
 public class Privilegio {
     
     @Id

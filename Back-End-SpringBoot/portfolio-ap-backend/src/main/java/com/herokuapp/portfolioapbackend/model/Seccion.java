@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +22,7 @@ import lombok.Setter;
  */
 @Getter @Setter
 @Entity
+@Table(name="Secciones")
 public class Seccion {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
@@ -39,6 +42,7 @@ public class Seccion {
     private List<Trabajo> experiencias_laborales;
     private List<Proyecto> proyectos;
     */
+    @ManyToOne
     private Usuario persona;//Para una futura funcionalidad, lo vinculamos con el usuario.
     
     

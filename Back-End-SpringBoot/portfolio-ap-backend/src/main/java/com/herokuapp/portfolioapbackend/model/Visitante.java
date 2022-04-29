@@ -19,7 +19,7 @@ import lombok.Setter;
  */
 @Getter @Setter
 @Entity
-@Table(name="visitantes")
+@Table(name="Visitantes")
 public class Visitante extends Persona {
     
     @Id

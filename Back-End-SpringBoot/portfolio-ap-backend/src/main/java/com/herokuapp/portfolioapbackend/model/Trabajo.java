@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +21,7 @@ import lombok.Setter;
  */
 @Getter @Setter
 @Entity
+@Table(name="Trabajos")
 public class Trabajo {
     
     @Id
@@ -29,9 +32,13 @@ public class Trabajo {
     private Date fechaInicio;
     private Date fechaFin;
     
+    @ManyToOne
     private TipoTrabajo tipo;
+    
+    @ManyToOne
     private Empresa empresa;
     
+    @ManyToOne
     private Usuario persona;
     
 }
