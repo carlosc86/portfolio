@@ -29,7 +29,7 @@ public class UsuarioService implements IUsuarioService{
 
     @Override
     public Usuario traer(Long id) {
-        return usuarioRepo.getById(id);
+        return usuarioRepo.findById(id).orElse(null);
     }
 
     @Override

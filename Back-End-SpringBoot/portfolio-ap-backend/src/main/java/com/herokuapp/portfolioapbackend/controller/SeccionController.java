@@ -7,6 +7,7 @@ package com.herokuapp.portfolioapbackend.controller;
 
 import com.herokuapp.portfolioapbackend.model.Seccion;
 import com.herokuapp.portfolioapbackend.services.ISeccionService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,23 +28,28 @@ public class SeccionController {
     private ISeccionService seccionService;
     
     @GetMapping("/secciones")
-    public Seccion[] traer(){
-        return (Seccion[]) seccionService.traer().toArray();
+    public List<Seccion> getSecciones(){
+        return seccionService.traer();
+    }
+    
+    @GetMapping("/secciones/{id}")
+    public Seccion getSeccion(@PathVariable Long id){
+        return seccionService.traer(id);
     }
     
     @PostMapping("/secciones")
-    public Seccion guardar(@RequestBody Seccion seccion){
+    public Seccion postSeccion(@RequestBody Seccion seccion){
         return seccionService.guardar(seccion);
     }
     
     @PutMapping("/secciones/{id}")
-    public void actualizar(@PathVariable Long id, @RequestBody Seccion seccion){
+    public void putSeccion(@PathVariable Long id, @RequestBody Seccion seccion){
         if(id==seccion.getId())
             seccionService.modificar(seccion);
     }
     
     @DeleteMapping("/secciones/{id}")
-    public void borrar(@PathVariable Long id){
+    public void deleteSeccion(@PathVariable Long id){
         seccionService.borrar(id);
     }
     

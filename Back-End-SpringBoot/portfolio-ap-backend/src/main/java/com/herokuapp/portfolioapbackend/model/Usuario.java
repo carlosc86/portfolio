@@ -5,11 +5,14 @@
  */
 package com.herokuapp.portfolioapbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Getter;
@@ -30,7 +33,8 @@ public class Usuario extends Persona{
     private String password;
     private Date ultimoAcceso;
     
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="privilegios_id")
     private Privilegio privilegios;
     
 }

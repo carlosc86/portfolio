@@ -28,7 +28,7 @@ public class HabilidadService implements IHabilidadService{
 
     @Override
     public Habilidad traer(Long id) {
-        return habilidadRepo.getById(id);
+        return habilidadRepo.findById(id).orElse(null);
     }
 
     @Override

@@ -29,7 +29,7 @@ public class MensajeService implements IMensajeService{
 
     @Override
     public Mensaje traer(Long id) {
-        return mensajeRepo.getById(id);
+        return mensajeRepo.findById(id).orElse(null);
     }
 
     @Override

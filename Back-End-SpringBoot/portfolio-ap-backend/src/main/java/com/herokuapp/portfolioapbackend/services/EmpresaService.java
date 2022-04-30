@@ -28,7 +28,7 @@ public class EmpresaService implements IEmpresaService{
 
     @Override
     public Empresa traer(Long id) {
-        return empresaRepo.getById(id);
+        return empresaRepo.findById(id).orElse(null);
     }
 
     @Override

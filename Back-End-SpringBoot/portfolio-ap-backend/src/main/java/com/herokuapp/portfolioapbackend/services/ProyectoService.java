@@ -28,7 +28,7 @@ public class ProyectoService implements IProyectoService{
 
     @Override
     public Proyecto traer(Long id) {
-        return proyectoRepo.getById(id);
+        return proyectoRepo.findById(id).orElse(null);
     }
 
     @Override

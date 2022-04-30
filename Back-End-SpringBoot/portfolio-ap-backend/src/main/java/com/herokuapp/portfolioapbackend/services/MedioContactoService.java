@@ -27,7 +27,7 @@ public class MedioContactoService implements IMedioContactoService{
 
     @Override
     public MedioContacto traer(Long id) {
-        return medioRepo.getById(id);
+        return medioRepo.findById(id).orElse(null);
     }
 
     @Override

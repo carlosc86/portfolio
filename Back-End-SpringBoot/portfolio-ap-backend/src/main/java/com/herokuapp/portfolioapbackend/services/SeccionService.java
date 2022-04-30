@@ -29,7 +29,7 @@ public class SeccionService implements ISeccionService{
 
     @Override
     public Seccion traer(Long id) {
-        return seccionRepo.getById(id);
+        return seccionRepo.findById(id).orElse(null);
     }
 
     @Override

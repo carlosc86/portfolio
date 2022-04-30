@@ -28,7 +28,7 @@ public class TrabajoService implements ITrabajoService{
 
     @Override
     public Trabajo traer(Long id) {
-        return trabajoRepo.getById(id);
+        return trabajoRepo.findById(id).orElse(null);
     }
 
     @Override

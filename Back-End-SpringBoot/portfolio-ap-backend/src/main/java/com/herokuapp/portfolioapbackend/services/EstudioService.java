@@ -28,7 +28,7 @@ public class EstudioService implements IEstudioService{
 
     @Override
     public Estudio traer(Long id) {
-        return estudioRepo.getById(id);
+        return estudioRepo.findById(id).orElse(null);
     }
 
     @Override

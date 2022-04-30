@@ -26,5 +26,16 @@ public class Privilegio {
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private Long id;
     private String nombre;
+
+    public Privilegio() {
+    }
+
+    
+    public Privilegio(Long id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
+    
+    
     
 }
