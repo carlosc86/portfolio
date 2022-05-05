@@ -5,8 +5,11 @@
  */
 package com.herokuapp.portfolioapbackend.controller;
 
+import com.herokuapp.portfolioapbackend.dto.HabilidadDTO;
+import com.herokuapp.portfolioapbackend.mappers.IHabilidadMapper;
 import com.herokuapp.portfolioapbackend.model.Habilidad;
 import com.herokuapp.portfolioapbackend.services.IHabilidadService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,29 +26,39 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class HabilidadController {
+    
+    @Autowired
+    private IHabilidadMapper habilidadMapper;
+    
     @Autowired
     private IHabilidadService habilidadService;
     
     
     @GetMapping("/habilidades")
-    public List<Habilidad> getHabilidades(){
-        return habilidadService.traer();
+    public List<HabilidadDTO> getHabilidades(){
+        List<Habilidad> habilidades= habilidadService.traer();
+        List<HabilidadDTO> retorno=new ArrayList();
+        for (int i = 0; i < habilidades.size(); i++) {
+            retorno.add(habilidadMapper.toDTO(habilidades.get(i)));
+        }
+        return retorno;
     }
     
     @GetMapping("/habilidades/{id}")
-    public Habilidad getHabilidad(@PathVariable Long id){
-        return habilidadService.traer(id);
+    public HabilidadDTO getHabilidad(@PathVariable Long id){
+        return habilidadMapper.toDTO(habilidadService.traer(id));
     }
     
     @PostMapping("/habilidades")
-    public Habilidad postHabilidad(@RequestBody Habilidad habilidad ){
-        return habilidadService.guardar(habilidad);
+    public HabilidadDTO postHabilidad(@RequestBody HabilidadDTO habilidadDto ){
+        /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
+        return habilidadMapper.toDTO(habilidadService.guardar(habilidadMapper.toEntity(habilidadDto)));
     }
     
     @PutMapping("/habilidades/{id}")
-    public void putHabilidad(@PathVariable Long id, @RequestBody Habilidad habilidad ){
-        if(id==habilidad.getId())
-            habilidadService.modificar(habilidad);
+    public void putHabilidad(@PathVariable Long id, @RequestBody HabilidadDTO habilidadDto ){
+        if(id==habilidadDto.getId())
+            habilidadService.modificar(habilidadMapper.toEntity(habilidadDto));
     }
     
     @DeleteMapping("/habilidades/{id}")

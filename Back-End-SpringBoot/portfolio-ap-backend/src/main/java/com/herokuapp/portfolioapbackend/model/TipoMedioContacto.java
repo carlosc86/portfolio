@@ -25,6 +25,7 @@ public class TipoMedioContacto {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private Long id;
+    @Column(unique=true)
     private String empresa;
     @Column(name="urlIcono")
     private String rutaIcono;

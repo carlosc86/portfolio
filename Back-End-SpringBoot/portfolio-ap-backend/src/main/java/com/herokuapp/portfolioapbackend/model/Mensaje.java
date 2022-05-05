@@ -5,7 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +28,7 @@ public class Mensaje {
     private Long id;
     private String titulo;
     private String cuerpo;
-    private Date fecha;
+    private LocalDate fecha;
     private boolean leido;
     
     //Relacion con visitante

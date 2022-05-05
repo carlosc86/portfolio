@@ -5,15 +5,20 @@
  */
 package com.herokuapp.portfolioapbackend.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 /**
  *
@@ -29,13 +34,15 @@ public class Trabajo {
     private Long id;
     private String puesto;
     private String descripcion;
-    private Date fechaInicio;
-    private Date fechaFin;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
     
     @ManyToOne
+    @JoinColumn(name="tipo_id")
     private TipoTrabajo tipo;
     
     @ManyToOne
+    @JoinColumn(name="empresa_id")
     private Empresa empresa;
     
     @ManyToOne

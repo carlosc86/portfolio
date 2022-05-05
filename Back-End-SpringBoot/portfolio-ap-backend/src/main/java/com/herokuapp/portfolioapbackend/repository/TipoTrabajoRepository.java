@@ -16,4 +16,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TipoTrabajoRepository extends JpaRepository<TipoTrabajo,Long>{
     
+    public TipoTrabajo findByNombre(String nombre);
+    
 }

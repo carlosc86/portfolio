@@ -15,6 +15,7 @@ import java.util.List;
 public interface IEmpresaService {
     public List<Empresa> traer();
     public Empresa traer(Long id);
+    public Empresa traer(String nombre);
     public Empresa guardar(Empresa empresa);
     public void modificar(Empresa empresa);
     public void borrar(Long id);

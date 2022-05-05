@@ -42,7 +42,7 @@ public class Seccion {
     private List<Proyecto> proyectos;
     */
     @ManyToOne
-    private Usuario persona;//Para una futura funcionalidad, lo vinculamos con el usuario.
+    private Usuario usuario;//Para una futura funcionalidad, lo vinculamos con el usuario.
     
     
 }

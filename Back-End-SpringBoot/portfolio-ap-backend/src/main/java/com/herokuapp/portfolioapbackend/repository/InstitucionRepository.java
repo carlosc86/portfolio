@@ -15,5 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface InstitucionRepository extends JpaRepository<Institucion,Long>{
-    
+    public Institucion findByNombre(String nombre);
 }

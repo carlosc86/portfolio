@@ -5,8 +5,11 @@
  */
 package com.herokuapp.portfolioapbackend.controller;
 
+import com.herokuapp.portfolioapbackend.dto.MedioContactoDTO;
+import com.herokuapp.portfolioapbackend.mappers.IMedioContactoMapper;
 import com.herokuapp.portfolioapbackend.model.MedioContacto;
 import com.herokuapp.portfolioapbackend.services.IMedioContactoService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,28 +28,37 @@ import org.springframework.web.bind.annotation.RestController;
 public class MedioContactoController {
     
     @Autowired
+    private IMedioContactoMapper medioMapper;
+    
+    @Autowired
     private  IMedioContactoService medioService;
     
     
     @GetMapping("/medios_contacto")
-    public List<MedioContacto> getMediosContacto(){
-        return medioService.traer();
+    public List<MedioContactoDTO> getMediosContacto(){
+        List<MedioContacto> lista=medioService.traer();
+        List<MedioContactoDTO> retorno=new ArrayList();
+        for (int i = 0; i < lista.size(); i++) {
+            retorno.add(medioMapper.toDTO(lista.get(i)));
+        }
+        return retorno;
     }
     
     @GetMapping("/medios_contacto/{id}")
-    public MedioContacto getMedioContacto(@PathVariable Long id){
-        return medioService.traer(id);
+    public MedioContactoDTO getMedioContacto(@PathVariable Long id){
+        return medioMapper.toDTO(medioService.traer(id));
     }
     
     @PostMapping("/medios_contacto")
-    public MedioContacto postMedioContacto(@RequestBody MedioContacto medio ){
-        return medioService.guardar(medio);
+    public MedioContactoDTO postMedioContacto(@RequestBody MedioContactoDTO medioDto ){ 
+        /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
+        return medioMapper.toDTO(medioService.guardar(medioMapper.toEntity(medioDto)));
     }
     
     @PutMapping("/medios_contacto/{id}")
-    public void putMedioContacto(@PathVariable Long id, @RequestBody MedioContacto medio ){
-        if(id==medio.getId())
-            medioService.modificar(medio);
+    public void putMedioContacto(@PathVariable Long id, @RequestBody MedioContactoDTO medioDto ){
+        if(id==medioDto.getId())
+            medioService.modificar(medioMapper.toEntity(medioDto));
     }
     
     @DeleteMapping("/medios_contacto/{id}")

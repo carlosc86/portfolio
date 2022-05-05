@@ -16,4 +16,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TipoMedioContactoRepository extends JpaRepository<TipoMedioContacto,Long>{
     
+    public TipoMedioContacto findByEmpresa(String empresa);
+    
 }

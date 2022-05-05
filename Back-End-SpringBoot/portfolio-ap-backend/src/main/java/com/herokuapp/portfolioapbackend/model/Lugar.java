@@ -25,7 +25,7 @@ import lombok.Setter;
 public abstract class Lugar {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    private Long id;
+    protected Long id;
     
     protected String nombre;
     protected String direccion;

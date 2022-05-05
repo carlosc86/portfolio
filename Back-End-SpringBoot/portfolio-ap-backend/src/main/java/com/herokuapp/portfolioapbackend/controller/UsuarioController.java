@@ -24,6 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class UsuarioController {
+    /*
+        CUIDADO!!!, ESTE CONTROLADOR ESTA TRABAJANDO CON ENTIDADES, REHACER!!!
+    */
     
     @Autowired
     private IUsuarioService usuarioService;

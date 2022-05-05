@@ -5,8 +5,11 @@
  */
 package com.herokuapp.portfolioapbackend.controller;
 
+import com.herokuapp.portfolioapbackend.dto.ExperienciaLaboralDTO;
+import com.herokuapp.portfolioapbackend.mappers.IExperienciaLaboralMapper;
 import com.herokuapp.portfolioapbackend.model.Trabajo;
 import com.herokuapp.portfolioapbackend.services.ITrabajoService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,28 +28,37 @@ import org.springframework.web.bind.annotation.RestController;
 public class TrabajoController {
     
     @Autowired
+    private IExperienciaLaboralMapper experienciaMapper;
+    
+    @Autowired
     private ITrabajoService trabajoService;
     
     
     @GetMapping("/experiencias")
-    public List<Trabajo> getTrabajo(){
-        return trabajoService.traer();
+    public List<ExperienciaLaboralDTO> getTrabajo(){
+        List<Trabajo> lista= trabajoService.traer();
+        List<ExperienciaLaboralDTO> retorno=new ArrayList();
+        for (int i = 0; i < lista.size(); i++) {
+            retorno.add(experienciaMapper.toDTO(lista.get(i)));
+        }
+        return retorno;
     }
     
     @GetMapping("/experiencias/{id}")
-    public Trabajo getTrabajo(@PathVariable Long id){
-        return trabajoService.traer(id);
+    public ExperienciaLaboralDTO getTrabajo(@PathVariable Long id){
+        return experienciaMapper.toDTO(trabajoService.traer(id));
     }
     
     @PostMapping("/experiencias")
-    public Trabajo postTrabajo(@RequestBody Trabajo trabajo ){
-        return trabajoService.guardar(trabajo);
+    public ExperienciaLaboralDTO postTrabajo(@RequestBody ExperienciaLaboralDTO experiencia ){
+        /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
+        return experienciaMapper.toDTO(trabajoService.guardar(experienciaMapper.toEntity(experiencia)));
     }
     
     @PutMapping("/experiencias/{id}")
-    public void putTrabajo(@PathVariable Long id, @RequestBody Trabajo trabajo ){
-        if(id==trabajo.getId())
-            trabajoService.modificar(trabajo);
+    public void putTrabajo(@PathVariable Long id, @RequestBody ExperienciaLaboralDTO experiencia ){
+        if(id==experiencia.getId())
+            trabajoService.modificar(experienciaMapper.toEntity(experiencia));
     }
     
     @DeleteMapping("/experiencias/{id}")

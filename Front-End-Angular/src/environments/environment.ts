@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlServicio:"http://localhost:3000",
+  urlServicio:"http://localhost:8080",
   endpoint_seccion:"/secciones",
   endpoint_estudios:"/estudios",
   endpoint_habilidades:"/habilidades",

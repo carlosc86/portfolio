@@ -5,8 +5,11 @@
  */
 package com.herokuapp.portfolioapbackend.controller;
 
+import com.herokuapp.portfolioapbackend.dto.EstudioDTO;
+import com.herokuapp.portfolioapbackend.mappers.IEstudioMapper;
 import com.herokuapp.portfolioapbackend.model.Estudio;
 import com.herokuapp.portfolioapbackend.services.IEstudioService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,25 +30,34 @@ public class EstudioController {
     @Autowired
     private IEstudioService estudioService;
     
+    @Autowired
+    private IEstudioMapper estudioMapper;
+    
     @GetMapping("/estudios")
-    public List<Estudio> getEstudios(){
-        return estudioService.traer();
+    public List<EstudioDTO> getEstudios(){
+        List<EstudioDTO> retorno=new ArrayList();
+        List<Estudio> lista=estudioService.traer();
+        for (int i = 0; i < lista.size(); i++) {
+            retorno.add(estudioMapper.toDTO(lista.get(i)));
+        }
+        return retorno;
     }
     
     @GetMapping("/estudios/{id}")
-    public Estudio getEstudio(@PathVariable Long id){
-        return estudioService.traer(id);
+    public EstudioDTO getEstudio(@PathVariable Long id){
+        return estudioMapper.toDTO(estudioService.traer(id));
     }
     
     @PostMapping("/estudios")
-    public Estudio postEstudios(@RequestBody Estudio estudio ){
-        return estudioService.guardar(estudio);
+    public EstudioDTO postEstudios(@RequestBody EstudioDTO estudioDTO ){
+        /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
+        return estudioMapper.toDTO(estudioService.guardar(estudioMapper.toEntity(estudioDTO)));
     }
     
     @PutMapping("/estudios/{id}")
-    public void putEstudios(@PathVariable Long id, @RequestBody Estudio estudio ){
-        if(id==estudio.getId())
-            estudioService.modificar(estudio);
+    public void putEstudios(@PathVariable Long id, @RequestBody EstudioDTO estudioDto ){
+        if(id==estudioDto.getId())
+            estudioService.modificar(estudioMapper.toEntity(estudioDto));
     }
     
     @DeleteMapping("/estudios/{id}")

@@ -5,6 +5,8 @@
  */
 package com.herokuapp.portfolioapbackend.services;
 
+import com.herokuapp.portfolioapbackend.model.Empresa;
+import com.herokuapp.portfolioapbackend.model.TipoTrabajo;
 import com.herokuapp.portfolioapbackend.model.Trabajo;
 import com.herokuapp.portfolioapbackend.repository.TrabajoRepository;
 import java.util.List;
@@ -20,6 +22,12 @@ public class TrabajoService implements ITrabajoService{
     
     @Autowired
     private TrabajoRepository trabajoRepo;
+    
+    @Autowired
+    private IEmpresaService empresaService;
+    
+    @Autowired
+    private ITipoTrabajoService tipoService;
 
     @Override
     public List<Trabajo> traer() {
@@ -33,6 +41,10 @@ public class TrabajoService implements ITrabajoService{
 
     @Override
     public Trabajo guardar(Trabajo trabajo) {
+        Empresa empresa=gestionarEmpresa(trabajo.getEmpresa());
+        TipoTrabajo tipo=gestionarTipoTrabajo(trabajo.getTipo());
+        trabajo.setEmpresa(empresa);
+        trabajo.setTipo(tipo);
         return trabajoRepo.save(trabajo);
     }
 
@@ -44,8 +56,10 @@ public class TrabajoService implements ITrabajoService{
             guardado.setDescripcion(trabajo.getDescripcion());
             guardado.setFechaInicio(trabajo.getFechaInicio());
             guardado.setFechaFin(trabajo.getFechaFin());
-            guardado.setTipo(trabajo.getTipo());
-            guardado.setEmpresa(trabajo.getEmpresa());
+            Empresa empresa=gestionarEmpresa(trabajo.getEmpresa());
+            TipoTrabajo tipo=gestionarTipoTrabajo(trabajo.getTipo());
+            guardado.setEmpresa(empresa);
+            guardado.setTipo(tipo);
             trabajoRepo.save(guardado);
         }
     }
@@ -53,6 +67,28 @@ public class TrabajoService implements ITrabajoService{
     @Override
     public void borrar(Long id) {
         trabajoRepo.deleteById(id);
+    }
+
+    private Empresa gestionarEmpresa(Empresa empresa) {
+        Empresa retorno=empresaService.traer(empresa.getNombre());
+        if(retorno==null){
+            retorno=new Empresa();
+            retorno.setNombre(empresa.getNombre());
+            retorno.setDireccion(empresa.getDireccion());
+            retorno.setRutaLogo(empresa.getRutaLogo());
+            retorno=empresaService.guardar(retorno);
+        }
+        return retorno;
+    }
+
+    private TipoTrabajo gestionarTipoTrabajo(TipoTrabajo tipo) {
+        TipoTrabajo retorno=tipoService.traer(tipo.getNombre());
+        if(retorno==null){
+            retorno=new TipoTrabajo();
+            retorno.setNombre(tipo.getNombre());
+            retorno=tipoService.guardar(retorno);
+        }
+        return retorno;
     }
     
 }

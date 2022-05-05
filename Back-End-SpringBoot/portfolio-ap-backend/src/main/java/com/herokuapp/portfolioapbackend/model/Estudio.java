@@ -5,11 +5,13 @@
  */
 package com.herokuapp.portfolioapbackend.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Getter;
@@ -27,10 +29,11 @@ public class Estudio {
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private Long id;
     private String titulo;
-    private Date fechaInicio;
-    private Date fechaFin;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
     
     @ManyToOne
+    @JoinColumn(name="institucion_id")
     private Institucion institucion;
     
     @ManyToOne

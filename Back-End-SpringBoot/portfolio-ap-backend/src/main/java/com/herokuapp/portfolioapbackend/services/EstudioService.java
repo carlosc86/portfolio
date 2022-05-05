@@ -6,7 +6,9 @@
 package com.herokuapp.portfolioapbackend.services;
 
 import com.herokuapp.portfolioapbackend.model.Estudio;
+import com.herokuapp.portfolioapbackend.model.Institucion;
 import com.herokuapp.portfolioapbackend.repository.EstudioRepository;
+import com.herokuapp.portfolioapbackend.repository.InstitucionRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,9 @@ public class EstudioService implements IEstudioService{
     
     @Autowired
     private EstudioRepository estudioRepo;
+    
+    @Autowired
+    private IInstitucionService institucionService;
 
     @Override
     public List<Estudio> traer() {
@@ -33,6 +38,8 @@ public class EstudioService implements IEstudioService{
 
     @Override
     public Estudio guardar(Estudio estudio) {
+        Institucion inst=this.comprobarInstitucion(estudio.getInstitucion());
+        estudio.setInstitucion(inst); 
         return estudioRepo.save(estudio);
     }
 
@@ -43,8 +50,17 @@ public class EstudioService implements IEstudioService{
             guardado.setTitulo(estudio.getTitulo());
             guardado.setFechaInicio(estudio.getFechaInicio());
             guardado.setFechaFin(estudio.getFechaFin());
-            guardado.setInstitucion(estudio.getInstitucion());
-            estudioRepo.save(estudio);
+            Institucion institucion=this.comprobarInstitucion(estudio.getInstitucion());//Compruebo contra la db si hay una institucion llamada asi.
+            institucion.setDireccion(estudio.getInstitucion().getDireccion().length()>0?//La institucion tiene nueva direccion, (no es cadena vacia)
+                                     estudio.getInstitucion().getDireccion():           //Si es asi guardo esa cadena
+                                     institucion.getDireccion());                       //sino mantengo la direccion que tenia
+            
+            institucion.setRutaLogo(estudio.getInstitucion().getRutaLogo().length()>0?  //La institucion tiene un nuevo logo (no es cadena vacia)
+                                    estudio.getInstitucion().getRutaLogo():             //Si es asi guardo la nueva cadena
+                                    institucion.getRutaLogo());                         //sino mantengo la que tenia
+            
+            guardado.setInstitucion(institucion);
+            estudioRepo.save(guardado);
         }
         
     }
@@ -52,6 +68,22 @@ public class EstudioService implements IEstudioService{
     @Override
     public void borrar(Long id) {
         estudioRepo.deleteById(id);
+    }
+    
+    private Institucion comprobarInstitucion(Institucion inst){
+        Institucion guardada=null;
+        if(inst!=null){
+            if(inst.getId()>0){
+                guardada=institucionService.traer(inst.getId());
+            }else{
+                guardada=institucionService.traer(inst.getNombre());
+            }
+            if(guardada==null){
+                guardada=institucionService.guardar(inst);
+            }            
+        }//else lanzar excepcion, institucion nulla
+        
+        return guardada;
     }
     
     

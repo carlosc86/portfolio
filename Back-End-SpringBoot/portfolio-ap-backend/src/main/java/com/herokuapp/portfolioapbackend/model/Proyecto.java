@@ -5,13 +5,15 @@
  */
 package com.herokuapp.portfolioapbackend.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -32,17 +34,24 @@ public class Proyecto {
     private Long id;
     private String nombre;
     private String descripcion;
-    private Date fecha;
+    private LocalDate fecha;
     private String url;
     
     @ManyToOne
     private Usuario persona;
     
-    @OneToMany(targetEntity=ImagenProyecto.class, mappedBy="proyecto")
+    @OneToMany(mappedBy="proyecto",cascade=CascadeType.MERGE)
+    @Setter(AccessLevel.NONE)
     private List<ImagenProyecto> imagenes=new ArrayList();
     
     //Genero otro setter para las imagenes
     public void setImagen(String url,String pie){
-        this.imagenes.add(new ImagenProyecto(url,pie));
+        ImagenProyecto imagen=new ImagenProyecto(url,pie);
+        imagen.setProyecto(this);
+        this.imagenes.add(imagen);
+    }
+    
+    public void setImagenes(List<ImagenProyecto> imagenes){
+        this.imagenes=imagenes;
     }
 }

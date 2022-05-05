@@ -51,5 +51,10 @@ public class EmpresaService implements IEmpresaService{
     public void borrar(Long id) {
         empresaRepo.deleteById(id);
     }
+
+    @Override
+    public Empresa traer(String nombre) {
+        return empresaRepo.findByNombre(nombre);
+    }
     
 }
