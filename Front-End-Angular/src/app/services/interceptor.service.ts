@@ -14,7 +14,6 @@ export class InterceptorService implements HttpInterceptor {
   
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       let currentToken=this.authService.tokenUsuario;
-      console.log(typeof currentToken);
       if(typeof(currentToken)===typeof ("") ){
         req=req.clone({
           setHeaders:{
@@ -22,7 +21,6 @@ export class InterceptorService implements HttpInterceptor {
             
           }
         });
-        console.log("Se supone que meti el token");
       }
       
       return next.handle(req);

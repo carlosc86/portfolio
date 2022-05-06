@@ -4,7 +4,8 @@ export interface ExperienciaData{
     tipoTrabajo:string,
     descripcion:string,
     nombreEmpresa:string,
-    urlLogoEmpresa:string,
+    direccionEmpresa:string,
+    rutaLogoEmpresa:string,
     fechaInicio:string,
     fechaFin:string
 }

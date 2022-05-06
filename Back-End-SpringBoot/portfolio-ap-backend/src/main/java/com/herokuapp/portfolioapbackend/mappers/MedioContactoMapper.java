@@ -22,6 +22,7 @@ public class MedioContactoMapper implements IMedioContactoMapper{
         MedioContactoDTO medioDTO=new MedioContactoDTO();
         medioDTO.setId(medio.getId());
         medioDTO.setLink(medio.getLink()!=null?medio.getLink():"");
+        medioDTO.setEmpresa(medio.getTipo().getEmpresa()!=null?medio.getTipo().getEmpresa():"");
         medioDTO.setRutaIcono(medio.getTipo().getRutaIcono()!=null?medio.getTipo().getRutaIcono():"");
         return medioDTO;
     }

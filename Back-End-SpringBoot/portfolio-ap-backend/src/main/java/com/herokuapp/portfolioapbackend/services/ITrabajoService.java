@@ -5,6 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.services;
 
+import com.herokuapp.portfolioapbackend.exceptions.TrabajoNotFoundException;
 import com.herokuapp.portfolioapbackend.model.Trabajo;
 import java.util.List;
 
@@ -14,9 +15,9 @@ import java.util.List;
  */
 public interface ITrabajoService {
     public List<Trabajo> traer();
-    public Trabajo traer(Long id);
+    public Trabajo traer(Long id)throws TrabajoNotFoundException;
     public Trabajo guardar(Trabajo trabajo);
-    public void modificar(Trabajo trabajo);
+    public void modificar(Trabajo trabajo)throws TrabajoNotFoundException;
     public void borrar(Long id);
     
 }

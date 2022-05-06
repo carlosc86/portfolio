@@ -5,6 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.services;
 
+import com.herokuapp.portfolioapbackend.exceptions.MedioContactoNotFoundException;
 import com.herokuapp.portfolioapbackend.model.MedioContacto;
 import com.herokuapp.portfolioapbackend.model.TipoMedioContacto;
 import com.herokuapp.portfolioapbackend.repository.MedioContactoRepository;
@@ -30,8 +31,10 @@ public class MedioContactoService implements IMedioContactoService{
     }
 
     @Override
-    public MedioContacto traer(Long id) {
-        return medioRepo.findById(id).orElse(null);
+    public MedioContacto traer(Long id)throws MedioContactoNotFoundException {
+        MedioContacto medioContacto=medioRepo.findById(id).orElse(null);
+        if(medioContacto==null)throw new MedioContactoNotFoundException("Valor de id: "+id);
+        return medioContacto;
     }
 
     @Override
@@ -41,7 +44,7 @@ public class MedioContactoService implements IMedioContactoService{
     }
 
     @Override
-    public void modificar(MedioContacto medio) {
+    public void modificar(MedioContacto medio)throws MedioContactoNotFoundException {
         MedioContacto guardado=traer(medio.getId());
         if(guardado!=null){
             guardado.setLink(medio.getLink());

@@ -16,7 +16,7 @@
                         <label for="nombreEmpresa" class="form-label">Nombre de la Empresa</label>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" [(ngModel)]="elemento.urlLogoEmpresa" id="logoEmpresa" class="form-control" formControlName="urlLogoEmpresa">
+                        <input type="text" [(ngModel)]="elemento.rutaLogoEmpresa" id="logoEmpresa" class="form-control" formControlName="urlLogoEmpresa">
                         <label for="logoEmpresa" class="input-group-text">Logo</label>
                     </div>
                     <div class="form-floating mb-3">
@@ -29,13 +29,11 @@
                     </div>
                     <div class="row mb-3">
                         <div class="input-group col">
-                            <input type="number" [(ngModel)]="elemento.fechaInicio" id="fechaExpInit" class="form-control" formControlName="fechaInicio"
-                                min="1960" max="2050" aria-valuenow="2022">
+                            <input type="date" [(ngModel)]="elemento.fechaInicio" id="fechaExpInit" class="form-control" formControlName="fechaInicio">
                             <label for="fechaExpInit" class="input-group-text">Fecha inicio</label>
                         </div>
                         <div class="input-group col">
-                            <input type="number" [(ngModel)]="elemento.fechaFin" id="fechaExpFin" class="form-control" formControlName="fechaFin"
-                                min="1960" max="2050" aria-valuenow="2022">
+                            <input type="Date" [(ngModel)]="elemento.fechaFin" id="fechaExpFin" class="form-control" formControlName="fechaFin">
                             <label for="fechaExpFin" class="input-group-text">Fecha fin</label>
                         </div>
                     </div>

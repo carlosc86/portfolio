@@ -19,16 +19,11 @@ public class MedioContactoDTO {
     private long id;
     private String link;
     private String rutaIcono;
-   // private String empresa;
+    private String empresa;
 
     public MedioContactoDTO() {
     }
     
-    public MedioContactoDTO(MedioContacto m) {
-        this.id=m.getId();
-        this.link=m.getLink();
-        this.rutaIcono=m.getTipo().getRutaIcono();
-    }
     
     
 }

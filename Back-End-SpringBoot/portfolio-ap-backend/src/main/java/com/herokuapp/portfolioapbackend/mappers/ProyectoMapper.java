@@ -8,6 +8,7 @@ package com.herokuapp.portfolioapbackend.mappers;
 import com.herokuapp.portfolioapbackend.dto.ProyectoDTO;
 import com.herokuapp.portfolioapbackend.model.Proyecto;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Service;
 
 /**
@@ -24,7 +25,7 @@ public class ProyectoMapper implements IProyectoMapper{
         proyectoDto.setNombre(proyecto.getNombre()!=null?proyecto.getNombre():"");
         proyectoDto.setDescripcion(proyecto.getDescripcion()!=null?proyecto.getDescripcion():"");
         proyectoDto.setLink(proyecto.getUrl()!=null?proyecto.getUrl():"");
-        proyectoDto.setFecha(proyecto.getFecha().getYear());
+        proyectoDto.setFecha(proyecto.getFecha().format(DateTimeFormatter.ISO_LOCAL_DATE));
         String[] rutasImagenes=new String[proyecto.getImagenes().size()];
         for (int i = 0; i < proyecto.getImagenes().size(); i++) {
             rutasImagenes[i]=proyecto.getImagenes().get(i).getUrlImagen();
@@ -40,7 +41,7 @@ public class ProyectoMapper implements IProyectoMapper{
         proyecto.setNombre(proyectoDTO.getNombre()!=null?proyectoDTO.getNombre():"");
         proyecto.setDescripcion(proyectoDTO.getDescripcion()!=null?proyectoDTO.getDescripcion():"");
         proyecto.setUrl(proyectoDTO.getLink()!=null?proyectoDTO.getLink():"");
-        proyecto.setFecha(LocalDate.of(proyectoDTO.getFecha(), 1, 1));
+        proyecto.setFecha(LocalDate.parse(proyectoDTO.getFecha(), DateTimeFormatter.ISO_LOCAL_DATE));
         for (int i = 0; i < proyectoDTO.getRutasImagenes().length; i++) {
             proyecto.setImagen(proyectoDTO.getRutasImagenes()[i], "");
         }        

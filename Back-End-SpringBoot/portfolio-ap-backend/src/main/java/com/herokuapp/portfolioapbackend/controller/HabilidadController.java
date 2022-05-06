@@ -6,6 +6,7 @@
 package com.herokuapp.portfolioapbackend.controller;
 
 import com.herokuapp.portfolioapbackend.dto.HabilidadDTO;
+import com.herokuapp.portfolioapbackend.exceptions.HabilidadNotFoundException;
 import com.herokuapp.portfolioapbackend.mappers.IHabilidadMapper;
 import com.herokuapp.portfolioapbackend.model.Habilidad;
 import com.herokuapp.portfolioapbackend.services.IHabilidadService;
@@ -45,7 +46,7 @@ public class HabilidadController {
     }
     
     @GetMapping("/habilidades/{id}")
-    public HabilidadDTO getHabilidad(@PathVariable Long id){
+    public HabilidadDTO getHabilidad(@PathVariable Long id)throws Exception{
         return habilidadMapper.toDTO(habilidadService.traer(id));
     }
     
@@ -56,7 +57,7 @@ public class HabilidadController {
     }
     
     @PutMapping("/habilidades/{id}")
-    public void putHabilidad(@PathVariable Long id, @RequestBody HabilidadDTO habilidadDto ){
+    public void putHabilidad(@PathVariable Long id, @RequestBody HabilidadDTO habilidadDto )throws Exception{
         if(id==habilidadDto.getId())
             habilidadService.modificar(habilidadMapper.toEntity(habilidadDto));
     }

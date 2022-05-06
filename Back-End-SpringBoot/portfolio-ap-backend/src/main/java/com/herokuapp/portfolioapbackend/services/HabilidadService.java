@@ -5,6 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.services;
 
+import com.herokuapp.portfolioapbackend.exceptions.HabilidadNotFoundException;
 import com.herokuapp.portfolioapbackend.model.Habilidad;
 import com.herokuapp.portfolioapbackend.repository.HabilidadRepository;
 import java.util.List;
@@ -27,8 +28,10 @@ public class HabilidadService implements IHabilidadService{
     }
 
     @Override
-    public Habilidad traer(Long id) {
-        return habilidadRepo.findById(id).orElse(null);
+    public Habilidad traer(Long id) throws HabilidadNotFoundException{
+        Habilidad habilidad=habilidadRepo.findById(id).orElse(null);
+        if(habilidad==null)throw new HabilidadNotFoundException("Valor de id: "+id);
+        return habilidad;
     }
 
     @Override
@@ -37,7 +40,7 @@ public class HabilidadService implements IHabilidadService{
     }
 
     @Override
-    public void modificar(Habilidad habilidad) {
+    public void modificar(Habilidad habilidad)throws HabilidadNotFoundException {
         Habilidad guardada=traer(habilidad.getId());
         if(guardada!=null){
             guardada.setNombre(habilidad.getNombre());

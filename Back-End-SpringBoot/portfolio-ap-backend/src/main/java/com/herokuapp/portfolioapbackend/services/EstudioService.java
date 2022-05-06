@@ -5,6 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.services;
 
+import com.herokuapp.portfolioapbackend.exceptions.EstudioNotFoundException;
 import com.herokuapp.portfolioapbackend.model.Estudio;
 import com.herokuapp.portfolioapbackend.model.Institucion;
 import com.herokuapp.portfolioapbackend.repository.EstudioRepository;
@@ -32,8 +33,10 @@ public class EstudioService implements IEstudioService{
     }
 
     @Override
-    public Estudio traer(Long id) {
-        return estudioRepo.findById(id).orElse(null);
+    public Estudio traer(Long id) throws EstudioNotFoundException{
+        Estudio estudio=estudioRepo.findById(id).orElse(null);
+        if(estudio==null)throw new EstudioNotFoundException("Valor de id: "+id);
+        return estudio;
     }
 
     @Override
@@ -44,7 +47,7 @@ public class EstudioService implements IEstudioService{
     }
 
     @Override
-    public void modificar(Estudio estudio) {
+    public void modificar(Estudio estudio)throws EstudioNotFoundException {
         Estudio guardado=traer(estudio.getId());
         if(guardado!=null){
             guardado.setTitulo(estudio.getTitulo());

@@ -45,7 +45,7 @@ public class ProyectoController {
     }
     
     @GetMapping("/proyectos/{id}")
-    public ProyectoDTO getProyecto(@PathVariable Long id){
+    public ProyectoDTO getProyecto(@PathVariable Long id)throws Exception{
         return proyectoMapper.toDTO(proyectoService.traer(id));
     }
     
@@ -56,7 +56,7 @@ public class ProyectoController {
     }
     
     @PutMapping("/proyectos/{id}")
-    public void putProyecto(@PathVariable Long id, @RequestBody ProyectoDTO proyectoDto ){
+    public void putProyecto(@PathVariable Long id, @RequestBody ProyectoDTO proyectoDto )throws Exception{
         if(id==proyectoDto.getId())
             proyectoService.modificar(proyectoMapper.toEntity(proyectoDto));
     }

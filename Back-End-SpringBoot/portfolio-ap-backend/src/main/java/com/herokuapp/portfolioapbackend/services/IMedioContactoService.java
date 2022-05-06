@@ -5,6 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.services;
 
+import com.herokuapp.portfolioapbackend.exceptions.MedioContactoNotFoundException;
 import com.herokuapp.portfolioapbackend.model.MedioContacto;
 import java.util.List;
 
@@ -14,9 +15,9 @@ import java.util.List;
  */
 public interface IMedioContactoService {
     public List<MedioContacto> traer();
-    public MedioContacto traer(Long id);
+    public MedioContacto traer(Long id)throws MedioContactoNotFoundException;
     public MedioContacto guardar(MedioContacto medio);
-    public void modificar(MedioContacto medio);
+    public void modificar(MedioContacto medio)throws MedioContactoNotFoundException;
     public void borrar(Long id);
     
 }

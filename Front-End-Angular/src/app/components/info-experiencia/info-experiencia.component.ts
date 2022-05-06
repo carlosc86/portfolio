@@ -14,7 +14,8 @@ export class InfoExperienciaComponent implements OnInit {
     tipoTrabajo:"",
     descripcion:"",
     nombreEmpresa:"",
-    urlLogoEmpresa:"",
+    rutaLogoEmpresa:"",
+    direccionEmpresa:"",
     fechaInicio:"",
     fechaFin:""
   };
@@ -28,6 +29,10 @@ export class InfoExperienciaComponent implements OnInit {
 
   activar(){
     this.emisor.emit(this.experiencia);
+  }
+
+  getYear(fecha:String){
+    return fecha.split("-")[0];
   }
 
 }

@@ -19,22 +19,11 @@ public class ProyectoDTO {
     private long id;
     private String nombre;
     private String descripcion;
-    private int fecha;
+    private String fecha;
     private String link;
     private String[] rutasImagenes;
 
     public ProyectoDTO() {
-    }
-
-    public ProyectoDTO(Proyecto p) {
-        this.nombre=p.getNombre();
-        this.descripcion=p.getDescripcion();
-        this.link=p.getUrl();
-        this.fecha=p.getFecha().getYear();
-        this.rutasImagenes=new String[p.getImagenes().size()];
-        for (int i = 0; i < p.getImagenes().size(); i++) {
-            this.rutasImagenes[i]=(p.getImagenes().get(i).getUrlImagen());            
-        }        
     }
     
     

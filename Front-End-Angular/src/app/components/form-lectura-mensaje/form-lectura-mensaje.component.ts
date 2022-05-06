@@ -13,11 +13,11 @@ export class FormLecturaMensajeComponent implements OnInit {
   mensajes:MensajeData[]=[];
   mensajeActivo:MensajeData={
     id:NaN,
-    nombre:"",
-    apellido:"",
-    email:"",
-    asunto:"",
-    mensaje:"",
+    nombreAutor:"",
+    apellidoAutor:"",
+    emailAutor:"",
+    titulo:"",
+    cuerpo:"",
     fecha:"",
     leido:false
   };

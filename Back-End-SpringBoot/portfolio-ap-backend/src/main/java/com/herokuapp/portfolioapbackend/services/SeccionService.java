@@ -5,6 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.services;
 
+import com.herokuapp.portfolioapbackend.exceptions.SeccionNotFoundException;
 import com.herokuapp.portfolioapbackend.model.Seccion;
 import com.herokuapp.portfolioapbackend.repository.SeccionRepository;
 import java.util.List;
@@ -28,9 +29,11 @@ public class SeccionService implements ISeccionService{
     }
 
     @Override
-    public Seccion traer(Long id) {
-        return seccionRepo.findById(id).orElse(null);
-    }
+    public Seccion traer(Long id) throws SeccionNotFoundException{
+        Seccion seccion=seccionRepo.findById(id).orElse(null);
+        if(seccion==null) throw new SeccionNotFoundException("Valor de id: "+id);
+        return seccion;
+    } 
 
     @Override
     public Seccion guardar(Seccion seccion) {//Se retorna el objeto guardado
@@ -38,7 +41,7 @@ public class SeccionService implements ISeccionService{
     }
 
     @Override
-    public void modificar(Seccion seccion) {
+    public void modificar(Seccion seccion)throws SeccionNotFoundException {
         Seccion guardada=traer(seccion.getId());
         if(guardada!=null){//Si existe el elemento
             //Se pueden guardar todos los campos menos el nombre, que es unico, y la relacion con persona.
@@ -57,8 +60,10 @@ public class SeccionService implements ISeccionService{
     }
 
     @Override
-    public Seccion traer(String nombre) {
-        return seccionRepo.findByNombre(nombre);
+    public Seccion traer(String nombre)throws SeccionNotFoundException {
+        Seccion seccion=seccionRepo.findByNombre(nombre);
+        if(seccion==null)throw new SeccionNotFoundException("Nombre: "+nombre);
+        return seccion;
     }
     
 }

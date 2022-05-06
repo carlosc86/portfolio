@@ -5,6 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.services;
 
+import com.herokuapp.portfolioapbackend.exceptions.EstudioNotFoundException;
 import com.herokuapp.portfolioapbackend.model.Estudio;
 import java.util.List;
 
@@ -14,9 +15,9 @@ import java.util.List;
  */
 public interface IEstudioService {
     public List<Estudio> traer();
-    public Estudio traer(Long id);
+    public Estudio traer(Long id)throws EstudioNotFoundException;
     public Estudio guardar(Estudio estudio);
-    public void modificar(Estudio estudio);
+    public void modificar(Estudio estudio)throws EstudioNotFoundException;
     public void borrar(Long id);
     
 }

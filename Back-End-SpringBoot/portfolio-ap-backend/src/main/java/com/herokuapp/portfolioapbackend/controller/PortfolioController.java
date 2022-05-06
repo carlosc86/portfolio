@@ -49,7 +49,7 @@ public class PortfolioController {
     @Autowired
     private IProyectoService proyectoService;
     
-    @CrossOrigin(origins="http://localhost:4200")
+    @CrossOrigin(origins="http://localhost:4200")//Por ahora asi para poder usar angular
     @GetMapping("/portfolio")
     @ResponseBody
     public List<PortfolioDTO> getPortfolio(){

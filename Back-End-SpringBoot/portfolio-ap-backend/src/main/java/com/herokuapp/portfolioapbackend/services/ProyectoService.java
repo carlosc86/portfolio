@@ -5,6 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.services;
 
+import com.herokuapp.portfolioapbackend.exceptions.ProyectoNotFoundException;
 import com.herokuapp.portfolioapbackend.model.ImagenProyecto;
 import com.herokuapp.portfolioapbackend.model.Proyecto;
 import com.herokuapp.portfolioapbackend.repository.ProyectoRepository;
@@ -32,8 +33,10 @@ public class ProyectoService implements IProyectoService{
     }
 
     @Override
-    public Proyecto traer(Long id) {
-        return proyectoRepo.findById(id).orElse(null);
+    public Proyecto traer(Long id)throws ProyectoNotFoundException {
+        Proyecto proyecto=proyectoRepo.findById(id).orElse(null);
+        if(proyecto==null)throw new ProyectoNotFoundException("Valor de id: "+id);
+        return proyecto;
     }
 
     @Override
@@ -42,7 +45,7 @@ public class ProyectoService implements IProyectoService{
     }
 
     @Override
-    public void modificar(Proyecto proyecto) {
+    public void modificar(Proyecto proyecto)throws ProyectoNotFoundException {
         Proyecto guardado=traer(proyecto.getId());
         if(guardado!=null){
             guardado.setNombre(proyecto.getNombre());

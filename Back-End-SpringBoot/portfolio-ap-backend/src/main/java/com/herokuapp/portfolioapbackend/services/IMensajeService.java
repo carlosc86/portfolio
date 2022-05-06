@@ -5,6 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.services;
 
+import com.herokuapp.portfolioapbackend.exceptions.MensajeNotFoundException;
 import com.herokuapp.portfolioapbackend.model.Mensaje;
 import java.util.List;
 
@@ -14,9 +15,9 @@ import java.util.List;
  */
 public interface IMensajeService {
     public List<Mensaje> traer();
-    public Mensaje traer(Long id);
+    public Mensaje traer(Long id)throws MensajeNotFoundException;
     public Mensaje guardar(Mensaje mensaje);
-    public void modificar(Mensaje mensaje);
+    public void modificar(Mensaje mensaje)throws MensajeNotFoundException;
     public void borrar(Long id);
     
 }

@@ -5,6 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.services;
 
+import com.herokuapp.portfolioapbackend.exceptions.ProyectoNotFoundException;
 import com.herokuapp.portfolioapbackend.model.Proyecto;
 import java.util.List;
 
@@ -14,9 +15,9 @@ import java.util.List;
  */
 public interface IProyectoService {
     public List<Proyecto> traer();
-    public Proyecto traer(Long id);
+    public Proyecto traer(Long id)throws ProyectoNotFoundException;
     public Proyecto guardar(Proyecto proyecto);
-    public void modificar(Proyecto proyecto);
+    public void modificar(Proyecto proyecto)throws ProyectoNotFoundException;
     public void borrar(Long id);
     
 }

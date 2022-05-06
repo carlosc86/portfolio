@@ -23,8 +23,8 @@ public class ExperienciaLaboralDTO {
     private String nombreEmpresa;
     private String direccionEmpresa;
     private String rutaLogoEmpresa;
-    private int fechaInicio;
-    private int fechaFin;
+    private String fechaInicio;
+    private String fechaFin;
 
 
     public ExperienciaLaboralDTO() {

@@ -17,20 +17,20 @@
                         <label for="titulo_estudio" class="form-label">Titulo</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" [(ngModel)]="elemento.institucion"  id="institucion" class="form-control" formControlName="institucion" placeholder="Institucion">
+                        <input type="text" [(ngModel)]="elemento.nombreInstitucion"  id="institucion" class="form-control" formControlName="institucion" placeholder="Institucion">
                         <label for="titulo_estudio" class="form-label">Institucion</label>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" [(ngModel)]="elemento.urlLogo"  id="logo_institucion" class="form-control" formControlName="urlLogo">
+                        <input type="text" [(ngModel)]="elemento.rutaLogoInstitucion"  id="logo_institucion" class="form-control" formControlName="urlLogo">
                         <label for="logo_institucion" class="input-group-text">Logo</label>
                     </div>
                     <div class="row mb-3">
                         <div class="input-group col">
-                            <input type="number" [(ngModel)]="elemento.anioInicio"  id="fechaEstudioInicio" class="form-control" formControlName="anioInicio" min="1960" max="2022" aria-valuenow="2022">
+                            <input type="date" [(ngModel)]="elemento.fechaInicio"  id="fechaEstudioInicio" class="form-control" formControlName="anioInicio" >
                             <label for="fechaEstudioInicio" class="input-group-text">Fecha inicio</label>
                         </div>
                         <div class="input-group col">
-                            <input type="number" [(ngModel)]="elemento.anioFin"  id="fechaEstudioFin" class="form-control" formControlName="anioFin" min="1960" max="2022" aria-valuenow="2022">
+                            <input type="date" [(ngModel)]="elemento.fechaFin"  id="fechaEstudioFin" class="form-control" formControlName="anioFin">
                             <label for="fechaEstudioFin" class="input-group-text">Fecha fin</label>
                         </div>
                     </div>

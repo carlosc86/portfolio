@@ -11,10 +11,11 @@ export class InfoEstudioComponent implements OnInit {
   @Input() estudio:EstudioData={
     id:0,
     titulo:"",
-    institucion:"",
-    urlLogo:"",
-    anioInicio:"",
-    anioFin:""
+    nombreInstitucion:"",
+    direccionInstitucion:"",
+    rutaLogoInstitucion:"",
+    fechaInicio:"",
+    fechaFin:""
   };
 
   @Output() emisor:EventEmitter<EstudioData>=new EventEmitter<EstudioData>();
@@ -26,6 +27,10 @@ export class InfoEstudioComponent implements OnInit {
 
   activar(){
     this.emisor.emit(this.estudio);
+  }
+
+  getYear(fecha:String){
+    return fecha.split("-")[0];
   }
 
 }

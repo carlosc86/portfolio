@@ -5,6 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.services;
 
+import com.herokuapp.portfolioapbackend.exceptions.SeccionNotFoundException;
 import com.herokuapp.portfolioapbackend.model.Seccion;
 import java.util.List;
 
@@ -14,10 +15,10 @@ import java.util.List;
  */
 public interface ISeccionService {
     public List<Seccion> traer();
-    public Seccion traer(Long id);
-    public Seccion traer(String nombre);
+    public Seccion traer(Long id)throws SeccionNotFoundException;
+    public Seccion traer(String nombre)throws SeccionNotFoundException;
     public Seccion guardar(Seccion seccion);
-    public void modificar(Seccion seccion);
+    public void modificar(Seccion seccion)throws SeccionNotFoundException;
     public void borrar(Long id);
     
 }

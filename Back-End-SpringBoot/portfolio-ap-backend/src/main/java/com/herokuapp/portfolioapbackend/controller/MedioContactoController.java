@@ -45,7 +45,7 @@ public class MedioContactoController {
     }
     
     @GetMapping("/medios_contacto/{id}")
-    public MedioContactoDTO getMedioContacto(@PathVariable Long id){
+    public MedioContactoDTO getMedioContacto(@PathVariable Long id)throws Exception{
         return medioMapper.toDTO(medioService.traer(id));
     }
     
@@ -56,7 +56,7 @@ public class MedioContactoController {
     }
     
     @PutMapping("/medios_contacto/{id}")
-    public void putMedioContacto(@PathVariable Long id, @RequestBody MedioContactoDTO medioDto ){
+    public void putMedioContacto(@PathVariable Long id, @RequestBody MedioContactoDTO medioDto )throws Exception{
         if(id==medioDto.getId())
             medioService.modificar(medioMapper.toEntity(medioDto));
     }

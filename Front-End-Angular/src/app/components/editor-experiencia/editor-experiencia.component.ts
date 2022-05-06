@@ -37,7 +37,8 @@ export class EditorExperienciaComponent extends EditorData<ExperienciaData> impl
       tipoTrabajo:"",
       descripcion:"",
       nombreEmpresa:"",
-      urlLogoEmpresa:"",
+      direccionEmpresa:"",
+      rutaLogoEmpresa:"",
       fechaInicio:"",
       fechaFin:""
     };

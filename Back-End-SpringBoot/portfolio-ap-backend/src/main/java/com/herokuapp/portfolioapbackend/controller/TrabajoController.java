@@ -45,7 +45,7 @@ public class TrabajoController {
     }
     
     @GetMapping("/experiencias/{id}")
-    public ExperienciaLaboralDTO getTrabajo(@PathVariable Long id){
+    public ExperienciaLaboralDTO getTrabajo(@PathVariable Long id)throws Exception{
         return experienciaMapper.toDTO(trabajoService.traer(id));
     }
     
@@ -56,7 +56,7 @@ public class TrabajoController {
     }
     
     @PutMapping("/experiencias/{id}")
-    public void putTrabajo(@PathVariable Long id, @RequestBody ExperienciaLaboralDTO experiencia ){
+    public void putTrabajo(@PathVariable Long id, @RequestBody ExperienciaLaboralDTO experiencia )throws Exception{
         if(id==experiencia.getId())
             trabajoService.modificar(experienciaMapper.toEntity(experiencia));
     }

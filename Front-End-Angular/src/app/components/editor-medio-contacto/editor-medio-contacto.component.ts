@@ -30,9 +30,9 @@ export class EditorMedioContactoComponent extends EditorData<MedioContactoData> 
   protected borrarElemento(): MedioContactoData {
     return {
       id:NaN,
-      url:"",
+      link:"",
       empresa:"",
-      urlLogo:""
+      rutaIcono:""
     };
   }
 

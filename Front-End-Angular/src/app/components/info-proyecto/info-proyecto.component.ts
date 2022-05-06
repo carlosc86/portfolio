@@ -13,8 +13,8 @@ export class InfoProyectoComponent implements OnInit {
     nombre:"",
     descripcion:"",
     link:"",
-    anio:"",
-    urlImagenes:[""]
+    fecha:"",
+    rutasImagenes:[""]
   }
 
   @Output() emisor:EventEmitter<ProyectoData>=new EventEmitter<ProyectoData>();
@@ -28,4 +28,7 @@ export class InfoProyectoComponent implements OnInit {
     this.emisor.emit(this.proyecto);
   }
 
+  getYear(fecha:String){
+    return fecha.split("-")[0];
+  }
 }

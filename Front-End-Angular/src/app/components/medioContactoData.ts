@@ -1,6 +1,6 @@
 export interface MedioContactoData{
     id:number,
-    url:string,
+    link:string,
     empresa:string,
-    urlLogo:string
+    rutaIcono:string
 }

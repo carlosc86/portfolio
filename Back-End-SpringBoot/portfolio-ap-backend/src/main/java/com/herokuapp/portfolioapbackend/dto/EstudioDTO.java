@@ -7,6 +7,8 @@ package com.herokuapp.portfolioapbackend.dto;
 
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.PastOrPresent;
 import lombok.Getter;
@@ -19,17 +21,16 @@ import lombok.Setter;
 @Getter @Setter
 public class EstudioDTO {
     
-    @NotNull
+    
     private long id;
     private String titulo;
     private String nombreInstitucion;
     private String direccionInstitucion;
     
     private String rutaLogoInstitucion;
-    //@Past
-    private int fechaInicio;
-    //@PastOrPresent
-    private int fechaFin;
+   
+    private String fechaInicio;
+    private String fechaFin;
 
     public EstudioDTO() {
     }    

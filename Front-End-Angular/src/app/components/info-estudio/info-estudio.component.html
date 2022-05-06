@@ -1,10 +1,10 @@
 <div class="card mx-auto mt-3 text-white shadow estudios">
     <h5 class="card-title text-decoration-underline"><strong>{{estudio.titulo}}</strong></h5>
     <div class="card-body">
-        <img src="{{estudio.urlLogo}}" alt="" class="card-img rounded-circle">
-        <p class="card-text">{{estudio.institucion}}</p>
+        <img src="{{estudio.rutaLogoInstitucion}}" alt="" class="card-img rounded-circle">
+        <p class="card-text">{{estudio.nombreInstitucion}}</p>
     </div>
-    <div class="card-footer">{{estudio.anioInicio + '-' + estudio.anioFin}}</div>
+    <div class="card-footer">{{getYear(estudio.fechaInicio) + '-' + getYear(estudio.fechaFin)}}</div>
 </div>
 <div class="col-12 mt-2">
     <!--Botones para editar o eliminar Estudio -->

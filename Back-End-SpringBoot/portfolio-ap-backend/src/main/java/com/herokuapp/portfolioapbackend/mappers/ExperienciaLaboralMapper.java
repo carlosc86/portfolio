@@ -10,6 +10,7 @@ import com.herokuapp.portfolioapbackend.model.Empresa;
 import com.herokuapp.portfolioapbackend.model.TipoTrabajo;
 import com.herokuapp.portfolioapbackend.model.Trabajo;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,8 +26,8 @@ public class ExperienciaLaboralMapper implements IExperienciaLaboralMapper {
         experienciaDTO.setId(experiencia.getId());
         experienciaDTO.setPuesto(experiencia.getPuesto()!=null?experiencia.getPuesto():"");
         experienciaDTO.setDescripcion(experiencia.getDescripcion()!=null?experiencia.getDescripcion():"");
-        experienciaDTO.setFechaInicio(experiencia.getFechaInicio().getYear());
-        experienciaDTO.setFechaFin(experiencia.getFechaFin().getYear());
+        experienciaDTO.setFechaInicio(experiencia.getFechaInicio().format(DateTimeFormatter.ISO_LOCAL_DATE));
+        experienciaDTO.setFechaFin(experiencia.getFechaFin().format(DateTimeFormatter.ISO_LOCAL_DATE));
         Empresa empresa=experiencia.getEmpresa();
         experienciaDTO.setNombreEmpresa(empresa.getNombre()!=null?empresa.getNombre():"");
         experienciaDTO.setDireccionEmpresa(empresa.getDireccion()!=null?empresa.getDireccion():"");
@@ -41,8 +42,8 @@ public class ExperienciaLaboralMapper implements IExperienciaLaboralMapper {
         trabajo.setId(experienciaDTO.getId());
         trabajo.setPuesto(experienciaDTO.getPuesto()!=null?experienciaDTO.getPuesto():"");
         trabajo.setDescripcion(experienciaDTO.getDescripcion()!=null?experienciaDTO.getDescripcion():"");
-        trabajo.setFechaInicio(LocalDate.of(experienciaDTO.getFechaInicio(), 1, 1));
-        trabajo.setFechaFin(LocalDate.of(experienciaDTO.getFechaFin(), 1, 1));
+        trabajo.setFechaInicio(LocalDate.parse(experienciaDTO.getFechaInicio(),DateTimeFormatter.ISO_LOCAL_DATE));
+        trabajo.setFechaFin(LocalDate.parse(experienciaDTO.getFechaFin(), DateTimeFormatter.ISO_LOCAL_DATE));
         Empresa empresa=new Empresa();
         //empresa.setId(0L);
         empresa.setNombre(experienciaDTO.getNombreEmpresa());

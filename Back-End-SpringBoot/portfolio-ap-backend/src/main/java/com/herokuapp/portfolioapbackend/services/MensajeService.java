@@ -5,6 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.services;
 
+import com.herokuapp.portfolioapbackend.exceptions.MensajeNotFoundException;
 import com.herokuapp.portfolioapbackend.model.Mensaje;
 import com.herokuapp.portfolioapbackend.model.Visitante;
 import com.herokuapp.portfolioapbackend.repository.MensajeRepository;
@@ -31,8 +32,10 @@ public class MensajeService implements IMensajeService{
     }
 
     @Override
-    public Mensaje traer(Long id) {
-        return mensajeRepo.findById(id).orElse(null);
+    public Mensaje traer(Long id)throws MensajeNotFoundException {
+        Mensaje mensaje=mensajeRepo.findById(id).orElse(null);
+        if(mensaje==null)throw new MensajeNotFoundException("Valor de id: "+id);
+        return mensaje;
     }
 
     @Override
@@ -43,7 +46,7 @@ public class MensajeService implements IMensajeService{
     }
 
     @Override
-    public void modificar(Mensaje mensaje) {
+    public void modificar(Mensaje mensaje)throws MensajeNotFoundException {
         Mensaje guardado=traer(mensaje.getId());
         Visitante autor=gestionarVisitante(mensaje.getAutor());
         if(guardado!=null){

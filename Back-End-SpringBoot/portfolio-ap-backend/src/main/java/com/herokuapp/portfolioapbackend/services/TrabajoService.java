@@ -5,6 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.services;
 
+import com.herokuapp.portfolioapbackend.exceptions.TrabajoNotFoundException;
 import com.herokuapp.portfolioapbackend.model.Empresa;
 import com.herokuapp.portfolioapbackend.model.TipoTrabajo;
 import com.herokuapp.portfolioapbackend.model.Trabajo;
@@ -35,8 +36,10 @@ public class TrabajoService implements ITrabajoService{
     }
 
     @Override
-    public Trabajo traer(Long id) {
-        return trabajoRepo.findById(id).orElse(null);
+    public Trabajo traer(Long id) throws TrabajoNotFoundException{
+        Trabajo trabajo=trabajoRepo.findById(id).orElse(null);
+        if(trabajo==null)throw new TrabajoNotFoundException("Valor de id: "+id);
+        return trabajo;
     }
 
     @Override
@@ -49,7 +52,7 @@ public class TrabajoService implements ITrabajoService{
     }
 
     @Override
-    public void modificar(Trabajo trabajo) {
+    public void modificar(Trabajo trabajo) throws TrabajoNotFoundException{
         Trabajo guardado=traer(trabajo.getId());
         if(guardado!=null){
             guardado.setPuesto(trabajo.getPuesto());

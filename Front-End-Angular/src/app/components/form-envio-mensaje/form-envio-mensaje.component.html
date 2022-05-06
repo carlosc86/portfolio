@@ -2,7 +2,7 @@
 <div class="col-12">
     <form [formGroup]="formulario" (ngSubmit)="aceptar()" class="col-10 col-md-8 mx-auto text-secondary mb-5 not-ocultable">
         <div class="form-floating has-validation mb-4">
-            <input type="text" [(ngModel)]="correo.nombre" matInput name="nombre" class="form-control" id="nombreVisitante"
+            <input type="text" [(ngModel)]="correo.nombreAutor" matInput name="nombre" class="form-control" id="nombreVisitante"
                 formControlName="nombre" placeholder="Escriba su nombre." 
                 [ngClass]="{'is-valid': (nombre.touched&&nombre.valid),'is-invalid': nombre.touched&&nombre.invalid }">
             <label for="nombreVisitante" class="form-label">Nombre</label>
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="form-floating mb-4">
-            <input type="text" [(ngModel)]="correo.apellido" class="form-control" id="apellido"
+            <input type="text" [(ngModel)]="correo.apellidoAutor" class="form-control" id="apellido"
                 formControlName="apellido" placeholder="Escriba su apellido."
                 [ngClass]="{'is-invalid': apellido.invalid&&(apellido.dirty||apellido.touched) , 
                             'is-valid':apellido.valid&&(apellido.dirty||apellido.touched)}">
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="form-floating mb-4">
-            <input type="email" [(ngModel)]="correo.email" class="form-control" id="email" 
+            <input type="email" [(ngModel)]="correo.emailAutor" class="form-control" id="email" 
                 formControlName="email" placeholder="Escriba un email para ponerm en contacto"
                 [ngClass]="{'is-invalid': email.invalid&&(email.dirty||email.touched) , 
                             'is-valid':email.valid&&(email.dirty||email.touched)}">
@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="form-floating mb-4">
-            <input type="text" [(ngModel)]="correo.asunto" class="form-control" id="asunto" 
+            <input type="text" [(ngModel)]="correo.titulo" class="form-control" id="asunto" 
                 formControlName="asunto" placeholder="Dejeme saber de que se trata."
                 [ngClass]="{'is-invalid': asunto.invalid&&(asunto.dirty||asunto.touched) , 
                             'is-valid':asunto.valid&&(asunto.dirty||asunto.touched)}">
@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="form-floating mb-4">
-            <textarea class="form-control" [(ngModel)]="correo.mensaje" id="mensaje" placeholder="Cuentemelo todo." 
+            <textarea class="form-control" [(ngModel)]="correo.cuerpo" id="mensaje" placeholder="Cuentemelo todo." 
                 formControlName="mensaje" style="height: 200px;resize: none;"
                 [ngClass]="{'is-invalid': mensaje.invalid&&(mensaje.dirty||mensaje.touched) , 
                             'is-valid':mensaje.valid&&(mensaje.dirty||mensaje.touched)}">

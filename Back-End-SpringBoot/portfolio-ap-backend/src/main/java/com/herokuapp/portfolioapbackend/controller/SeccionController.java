@@ -6,6 +6,7 @@
 package com.herokuapp.portfolioapbackend.controller;
 
 import com.herokuapp.portfolioapbackend.dto.SeccionDTO;
+import com.herokuapp.portfolioapbackend.exceptions.SeccionNotFoundException;
 import com.herokuapp.portfolioapbackend.mappers.ISeccionMapper;
 import com.herokuapp.portfolioapbackend.model.Seccion;
 import com.herokuapp.portfolioapbackend.services.ISeccionService;
@@ -44,7 +45,7 @@ public class SeccionController {
     }
     
     @GetMapping("/secciones/{id}")
-    public SeccionDTO getSeccion(@PathVariable Long id){
+    public SeccionDTO getSeccion(@PathVariable Long id)throws Exception{
         return seccionMapper.toDTO(seccionService.traer(id));
     }
     
@@ -55,7 +56,7 @@ public class SeccionController {
     }
     
     @PutMapping("/secciones/{id}")
-    public void putSeccion(@PathVariable Long id, @RequestBody SeccionDTO seccionDto){
+    public void putSeccion(@PathVariable Long id, @RequestBody SeccionDTO seccionDto)throws Exception{
         if(id==seccionDto.getId())
             seccionService.modificar(seccionMapper.toEntity(seccionDto));
     }

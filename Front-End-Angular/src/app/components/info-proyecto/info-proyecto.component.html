@@ -3,9 +3,9 @@
         [attr.data-bs-target]="'#infoProject'+proyecto.id">
         <div class="card-body">
             <h5 class="card-title text-decoration-underline"><strong>{{proyecto.nombre}}</strong></h5>
-            <img class="card-img rounded-circle" src="{{proyecto.urlImagenes[0]}}">
+            <img class="card-img rounded-circle" src="{{proyecto.rutasImagenes[0]}}">
             <div class="card-text">
-                <p>{{proyecto.anio}}</p>
+                <p>{{getYear(proyecto.fecha)}}</p>
                 <p>Clic para más información.</p>
             </div>
         </div>
@@ -28,7 +28,7 @@
             </div>
             <div class="modal-body">
                 <img class="img-fluid col-6 mx-auto" [src]="imagen"
-                    alt="Aca va una imagen del proyecto" *ngFor="let imagen of proyecto.urlImagenes">
+                    alt="Aca va una imagen del proyecto" *ngFor="let imagen of proyecto.rutasImagenes">
                 <p class="col-12">{{proyecto.descripcion}} </p>
             </div>
             <div class="modal-footer col-12 ">

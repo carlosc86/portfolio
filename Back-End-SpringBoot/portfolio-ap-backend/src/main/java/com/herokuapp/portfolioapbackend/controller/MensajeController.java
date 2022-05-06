@@ -33,7 +33,6 @@ public class MensajeController {
     @Autowired
     private IMensajeService mensajeService;
     
-    
     @GetMapping("/mensajes")
     public List<MensajeDTO> getMensaje(){
         List<Mensaje> lista= mensajeService.traer();
@@ -45,7 +44,7 @@ public class MensajeController {
     }
     
     @GetMapping("/mensajes/{id}")
-    public MensajeDTO getMensaje(@PathVariable Long id){
+    public MensajeDTO getMensaje(@PathVariable Long id)throws Exception{
         return mensajeMapper.toDTO(mensajeService.traer(id));
     }
     
@@ -56,7 +55,7 @@ public class MensajeController {
     }
     
     @PutMapping("/mensajes/{id}")
-    public void putMensaje(@PathVariable Long id, @RequestBody MensajeDTO mensajeDto ){
+    public void putMensaje(@PathVariable Long id, @RequestBody MensajeDTO mensajeDto )throws Exception{
         if(id==mensajeDto.getId())
             mensajeService.modificar(mensajeMapper.toEntity(mensajeDto));
     }
