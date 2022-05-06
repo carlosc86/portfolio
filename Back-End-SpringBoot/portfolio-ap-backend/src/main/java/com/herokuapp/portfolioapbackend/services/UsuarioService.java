@@ -9,6 +9,7 @@ import com.herokuapp.portfolioapbackend.model.Usuario;
 import com.herokuapp.portfolioapbackend.repository.UsuarioRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -39,6 +40,7 @@ public class UsuarioService implements IUsuarioService{
 
     @Override
     public Usuario guardar(Usuario usuario) {
+        usuario.setPassword(new BCryptPasswordEncoder().encode(usuario.getPassword()));//Antes de guardar encripto la password
         return usuarioRepo.save(usuario);
     }
 
@@ -46,7 +48,7 @@ public class UsuarioService implements IUsuarioService{
     public void modificar(Usuario usuario) {
         Usuario guardado=traer(usuario.getNombreUsuario());
         if (guardado!=null) {
-            guardado.setPassword(usuario.getPassword());
+            guardado.setPassword(new BCryptPasswordEncoder().encode(usuario.getPassword()));
             guardado.setPrivilegios(usuario.getPrivilegios());
             guardado.setUltimoAcceso(usuario.getUltimoAcceso());
             usuarioRepo.save(guardado);
