@@ -3,5 +3,5 @@ export interface SeccionData{
     nombre:string,
     titulo:string,
     texto:string,
-    urlImagen:string,
+    rutaImagen:string,
 }

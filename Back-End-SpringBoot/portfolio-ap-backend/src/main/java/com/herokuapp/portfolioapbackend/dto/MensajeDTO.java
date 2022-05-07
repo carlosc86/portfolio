@@ -16,7 +16,7 @@ import lombok.Setter;
 @Getter @Setter
 public class MensajeDTO {
     
-    public Long id;
+    public long id;
     public String titulo;
     public String cuerpo;
     public String fecha;

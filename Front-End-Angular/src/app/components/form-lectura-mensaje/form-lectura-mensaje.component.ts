@@ -45,10 +45,10 @@ export class FormLecturaMensajeComponent implements OnInit {
 
   leerMensaje(id:number){
     this.mensajeActivo=this.mensajes.find(e => e.id===id)!;
-    if(this.mensajeActivo!=null && !this.mensajeActivo.leido){
+    
+    if(this.mensajeActivo!=null && !(this.mensajeActivo.leido)){
       this.mensajeActivo.leido=true;
       this.mensajeService.modificar(this.mensajeActivo).subscribe(dato=>{
-        
       });
     }    
   }

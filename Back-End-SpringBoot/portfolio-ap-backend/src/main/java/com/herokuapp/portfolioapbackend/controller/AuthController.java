@@ -6,6 +6,7 @@
 package com.herokuapp.portfolioapbackend.controller;
 
 import com.herokuapp.portfolioapbackend.dto.AuthDTO;
+import com.herokuapp.portfolioapbackend.dto.UsuarioDTO;
 import com.herokuapp.portfolioapbackend.mappers.IUsuarioMapper;
 import com.herokuapp.portfolioapbackend.model.Usuario;
 import com.herokuapp.portfolioapbackend.security.JwtService;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author carlos
  */
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 public class AuthController {
     
@@ -31,7 +33,7 @@ public class AuthController {
     @Autowired
     private JwtService jwt;
     
-    @CrossOrigin(origins="http://localhost:4200")
+    
     @PostMapping("/auth")
     public AuthDTO login(@AuthenticationPrincipal MyUserDetails usuario) throws Exception{
         /*Este metodo es accesible con basic auth y devuelve un dto con datos del usuario y el token jwt*/
@@ -44,4 +46,14 @@ public class AuthController {
                                      usuarioGuardado.getPrivilegios().getNombre()));
         return auth;        
     }
+    
+    @PostMapping("/auth/logout")
+    public void logout(UsuarioDTO usuario){
+        /*Por ahora no se hace nada en el backend al desloguear,
+         *Pero tal vez se podria inhabilitar el token.
+        */
+        
+    }
+    
+    
 }

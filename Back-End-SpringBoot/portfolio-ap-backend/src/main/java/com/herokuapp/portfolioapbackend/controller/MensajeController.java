@@ -12,6 +12,7 @@ import com.herokuapp.portfolioapbackend.services.IMensajeService;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,6 +52,7 @@ public class MensajeController {
         return mensajeMapper.toDTO(mensajeService.traer(id));
     }
     
+    @PreAuthorize("permitAll()")
     @PostMapping("/mensajes")
     public MensajeDTO postMensaje(@RequestBody MensajeDTO mensajeDto ){
         /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
@@ -59,8 +61,9 @@ public class MensajeController {
     
     @PutMapping("/mensajes/{id}")
     public void putMensaje(@PathVariable Long id, @RequestBody MensajeDTO mensajeDto )throws Exception{
-        if(id==mensajeDto.getId())
+        if(id==mensajeDto.getId()){
             mensajeService.modificar(mensajeMapper.toEntity(mensajeDto));
+        }
     }
     
     @DeleteMapping("/mensajes/{id}")

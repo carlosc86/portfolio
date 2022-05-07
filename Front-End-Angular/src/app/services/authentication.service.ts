@@ -35,14 +35,16 @@ export class AuthenticationService {
   }
 
   logout():Observable<any>{
-    return this.api.getUrl(this.endpointRoot).pipe(map(data=>{
-      sessionStorage.removeItem(this.tokenKey);
-      sessionStorage.removeItem(this.userKey);
+    sessionStorage.removeItem(this.tokenKey);
+    sessionStorage.removeItem(this.userKey);
+    
+  
+    return this.api.postUrl(this.endpointRoot+"/logout",this.currentUserSubject.value).pipe(map(data=>{
       this.currentTokenSubject.next(JSON.parse('{}'));//no hay nada lo acabo de borrar
       this.currentUserSubject.next(JSON.parse('{}'));//no hay nada lo acabo de borrar
       return data;
     }));
-  }
+  } 
 
   isLogin():boolean{
     return sessionStorage.getItem(this.tokenKey)? true:false; //Por ahora si no hay token no estas logueado, sin tener en cuenta la expiracion.

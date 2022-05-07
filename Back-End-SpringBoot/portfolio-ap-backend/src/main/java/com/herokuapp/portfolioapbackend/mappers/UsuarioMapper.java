@@ -17,12 +17,13 @@ import org.springframework.stereotype.Service;
 public class UsuarioMapper implements IUsuarioMapper{
 
     @Override
-    public UsuarioDTO toDTO(Usuario entidad) {
+    public UsuarioDTO toDTO(Usuario usuario) {
         UsuarioDTO usuarioDto=new UsuarioDTO();
-        usuarioDto.setNombre(entidad.getNombre());
-        usuarioDto.setApellido(entidad.getApellido());
-        usuarioDto.setRutaIcono(entidad.getRutaIcono());
-        usuarioDto.setNombreUsuario(entidad.getNombreUsuario());
+        usuarioDto.setId(usuario.getId());
+        usuarioDto.setNombre(usuario.getNombre());
+        usuarioDto.setApellido(usuario.getApellido());
+        usuarioDto.setRutaIcono(usuario.getRutaIcono());
+        usuarioDto.setNombreUsuario(usuario.getNombreUsuario());
         return usuarioDto;
     }
 

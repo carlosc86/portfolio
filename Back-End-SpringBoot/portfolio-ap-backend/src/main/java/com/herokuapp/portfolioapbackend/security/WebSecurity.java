@@ -9,6 +9,7 @@ import com.herokuapp.portfolioapbackend.filters.JwtAuthorizationFilter;
 import com.herokuapp.portfolioapbackend.filters.OnlyOneBasicAuthFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -47,6 +48,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
                 /*Configuracion de la seguridad en los endpoints*/
                 .and().authorizeHttpRequests().antMatchers(LOGIN_PATH).authenticated() //Ruta de login, solo con auth basic
                 .antMatchers("/portfolio").permitAll()//Portfolio se accede sin autorizacion.
+                .antMatchers(HttpMethod.POST,"/mensajes").permitAll()//Endpoint para dejar mensajes al propietario del portfolio.
                 .anyRequest().authenticated()//Las demas solo con autorizacion, en realidad las frenara el filtro jwt
                 /*Configuracion de filtros*/
                 .and().addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)

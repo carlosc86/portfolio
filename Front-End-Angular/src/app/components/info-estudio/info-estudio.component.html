@@ -6,9 +6,9 @@
     </div>
     <div class="card-footer">{{getYear(estudio.fechaInicio) + '-' + getYear(estudio.fechaFin)}}</div>
 </div>
-<div class="col-12 mt-2">
+<div class="col-12 mx-auto mt-2">
     <!--Botones para editar o eliminar Estudio -->
-    <app-elemento-boton [imagen]="'assets/EditButton.png'" [target]="'#editStudies'" (click)="activar()" class="editButton"></app-elemento-boton>
-    <app-elemento-boton [imagen]="'assets/DeleteButton.png'" [target]="'#modalEliminarEstudio'" (click)="activar()" class="editButton"></app-elemento-boton>
+    <app-elemento-boton class="me-2" [estilo]="'width:75px;'"  [imagen]="'assets/EditButton.png'" [target]="'#editStudies'" (click)="activar()" class="editButton"></app-elemento-boton>
+    <app-elemento-boton class="ms-2" [estilo]="'width:75px;'"  [imagen]="'assets/DeleteButton.png'" [target]="'#modalEliminarEstudio'" (click)="activar()" class="editButton"></app-elemento-boton>
     
 </div>
