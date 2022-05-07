@@ -31,6 +31,7 @@ public class Usuario extends Persona{
     private Long id;
     private String nombreUsuario;
     private String password;
+    private String rutaIcono;
     private Date ultimoAcceso;
     
     @ManyToOne(fetch=FetchType.EAGER)

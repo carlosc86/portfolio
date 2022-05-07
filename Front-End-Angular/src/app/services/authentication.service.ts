@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -23,8 +24,9 @@ export class AuthenticationService {
 
   login(credenciales:CredencialData):Observable<any>{
     //CAMBIAR ESTO POR UN POST
-    return this.api.getUrl(this.endpointRoot/*,credenciales*/).pipe(map(data=>{
-      sessionStorage.setItem(this.tokenKey,JSON.stringify(data.accessToken));//guardo el token en el sessionStorage.
+    let header=new HttpHeaders().set("Authorization","basic "+btoa(credenciales.user+":"+credenciales.password));
+    return this.api.postUrl(this.endpointRoot,"",header).pipe(map(data=>{
+      sessionStorage.setItem(this.tokenKey,JSON.stringify(data.token));//guardo el token en el sessionStorage.
       sessionStorage.setItem(this.userKey,JSON.stringify(data.usuario));
       this.currentTokenSubject.next(JSON.parse(sessionStorage.getItem(this.tokenKey)!));
       this.currentUserSubject.next(JSON.parse(sessionStorage.getItem(this.userKey)!));

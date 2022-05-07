@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author carlos
  */
+@CrossOrigin(origins="http://localhost:4200")//Por ahora asi para poder usar angular
 @RestController
 public class PortfolioController {
     

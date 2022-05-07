@@ -7,6 +7,7 @@ package com.herokuapp.portfolioapbackend.exceptions;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,4 +37,20 @@ public class ApiExceptionHandler {
     public ErrorMessage badRequest(HttpServletRequest request,Exception exception){
         return new ErrorMessage(exception,request.getRequestURI());
     }
+    
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler({UsernameNotFoundException.class, TokenInvalidException.class,
+                       TokenSignatureInvalidException.class, TokenTimeExpiredException.class})
+    @ResponseBody
+    public void unauthorized(HttpServletRequest request,Exception exception){
+        
+    }
+    
+    /*
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ExceptionHandler({})
+    @ResponseBody
+    public void forbidden(HttpServletRequest request,Exception exception){
+        
+    }*/
 }

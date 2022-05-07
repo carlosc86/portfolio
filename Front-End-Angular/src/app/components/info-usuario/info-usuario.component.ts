@@ -13,9 +13,9 @@ export class InfoUsuarioComponent implements OnInit {
     id:NaN,
     nombre:"",
     apellido:"",
-    email:"",
-    privilegios:"invitado",
-    urlIcono:""
+    nombreUsuario:"",
+    //privilegios:"invitado",
+    rutaIcono:""
   }
 
   constructor(private authService:AuthenticationService) { }

@@ -21,7 +21,7 @@ public class UsuarioMapper implements IUsuarioMapper{
         UsuarioDTO usuarioDto=new UsuarioDTO();
         usuarioDto.setNombre(entidad.getNombre());
         usuarioDto.setApellido(entidad.getApellido());
-        usuarioDto.setRutaIcono("/assets/star.png");//Me olvide de ese campo, ya lo agrego
+        usuarioDto.setRutaIcono(entidad.getRutaIcono());
         usuarioDto.setNombreUsuario(entidad.getNombreUsuario());
         return usuarioDto;
     }

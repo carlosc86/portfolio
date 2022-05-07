@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { catchError, Observable, of, throwError } from 'rxjs';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class ApiComunicationService {
     if(error.status===0){
       console.log("Error de conexion: No se ha podido establecer una comunicacion con el servidor.")
     }else{
-      console.error(`Ha ocurrido un error!!\nCodigo: ${error.status} \nBody: ${error.error}`);
+      console.error(`Ha ocurrido un error!!\nCodigo: ${error.status} \nError: ${error.error}`);
     }
     return throwError(()=>new Error("Error en la comunicacion con API, vuelva a intentarlo o comuniquese con el administrador."));
 
@@ -27,8 +27,8 @@ export class ApiComunicationService {
     return this.http.put(environment.urlServicio+endpoint,body)
                     .pipe(catchError(this.errorHandler));
   }
-  postUrl(endpoint:string,body:any):Observable<any>{
-    return this.http.post(environment.urlServicio+endpoint,body)
+  postUrl(endpoint:string,body:any,header?:HttpHeaders):Observable<any>{
+    return this.http.post(environment.urlServicio+endpoint,body,{'headers':header})
                     .pipe(catchError(this.errorHandler));
   }
   deleteUrl(endpoint:string):Observable<any>{

@@ -51,6 +51,7 @@ public class UsuarioService implements IUsuarioService{
             guardado.setPassword(new BCryptPasswordEncoder().encode(usuario.getPassword()));
             guardado.setPrivilegios(usuario.getPrivilegios());
             guardado.setUltimoAcceso(usuario.getUltimoAcceso());
+            guardado.setRutaIcono(usuario.getRutaIcono());
             usuarioRepo.save(guardado);
         }
     }
