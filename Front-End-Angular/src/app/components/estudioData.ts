@@ -1,18 +1,11 @@
 export interface EstudioData{
     id:number,
     titulo:string,
-    institucion:string,
-    urlLogo:string,
-    anioInicio:string,
-    anioFin:string
+    nombreInstitucion:string,
+    direccionInstitucion:string,
+    rutaLogoInstitucion:string,
+    fechaInicio:String,
+    fechaFin:String
 }
 
 
-export class Estudio implements EstudioData{
-    id: number=NaN;
-    titulo: string="";
-    institucion: string="";
-    urlLogo: string="";
-    anioInicio: string="";
-    anioFin: string="";
-}

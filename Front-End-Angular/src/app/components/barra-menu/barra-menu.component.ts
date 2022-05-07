@@ -19,7 +19,7 @@ export class BarraMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.pdto.obtener<MedioContactoData>("medios_contacto").subscribe(dato=>{
-      this.mediosContacto=dato
+      this.mediosContacto=dato;
     });
   }
 

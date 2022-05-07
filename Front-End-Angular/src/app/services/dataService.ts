@@ -13,17 +13,17 @@ export class DataService<T extends DataPortfolio> {
         
     }
 
-    traer():Observable<T[]>{
-        return this.api.getUrl(this.endpointRoot);
+    traer(ruta?:string):Observable<T[]>{
+        return this.api.getUrl(ruta?ruta:this.endpointRoot);
     };
-    agregar(dato:T):Observable<T>{
-        return this.api.postUrl(this.endpointRoot,dato);
+    agregar(dato:T,ruta?:string):Observable<T>{
+        return this.api.postUrl(ruta?ruta:this.endpointRoot,dato);
     };
-    modificar(dato:T):Observable<T>{
-        return this.api.putUrl(this.endpointRoot+"/"+dato.id,dato);
+    modificar(dato:T,ruta?:string):Observable<T>{
+        return this.api.putUrl((ruta?ruta:this.endpointRoot)+"/"+dato.id,dato);
     };
-    borrar(dato:T):Observable<T>{
-        return this.api.deleteUrl(this.endpointRoot+"/"+dato.id);
+    borrar(dato:T,ruta?:string):Observable<T>{
+        return this.api.deleteUrl((ruta?ruta:this.endpointRoot)+"/"+dato.id);
     };
 
 }

@@ -9,10 +9,10 @@ import { MedioContactoData } from '../medioContactoData';
 export class InfoMedioContactoComponent implements OnInit {
 
   @Input() medioContacto:MedioContactoData={
-    id:-1,
-    url:"",
+    id:NaN,
+    link:"",
     empresa:"",
-    urlLogo:""
+    rutaIcono:""
   }
 
   @Output() emisor:EventEmitter<MedioContactoData>=new EventEmitter<MedioContactoData>();

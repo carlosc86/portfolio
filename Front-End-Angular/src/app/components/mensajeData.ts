@@ -1,10 +1,10 @@
 export interface MensajeData{
     id:number,
-    nombre:string,
-    apellido:string,
-    email:string,
-    asunto:string,
-    mensaje:string,
+    nombreAutor:string,
+    apellidoAutor:string,
+    emailAutor:string,
+    titulo:string,
+    cuerpo:string,
     fecha:string;
     leido:boolean
 };

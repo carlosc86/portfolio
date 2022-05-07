@@ -2,7 +2,7 @@ export interface UsuarioData{
     id:number,
     nombre:string,
     apellido:string,
-    email:string,
-    privilegios:"invitado"|"administrador",
-    urlIcono:string
+    nombreUsuario:string,
+    //privilegios:"invitado"|"administrador",
+    rutaIcono:string
 }

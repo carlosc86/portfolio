@@ -12,8 +12,8 @@
                     [ngClass]="{'active fw-bold text-dark':mensaje.id==mensajeActivo.id ,'text-secondary':mensaje.leido}">
                     <div class="row small">
                         <div class="col-2 ">{{darFormatoFecha(mensaje.fecha,false)}}</div>
-                        <div class="col-4">{{mensaje.nombre}} {{mensaje.apellido}}</div>
-                        <div class="col-6">{{mensaje.asunto}}</div>
+                        <div class="col-4">{{mensaje.nombreAutor}} {{mensaje.apellidoAutor}}</div>
+                        <div class="col-6">{{mensaje.titulo}}</div>
                     </div>
                 </button>
             </div>
@@ -23,17 +23,17 @@
         <div class="row mb-0 mb-md-3">
             <div class="input-group col-12 col-md mb-2 mb-md-0">
                 <label for="nombreMensaje" class="input-group-text label-info">Nombre:</label>
-                <input type="text" [value]="mensajeActivo.nombre+' '+mensajeActivo.apellido" id="nombreMensaje" class="form-control" disabled readonly>
+                <input type="text" [value]="mensajeActivo.nombreAutor+' '+mensajeActivo.apellidoAutor" id="nombreMensaje" class="form-control" disabled readonly>
             </div>
             <div class="input-group col-12 col-md mb-2 mb-md-0">
                 <label for="emailMensaje" class="input-group-text label-info">Email:</label>
-                <input type="email" [value]="mensajeActivo.email" id="emailMensaje" class="form-control" disabled readonly>
+                <input type="email" [value]="mensajeActivo.emailAutor" id="emailMensaje" class="form-control" disabled readonly>
             </div>
         </div>
         <div class="row mb-0 mb-md-3">
             <div class="input-group col-12 col-md mb-2 mb-md-0 ">
                 <label for="asuntoMensaje" class="input-group-text label-info">Asunto:</label>
-                <input type="text" [value]="mensajeActivo.asunto" id="asuntoMensaje" class="form-control" disabled readonly>
+                <input type="text" [value]="mensajeActivo.titulo" id="asuntoMensaje" class="form-control" disabled readonly>
             </div>
             <div class="input-group col-12 col-md mb-2 mb-md-0 ">
                 <label for="fechaMensaje" class="input-group-text top label-info">Fecha:</label>
@@ -42,7 +42,7 @@
         </div>
         <div class="col mb-3">
             <label for="cuerpoMensaje" class="input-group-text justify-content-center" style="border-radius: 15px 15px 0px 0px;">Mensaje</label>
-            <textarea id="cuerpoMensaje" class="form-control text-left" disabled readonly style="resize: none; height: 150px;">{{mensajeActivo.mensaje}}</textarea>
+            <textarea id="cuerpoMensaje" class="form-control text-left" disabled readonly style="resize: none; height: 150px;">{{mensajeActivo.cuerpo}}</textarea>
         </div>
         <div class="col-12">
             <button type="button" class="btn btn-primary shadow mb-3 " (click)="anteriorMensaje()">Previo</button>

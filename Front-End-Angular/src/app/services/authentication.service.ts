@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -23,8 +24,9 @@ export class AuthenticationService {
 
   login(credenciales:CredencialData):Observable<any>{
     //CAMBIAR ESTO POR UN POST
-    return this.api.getUrl(this.endpointRoot/*,credenciales*/).pipe(map(data=>{
-      sessionStorage.setItem(this.tokenKey,JSON.stringify(data.accessToken));//guardo el token en el sessionStorage.
+    let header=new HttpHeaders().set("Authorization","basic "+btoa(credenciales.user+":"+credenciales.password));
+    return this.api.postUrl(this.endpointRoot,"",header).pipe(map(data=>{
+      sessionStorage.setItem(this.tokenKey,JSON.stringify(data.token));//guardo el token en el sessionStorage.
       sessionStorage.setItem(this.userKey,JSON.stringify(data.usuario));
       this.currentTokenSubject.next(JSON.parse(sessionStorage.getItem(this.tokenKey)!));
       this.currentUserSubject.next(JSON.parse(sessionStorage.getItem(this.userKey)!));
@@ -33,14 +35,16 @@ export class AuthenticationService {
   }
 
   logout():Observable<any>{
-    return this.api.getUrl(this.endpointRoot).pipe(map(data=>{
-      sessionStorage.removeItem(this.tokenKey);
-      sessionStorage.removeItem(this.userKey);
+    sessionStorage.removeItem(this.tokenKey);
+    sessionStorage.removeItem(this.userKey);
+    
+  
+    return this.api.postUrl(this.endpointRoot+"/logout",this.currentUserSubject.value).pipe(map(data=>{
       this.currentTokenSubject.next(JSON.parse('{}'));//no hay nada lo acabo de borrar
       this.currentUserSubject.next(JSON.parse('{}'));//no hay nada lo acabo de borrar
       return data;
     }));
-  }
+  } 
 
   isLogin():boolean{
     return sessionStorage.getItem(this.tokenKey)? true:false; //Por ahora si no hay token no estas logueado, sin tener en cuenta la expiracion.

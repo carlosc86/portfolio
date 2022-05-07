@@ -1,3 +1,4 @@
+import { LocationStrategy } from '@angular/common';
 import { Component, OnInit} from '@angular/core';
 import { FormBuilder} from '@angular/forms';
 import { EstudioDataService } from 'src/app/services/estudio-data.service';
@@ -32,10 +33,11 @@ export class EditorEstudioComponent extends EditorData<EstudioData> implements O
     return {
       id:NaN,
       titulo:"",
-      institucion:"",
-      urlLogo:"",
-      anioInicio:"",
-      anioFin:""
+      nombreInstitucion:"",
+      direccionInstitucion:"",
+      rutaLogoInstitucion:"",
+      fechaInicio:"",
+      fechaFin:""
     };
   }
 

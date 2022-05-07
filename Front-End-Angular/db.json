@@ -35,24 +35,64 @@
       "titulo": "Tecnico Electronico - Automatizacion",
       "institucion": "Escuela Presbitero Constantino Spagnolo",
       "urlLogo": "../../../assets/electronics.png",
-      "anioInicio": "2002",
-      "anioFin": "2006"
+      "fechaInicio": "2022-05-03",
+      "fechaFin": "2022-05-02"
     },
     {
       "id": 1,
       "titulo": "Estudiante Ingenieria en Sistemas",
       "institucion": "UTN - Facultad Regional Mendoza",
       "urlLogo": "../../../assets/computer.png",
-      "anioInicio": "2006",
-      "anioFin": 2010
+      "fechaInicio": "2006-11-01",
+      "fechaFin": "2010-04-22"
     },
     {
       "id": 2,
       "titulo": "Programado Full Stack Web",
       "institucion": "Ministerio de Desarrollo Productivo",
       "urlLogo": "../../../assets/network.png",
-      "anioInicio": "2021",
-      "anioFin": "2022"
+      "fechaInicio": "2021",
+      "fechaFin": "2022"
+    },
+    {
+      "id": 3,
+      "titulo": "hola",
+      "institucion": "querta",
+      "urlLogo": "assets/portrait.png",
+      "fechaInicio": "2022-05-05",
+      "fechaFin": "2001-01-01"
+    },
+    {
+      "id": 4,
+      "titulo": null,
+      "institucion": null,
+      "urlLogo": null,
+      "fechaInicio": "2022-05-13",
+      "fechaFin": "2022-05-09"
+    },
+    {
+      "id": 5,
+      "titulo": "asd",
+      "institucion": "asdasd",
+      "urlLogo": "asdasd",
+      "fechaInicio": null,
+      "fechaFin": null
+    },
+    {
+      "id": 6,
+      "titulo": null,
+      "institucion": null,
+      "urlLogo": null,
+      "fechaInicio": null,
+      "fechaFin": null
+    },
+    {
+      "id": 7,
+      "titulo": null,
+      "institucion": null,
+      "urlLogo": null,
+      "fechaInicio": null,
+      "fechaFin": null
     }
   ],
   "habilidades": [
@@ -292,24 +332,24 @@
           "titulo": "Tecnico Electronico - Automatizacion",
           "institucion": "Escuela Presbitero Constantino Spagnolo",
           "urlLogo": "../../../assets/electronics.png",
-          "anioInicio": "2002",
-          "anioFin": "2006"
+          "fechaInicio": "2002",
+          "fechaFin": "2006"
         },
         {
           "id": 1,
           "titulo": "Estudiante Ingenieria en Sistemas",
           "institucion": "UTN - Facultad Regional Mendoza",
           "urlLogo": "../../../assets/computer.png",
-          "anioInicio": "2006",
-          "anioFin": 2010
+          "fechaInicio": "2006-11-01",
+          "fechaFin": "2010-04-22"
         },
         {
           "id": 2,
           "titulo": "Programado Full Stack Web",
           "institucion": "Ministerio de Desarrollo Productivo",
           "urlLogo": "../../../assets/network.png",
-          "anioInicio": "2021",
-          "anioFin": "2022"
+          "fechaInicio": "2021",
+          "fechaFin": "2022"
         }
       ],
       "habilidades": [

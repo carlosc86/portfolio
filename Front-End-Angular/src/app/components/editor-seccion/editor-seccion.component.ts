@@ -17,7 +17,7 @@ export class EditorSeccionComponent extends EditorData<SeccionData> implements O
     super(seccionS);
     this.forms=fb.group({
       titulo:['',],
-      urlImagen:['',],
+      rutaImagen:['',],
       texto:['',]
     });
   }
@@ -32,7 +32,7 @@ export class EditorSeccionComponent extends EditorData<SeccionData> implements O
       nombre:"",
       titulo:"",
       texto:"",
-      urlImagen:""};
+      rutaImagen:""};
   }
 
   getSeccionPorNombre(nombre:string):SeccionData{

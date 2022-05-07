@@ -15,7 +15,7 @@ export class SeccionComponent implements OnInit {
     nombre:"",
     titulo:"",
     texto:"",
-    urlImagen:""
+    rutaImagen:""
   };
 
   @Output() activar:EventEmitter<SeccionData>=new EventEmitter<SeccionData>();

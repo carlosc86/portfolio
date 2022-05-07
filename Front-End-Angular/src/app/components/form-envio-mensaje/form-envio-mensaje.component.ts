@@ -13,11 +13,11 @@ export class FormEnvioMensajeComponent implements OnInit {
 
   correo:MensajeData={
     id:NaN,
-    nombre:"",
-    apellido:"",
-    email:"",
-    asunto:"",
-    mensaje:"",
+    nombreAutor:"",
+    apellidoAutor:"",
+    emailAutor:"",
+    titulo:"",
+    cuerpo:"",
     fecha:"",
     leido:false
   };

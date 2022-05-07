@@ -32,7 +32,7 @@ export class EditorProyectoComponent extends EditorData<ProyectoData> implements
   }
   override setActivo(dato: ProyectoData): void {
     super.setActivo(dato);
-    this.listaRutas=dato.urlImagenes;
+    this.listaRutas=dato.rutasImagenes;
   }
 
   override resetForm(): void {
@@ -46,8 +46,8 @@ export class EditorProyectoComponent extends EditorData<ProyectoData> implements
         nombre:"",
         descripcion:"",
         link:"",
-        anio:"",
-        urlImagenes:[""]
+        fecha:"",
+        rutasImagenes:[""]
       }
   }
 
@@ -62,7 +62,7 @@ export class EditorProyectoComponent extends EditorData<ProyectoData> implements
   }
 
   confirmarCambios(){
-    this.elemento.urlImagenes=this.listaRutas;
+    this.elemento.rutasImagenes=this.listaRutas;
     this.aceptar();
   }
 }

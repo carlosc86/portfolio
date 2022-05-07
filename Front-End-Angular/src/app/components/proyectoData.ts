@@ -3,6 +3,6 @@ export interface ProyectoData{
     nombre:string,
     descripcion:string,
     link:string,
-    anio:string,
-    urlImagenes:string[] //Pueden ser muchas imagenes del proyecto
+    fecha:string,
+    rutasImagenes:string[] //Pueden ser muchas imagenes del proyecto
 }
