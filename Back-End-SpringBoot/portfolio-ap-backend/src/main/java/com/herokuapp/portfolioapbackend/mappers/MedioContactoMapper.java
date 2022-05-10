@@ -8,6 +8,7 @@ package com.herokuapp.portfolioapbackend.mappers;
 import com.herokuapp.portfolioapbackend.dto.MedioContactoDTO;
 import com.herokuapp.portfolioapbackend.model.MedioContacto;
 import com.herokuapp.portfolioapbackend.model.TipoMedioContacto;
+import com.herokuapp.portfolioapbackend.validators.ManejadorValidacion;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,6 +17,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MedioContactoMapper implements IMedioContactoMapper{
+    
+    private ManejadorValidacion validacion=new ManejadorValidacion();
 
     @Override
     public MedioContactoDTO toDTO(MedioContacto medio) {
@@ -28,9 +31,12 @@ public class MedioContactoMapper implements IMedioContactoMapper{
     }
 
     @Override
-    public MedioContacto toEntity(MedioContactoDTO medioDTO) {
+    public MedioContacto toEntity(MedioContactoDTO medioDTO) throws Exception {
         MedioContacto medio=new MedioContacto();
         medio.setId(medioDTO.getId());
+        
+        /*Valido que la cadena de caracteres no sea nula, ni que venga vacia*/
+        validacion.nueva().noNulo().cadenaNoVacia().validar(medioDTO.getLink());
         medio.setLink(medioDTO.getLink());
         medio.setTipo(new TipoMedioContacto());
         medio.getTipo().setRutaIcono(medioDTO.getRutaIcono()!=null?medioDTO.getRutaIcono():"");

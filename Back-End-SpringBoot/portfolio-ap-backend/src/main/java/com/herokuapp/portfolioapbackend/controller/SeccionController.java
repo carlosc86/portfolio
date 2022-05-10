@@ -6,7 +6,6 @@
 package com.herokuapp.portfolioapbackend.controller;
 
 import com.herokuapp.portfolioapbackend.dto.SeccionDTO;
-import com.herokuapp.portfolioapbackend.exceptions.SeccionNotFoundException;
 import com.herokuapp.portfolioapbackend.mappers.ISeccionMapper;
 import com.herokuapp.portfolioapbackend.model.Seccion;
 import com.herokuapp.portfolioapbackend.services.ISeccionService;
@@ -37,7 +36,7 @@ public class SeccionController {
     private ISeccionService seccionService;
     
     @GetMapping("/secciones")
-    public List<SeccionDTO> getSecciones(){
+    public List<SeccionDTO> getSecciones()throws Exception{
         List<Seccion> lista=seccionService.traer();
         List<SeccionDTO> retorno=new ArrayList();
         for (int i = 0; i < lista.size(); i++) {
@@ -52,7 +51,7 @@ public class SeccionController {
     }
     
     @PostMapping("/secciones")
-    public SeccionDTO postSeccion(@RequestBody SeccionDTO seccionDto){
+    public SeccionDTO postSeccion(@RequestBody SeccionDTO seccionDto)throws Exception{
         /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
         return seccionMapper.toDTO(seccionService.guardar(seccionMapper.toEntity(seccionDto)));
     }

@@ -52,7 +52,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
                 .anyRequest().authenticated()//Las demas solo con autorizacion, en realidad las frenara el filtro jwt
                 /*Configuracion de filtros*/
                 .and().addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-                //.addFilterBefore(basicFilter, jwtFilter.getClass())
+                .addFilterBefore(basicFilter, jwtFilter.getClass())
                 ;
     }
     

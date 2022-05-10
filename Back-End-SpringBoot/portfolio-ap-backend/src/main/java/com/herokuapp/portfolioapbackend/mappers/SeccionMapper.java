@@ -7,6 +7,7 @@ package com.herokuapp.portfolioapbackend.mappers;
 
 import com.herokuapp.portfolioapbackend.dto.SeccionDTO;
 import com.herokuapp.portfolioapbackend.model.Seccion;
+import com.herokuapp.portfolioapbackend.validators.ManejadorValidacion;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SeccionMapper implements ISeccionMapper{
+    
+    private ManejadorValidacion validacion=new ManejadorValidacion();
 
     @Override
     public SeccionDTO toDTO(Seccion seccion) {
@@ -29,7 +32,7 @@ public class SeccionMapper implements ISeccionMapper{
     }
 
     @Override
-    public Seccion toEntity(SeccionDTO seccionDTO) {
+    public Seccion toEntity(SeccionDTO seccionDTO)throws Exception {
         Seccion seccion=new Seccion();
         seccion.setId(seccionDTO.getId());
         seccion.setNombre(seccionDTO.getNombre()!=null?seccionDTO.getNombre():"");

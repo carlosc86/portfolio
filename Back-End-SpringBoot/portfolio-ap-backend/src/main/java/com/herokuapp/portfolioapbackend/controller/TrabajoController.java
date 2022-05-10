@@ -37,7 +37,7 @@ public class TrabajoController {
     
     
     @GetMapping("/experiencias")
-    public List<ExperienciaLaboralDTO> getTrabajo(){
+    public List<ExperienciaLaboralDTO> getTrabajo()throws Exception{
         List<Trabajo> lista= trabajoService.traer();
         List<ExperienciaLaboralDTO> retorno=new ArrayList();
         for (int i = 0; i < lista.size(); i++) {
@@ -52,7 +52,7 @@ public class TrabajoController {
     }
     
     @PostMapping("/experiencias")
-    public ExperienciaLaboralDTO postTrabajo(@RequestBody ExperienciaLaboralDTO experiencia ){
+    public ExperienciaLaboralDTO postTrabajo(@RequestBody ExperienciaLaboralDTO experiencia )throws Exception{
         /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
         return experienciaMapper.toDTO(trabajoService.guardar(experienciaMapper.toEntity(experiencia)));
     }

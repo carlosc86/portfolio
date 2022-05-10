@@ -28,8 +28,9 @@ public class EstudioDTO {
     private String direccionInstitucion;
     
     private String rutaLogoInstitucion;
-   
+    //@NotNull
     private String fechaInicio;
+    //@NotNull(message="Error al validar fecha finalizacion")
     private String fechaFin;
 
     public EstudioDTO() {

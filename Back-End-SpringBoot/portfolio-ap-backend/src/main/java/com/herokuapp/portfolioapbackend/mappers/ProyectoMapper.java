@@ -7,6 +7,7 @@ package com.herokuapp.portfolioapbackend.mappers;
 
 import com.herokuapp.portfolioapbackend.dto.ProyectoDTO;
 import com.herokuapp.portfolioapbackend.model.Proyecto;
+import com.herokuapp.portfolioapbackend.validators.ManejadorValidacion;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ProyectoMapper implements IProyectoMapper{
+    
+    private ManejadorValidacion validacion=new ManejadorValidacion();
 
     @Override
     public ProyectoDTO toDTO(Proyecto proyecto) {
@@ -35,13 +38,25 @@ public class ProyectoMapper implements IProyectoMapper{
     }
 
     @Override
-    public Proyecto toEntity(ProyectoDTO proyectoDTO) {
+    public Proyecto toEntity(ProyectoDTO proyectoDTO)throws Exception {
         Proyecto proyecto=new Proyecto();
         proyecto.setId(proyectoDTO.getId());
-        proyecto.setNombre(proyectoDTO.getNombre()!=null?proyectoDTO.getNombre():"");
+        validacion.nueva().noNulo().cadenaNoVacia().validar(proyectoDTO.getNombre());
+        proyecto.setNombre(proyectoDTO.getNombre());
         proyecto.setDescripcion(proyectoDTO.getDescripcion()!=null?proyectoDTO.getDescripcion():"");
+        
+        /*Valido que la url del campo link tenga el formato correcto*/
+        validacion.nueva()
+                .noNulo()
+                .cadenaNoVacia()
+                .url()
+                .validar(proyectoDTO.getLink());
         proyecto.setUrl(proyectoDTO.getLink()!=null?proyectoDTO.getLink():"");
-        proyecto.setFecha(LocalDate.parse(proyectoDTO.getFecha(), DateTimeFormatter.ISO_LOCAL_DATE));
+        
+        validacion.nueva().noNulo().cadenaNoVacia().validar(proyectoDTO.getFecha());
+        LocalDate fecha=LocalDate.parse(proyectoDTO.getFecha(), DateTimeFormatter.ISO_LOCAL_DATE);
+        validacion.nueva().pasadoDe(LocalDate.now()).validar(fecha);
+        proyecto.setFecha(fecha);
         for (int i = 0; i < proyectoDTO.getRutasImagenes().length; i++) {
             proyecto.setImagen(proyectoDTO.getRutasImagenes()[i], "");
         }        

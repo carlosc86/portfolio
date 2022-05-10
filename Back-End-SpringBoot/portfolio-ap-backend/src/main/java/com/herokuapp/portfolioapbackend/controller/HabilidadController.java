@@ -6,7 +6,6 @@
 package com.herokuapp.portfolioapbackend.controller;
 
 import com.herokuapp.portfolioapbackend.dto.HabilidadDTO;
-import com.herokuapp.portfolioapbackend.exceptions.HabilidadNotFoundException;
 import com.herokuapp.portfolioapbackend.mappers.IHabilidadMapper;
 import com.herokuapp.portfolioapbackend.model.Habilidad;
 import com.herokuapp.portfolioapbackend.services.IHabilidadService;
@@ -38,7 +37,7 @@ public class HabilidadController {
     
     
     @GetMapping("/habilidades")
-    public List<HabilidadDTO> getHabilidades(){
+    public List<HabilidadDTO> getHabilidades()throws Exception{
         List<Habilidad> habilidades= habilidadService.traer();
         List<HabilidadDTO> retorno=new ArrayList();
         for (int i = 0; i < habilidades.size(); i++) {
@@ -53,7 +52,7 @@ public class HabilidadController {
     }
     
     @PostMapping("/habilidades")
-    public HabilidadDTO postHabilidad(@RequestBody HabilidadDTO habilidadDto ){
+    public HabilidadDTO postHabilidad(@RequestBody HabilidadDTO habilidadDto )throws Exception{
         /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
         return habilidadMapper.toDTO(habilidadService.guardar(habilidadMapper.toEntity(habilidadDto)));
     }

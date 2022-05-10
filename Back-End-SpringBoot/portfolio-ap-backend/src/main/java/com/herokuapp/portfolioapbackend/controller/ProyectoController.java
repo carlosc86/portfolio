@@ -37,7 +37,7 @@ public class ProyectoController {
     
     
     @GetMapping("/proyectos")
-    public List<ProyectoDTO> getProyecto(){
+    public List<ProyectoDTO> getProyecto()throws Exception{
         List<Proyecto> lista=proyectoService.traer();
         List<ProyectoDTO> retorno=new ArrayList();
         for (int i = 0; i < lista.size(); i++) {
@@ -52,7 +52,7 @@ public class ProyectoController {
     }
     
     @PostMapping("/proyectos")
-    public ProyectoDTO postProyecto(@RequestBody ProyectoDTO proyectoDto ){
+    public ProyectoDTO postProyecto(@RequestBody ProyectoDTO proyectoDto )throws Exception{
         /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
         return proyectoMapper.toDTO(proyectoService.guardar(proyectoMapper.toEntity(proyectoDto)));
     }

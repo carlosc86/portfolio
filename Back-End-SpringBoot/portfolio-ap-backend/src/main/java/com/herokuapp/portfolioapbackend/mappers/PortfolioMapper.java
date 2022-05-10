@@ -24,7 +24,7 @@ import org.springframework.stereotype.Service;
 public class PortfolioMapper implements IPortfolioMapper{
 
     @Override
-    public PortfolioDTO toDTO(List<Seccion> secciones, List<Estudio> estudios, List<Habilidad> habilidades, List<Trabajo> experiencias, List<Proyecto> proyectos, List<MedioContacto> mediosContacto) {
+    public PortfolioDTO toDTO(List<Seccion> secciones, List<Estudio> estudios, List<Habilidad> habilidades, List<Trabajo> experiencias, List<Proyecto> proyectos, List<MedioContacto> mediosContacto)throws Exception {
         PortfolioDTO portfolio=new PortfolioDTO();
         portfolio.setSecciones(convertirADTO(secciones,new SeccionMapper()));
         portfolio.setEstudios(convertirADTO(estudios,new EstudioMapper()));
@@ -36,7 +36,7 @@ public class PortfolioMapper implements IPortfolioMapper{
         return portfolio;
     }
     
-    private List convertirADTO(List elemento,IGenericMapper mapeador){
+    private List convertirADTO(List elemento,IGenericMapper mapeador)throws Exception{
         List retorno=new ArrayList();
         for (int i = 0; i < elemento.size(); i++) {
             retorno.add(mapeador.toDTO(elemento.get(i)));
