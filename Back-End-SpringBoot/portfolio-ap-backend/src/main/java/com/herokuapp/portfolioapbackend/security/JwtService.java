@@ -17,12 +17,9 @@ import com.herokuapp.portfolioapbackend.exceptions.TokenSignatureInvalidExceptio
 import com.herokuapp.portfolioapbackend.exceptions.TokenTimeExpiredException;
 import java.io.UnsupportedEncodingException;
 import java.time.Duration;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.tomcat.jni.Time;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -70,11 +67,13 @@ public class JwtService {
                     .build();
             DecodedJWT jwt=verificador.verify(token);
             /*Para conocer el tiempo de vida restante del token*/
+            /*
             Date ahora=new Date(System.currentTimeMillis());
             Date tiempoT=jwt.getExpiresAt();
             long tiempo=tiempoT.getTime()-ahora.getTime();
             Duration d=Duration.ofMillis(tiempo);
             System.out.println("Tiempo de vida restante del token: "+d.toMinutesPart()+":"+d.toSecondsPart());
+            */
             retorno= true;
         }catch(SignatureVerificationException ex){//Compruebo si la firma es valida
             throw new TokenSignatureInvalidException();

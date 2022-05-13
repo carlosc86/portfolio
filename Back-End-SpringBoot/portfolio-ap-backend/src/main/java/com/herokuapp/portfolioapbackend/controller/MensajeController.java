@@ -38,7 +38,7 @@ public class MensajeController {
     
     
     @GetMapping("/mensajes")
-    public List<MensajeDTO> getMensaje(){
+    public List<MensajeDTO> getMensaje()throws Exception{
         List<Mensaje> lista= mensajeService.traer();
         List<MensajeDTO> retorno=new ArrayList();
         for (int i = 0; i < lista.size(); i++) {
@@ -54,7 +54,7 @@ public class MensajeController {
     
     @PreAuthorize("permitAll()")
     @PostMapping("/mensajes")
-    public MensajeDTO postMensaje(@RequestBody MensajeDTO mensajeDto ){
+    public MensajeDTO postMensaje(@RequestBody MensajeDTO mensajeDto )throws Exception{
         /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
         return mensajeMapper.toDTO(mensajeService.guardar(mensajeMapper.toEntity(mensajeDto)));
     }

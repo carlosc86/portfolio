@@ -6,6 +6,7 @@
 package com.herokuapp.portfolioapbackend.controller;
 
 import com.herokuapp.portfolioapbackend.dto.EstudioDTO;
+import com.herokuapp.portfolioapbackend.mappers.GenericMapper;
 import com.herokuapp.portfolioapbackend.mappers.IEstudioMapper;
 import com.herokuapp.portfolioapbackend.model.Estudio;
 import com.herokuapp.portfolioapbackend.services.IEstudioService;
@@ -40,7 +41,7 @@ public class EstudioController {
     
     
     @GetMapping("/estudios")
-    public List<EstudioDTO> getEstudios(){
+    public List<EstudioDTO> getEstudios()throws Exception{
         List<EstudioDTO> retorno=new ArrayList();
         List<Estudio> lista=estudioService.traer();
         for (int i = 0; i < lista.size(); i++) {
@@ -55,7 +56,7 @@ public class EstudioController {
     }
     
     @PostMapping("/estudios")
-    public EstudioDTO postEstudios(@Valid @RequestBody EstudioDTO estudioDTO ){
+    public EstudioDTO postEstudios(@Valid @RequestBody EstudioDTO estudioDTO )throws Exception{
         /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
         return estudioMapper.toDTO(estudioService.guardar(estudioMapper.toEntity(estudioDTO)));
     }

@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface IGenericMapper<DTO,ENTIDAD> {
     
-    public DTO toDTO(ENTIDAD entidad);
-    public ENTIDAD toEntity(DTO objetoDTO);
+    public DTO toDTO(ENTIDAD entidad)throws Exception;
+    public ENTIDAD toEntity(DTO objetoDTO)throws Exception;
     
 }

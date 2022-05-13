@@ -5,7 +5,6 @@
  */
 package com.herokuapp.portfolioapbackend.dto;
 
-import com.herokuapp.portfolioapbackend.model.Trabajo;
 import lombok.Getter;
 import lombok.Setter;
 

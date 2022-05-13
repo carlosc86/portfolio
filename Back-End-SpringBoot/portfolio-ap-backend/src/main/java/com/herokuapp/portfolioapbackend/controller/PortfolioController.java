@@ -53,7 +53,7 @@ public class PortfolioController {
     @CrossOrigin(origins="http://localhost:4200")//Por ahora asi para poder usar angular
     @GetMapping("/portfolio")
     @ResponseBody
-    public List<PortfolioDTO> getPortfolio(){
+    public List<PortfolioDTO> getPortfolio()throws Exception{
         PortfolioDTO portfolio= portfolioMapper.toDTO(  seccionService.traer(),
                                                         estudioService.traer(),
                                                         habilidadService.traer(),

@@ -7,6 +7,7 @@ package com.herokuapp.portfolioapbackend.mappers;
 
 import com.herokuapp.portfolioapbackend.dto.SeccionDTO;
 import com.herokuapp.portfolioapbackend.model.Seccion;
+import com.herokuapp.portfolioapbackend.validators.ManejadorValidacion;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SeccionMapper implements ISeccionMapper{
+    
+    private ManejadorValidacion validacion=new ManejadorValidacion();
 
     @Override
     public SeccionDTO toDTO(Seccion seccion) {
@@ -25,11 +28,12 @@ public class SeccionMapper implements ISeccionMapper{
         seccionDto.setTexto(seccion.getTexto()!=null?seccion.getTexto():"");
         seccionDto.setRutaImagen(seccion.getRutaImagen()!=null?seccion.getRutaImagen():"");
         seccionDto.setColorFondo(seccion.getColorFondo()!=null?seccion.getColorFondo():"");
+        seccionDto.setColorTexto(seccion.getColorTexto()!=null?seccion.getColorTexto():"");
         return seccionDto;
     }
 
     @Override
-    public Seccion toEntity(SeccionDTO seccionDTO) {
+    public Seccion toEntity(SeccionDTO seccionDTO)throws Exception {
         Seccion seccion=new Seccion();
         seccion.setId(seccionDTO.getId());
         seccion.setNombre(seccionDTO.getNombre()!=null?seccionDTO.getNombre():"");
@@ -37,6 +41,7 @@ public class SeccionMapper implements ISeccionMapper{
         seccion.setTexto(seccionDTO.getTexto()!=null?seccionDTO.getTexto():"");
         seccion.setRutaImagen(seccionDTO.getRutaImagen()!=null?seccionDTO.getRutaImagen():"");
         seccion.setColorFondo(seccionDTO.getColorFondo()!=null?seccionDTO.getColorFondo():"");
+        seccion.setColorTexto(seccionDTO.getColorTexto()!=null?seccionDTO.getColorTexto():"");
         return seccion;
     }
 

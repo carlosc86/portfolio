@@ -5,7 +5,6 @@
  */
 package com.herokuapp.portfolioapbackend.dto;
 
-import com.herokuapp.portfolioapbackend.model.Seccion;
 import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
@@ -25,6 +24,7 @@ public class SeccionDTO implements Serializable{
     private String texto;
     private String rutaImagen;
     private String colorFondo; 
+    private String colorTexto;
 
     public SeccionDTO() {
     }

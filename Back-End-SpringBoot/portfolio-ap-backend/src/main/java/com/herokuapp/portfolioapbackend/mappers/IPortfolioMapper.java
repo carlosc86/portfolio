@@ -20,7 +20,7 @@ import java.util.List;
  */
 public interface IPortfolioMapper {
     
-    public PortfolioDTO toDTO(List<Seccion> secciones, List<Estudio> estudios, List<Habilidad> habilidades, List<Trabajo> experiencias, List<Proyecto> proyectos, List<MedioContacto> mediosContacto);
+    public PortfolioDTO toDTO(List<Seccion> secciones, List<Estudio> estudios, List<Habilidad> habilidades, List<Trabajo> experiencias, List<Proyecto> proyectos, List<MedioContacto> mediosContacto)throws Exception;
     
     
 }

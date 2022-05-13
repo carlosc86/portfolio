@@ -14,7 +14,7 @@ import java.util.List;
  */
 public abstract class GenericMapper<DTO,ENTIDAD> implements IGenericMapper<DTO,ENTIDAD> {
     
-    public List<DTO> toDTOList(List<ENTIDAD> lista){
+    public List<DTO> toDTOList(List<ENTIDAD> lista) throws Exception{
         List<DTO> retorno=new ArrayList();
         for (int i = 0; i < lista.size(); i++) {
             retorno.add((DTO) this.toDTO(lista.get(i)));

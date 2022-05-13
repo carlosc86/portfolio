@@ -37,7 +37,7 @@ public class MedioContactoController {
     
     
     @GetMapping("/medios_contacto")
-    public List<MedioContactoDTO> getMediosContacto(){
+    public List<MedioContactoDTO> getMediosContacto()throws Exception{
         List<MedioContacto> lista=medioService.traer();
         List<MedioContactoDTO> retorno=new ArrayList();
         for (int i = 0; i < lista.size(); i++) {
@@ -52,7 +52,7 @@ public class MedioContactoController {
     }
     
     @PostMapping("/medios_contacto")
-    public MedioContactoDTO postMedioContacto(@RequestBody MedioContactoDTO medioDto ){ 
+    public MedioContactoDTO postMedioContacto(@RequestBody MedioContactoDTO medioDto )throws Exception{ 
         /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
         return medioMapper.toDTO(medioService.guardar(medioMapper.toEntity(medioDto)));
     }

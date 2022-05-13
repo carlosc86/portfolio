@@ -8,6 +8,7 @@ package com.herokuapp.portfolioapbackend.mappers;
 import com.herokuapp.portfolioapbackend.dto.MensajeDTO;
 import com.herokuapp.portfolioapbackend.model.Mensaje;
 import com.herokuapp.portfolioapbackend.model.Visitante;
+import com.herokuapp.portfolioapbackend.validators.ManejadorValidacion;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MensajeMapper implements IMensajeMapper{
+    
+    private ManejadorValidacion validacion=new ManejadorValidacion();
 
     @Override
     public MensajeDTO toDTO(Mensaje entidad) {
@@ -35,18 +38,38 @@ public class MensajeMapper implements IMensajeMapper{
     }
 
     @Override
-    public Mensaje toEntity(MensajeDTO objetoDTO) {
+    public Mensaje toEntity(MensajeDTO objetoDTO) throws Exception {
         Mensaje mensaje=new Mensaje();
         mensaje.setId(objetoDTO.getId());
-        mensaje.setTitulo(objetoDTO.getTitulo()!=null?objetoDTO.getTitulo():"");
-        mensaje.setCuerpo(objetoDTO.getCuerpo()!=null?objetoDTO.getCuerpo():"");
+        /*Valido cada campo antes de guardarlo, busco que no sean nulos ni cadenas vacias*/
+        validacion.nueva().noNulo().cadenaNoVacia().validar(objetoDTO.getTitulo());
+        mensaje.setTitulo(objetoDTO.getTitulo());
+        validacion.nueva().noNulo().cadenaNoVacia().validar(objetoDTO.getCuerpo());
+        mensaje.setCuerpo(objetoDTO.getCuerpo());
+        
         mensaje.setLeido(objetoDTO.getLeido());
-        mensaje.setFecha(LocalDate.parse(objetoDTO.getFecha(),DateTimeFormatter.ISO_LOCAL_DATE));
+        
+        /*valido la cadena que trae la fecha */
+        validacion.nueva().noNulo().cadenaNoVacia().validar(objetoDTO.getFecha());
+        /*ahora valido la fecha*/
+        LocalDate fecha=LocalDate.parse(objetoDTO.getFecha(),DateTimeFormatter.ISO_LOCAL_DATE);
+        validacion.nueva().pasadoDe(LocalDate.now()).validar(fecha);
+        mensaje.setFecha(fecha);
+        
         mensaje.setAutor(new Visitante());
         mensaje.getAutor().setId(0L);
-        mensaje.getAutor().setNombre(objetoDTO.getNombreAutor()!=null?objetoDTO.getNombreAutor():"");
-        mensaje.getAutor().setApellido(objetoDTO.getApellidoAutor()!=null?objetoDTO.getApellidoAutor():"");
-        mensaje.getAutor().setEmail(objetoDTO.getEmailAutor()!=null?objetoDTO.getEmailAutor():"");
+        /*Por cada valor de string compruebo que no sean nulos ni cadenas vacias y luego
+        las guardo*/
+        validacion.nueva().noNulo().cadenaNoVacia().validar(objetoDTO.getNombreAutor());
+        mensaje.getAutor().setNombre(objetoDTO.getNombreAutor());
+        validacion.nueva().noNulo().cadenaNoVacia().validar(objetoDTO.getApellidoAutor());
+        mensaje.getAutor().setApellido(objetoDTO.getApellidoAutor());
+        validacion.nueva()
+                .noNulo()
+                .cadenaNoVacia()
+                .email()
+                .validar(objetoDTO.getEmailAutor());
+        mensaje.getAutor().setEmail(objetoDTO.getEmailAutor());
         return mensaje;
     }
     
