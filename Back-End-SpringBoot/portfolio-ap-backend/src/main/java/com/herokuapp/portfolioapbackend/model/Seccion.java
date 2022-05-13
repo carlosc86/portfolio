@@ -34,6 +34,7 @@ public class Seccion {
     @Column(name="urlImagen")
     private String rutaImagen;
     private String colorFondo;
+    private String colorTexto;
     
     /*Relaciones con los diferentes items. Por ahora no se utlizará
     private List<Estudio> estudios;

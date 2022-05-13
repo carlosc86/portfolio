@@ -49,6 +49,7 @@ public class SeccionService implements ISeccionService{
             guardada.setTexto(seccion.getTexto());
             guardada.setRutaImagen(seccion.getRutaImagen());
             guardada.setColorFondo(seccion.getColorFondo());
+            guardada.setColorTexto(seccion.getColorTexto());
             seccionRepo.save(guardada);
         }
         

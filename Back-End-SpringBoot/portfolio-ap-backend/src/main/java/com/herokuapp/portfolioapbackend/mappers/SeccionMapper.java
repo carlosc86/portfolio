@@ -28,6 +28,7 @@ public class SeccionMapper implements ISeccionMapper{
         seccionDto.setTexto(seccion.getTexto()!=null?seccion.getTexto():"");
         seccionDto.setRutaImagen(seccion.getRutaImagen()!=null?seccion.getRutaImagen():"");
         seccionDto.setColorFondo(seccion.getColorFondo()!=null?seccion.getColorFondo():"");
+        seccionDto.setColorTexto(seccion.getColorTexto()!=null?seccion.getColorTexto():"");
         return seccionDto;
     }
 
@@ -40,6 +41,7 @@ public class SeccionMapper implements ISeccionMapper{
         seccion.setTexto(seccionDTO.getTexto()!=null?seccionDTO.getTexto():"");
         seccion.setRutaImagen(seccionDTO.getRutaImagen()!=null?seccionDTO.getRutaImagen():"");
         seccion.setColorFondo(seccionDTO.getColorFondo()!=null?seccionDTO.getColorFondo():"");
+        seccion.setColorTexto(seccionDTO.getColorTexto()!=null?seccionDTO.getColorTexto():"");
         return seccion;
     }
 
