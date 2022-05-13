@@ -77,6 +77,7 @@ public class MedioContactoService implements IMedioContactoService{
         if(tipo==null){
             tipo=new TipoMedioContacto();
             tipo.setEmpresa(empresa);
+            tipo.setRutaIcono("assets/redes/Generic.png");
             tipo=tipoService.guardar(tipo);            
         }
         medio.setTipo(tipo);
