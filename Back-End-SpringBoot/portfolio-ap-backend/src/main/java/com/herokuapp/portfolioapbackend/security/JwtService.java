@@ -16,7 +16,6 @@ import com.herokuapp.portfolioapbackend.exceptions.TokenInvalidException;
 import com.herokuapp.portfolioapbackend.exceptions.TokenSignatureInvalidException;
 import com.herokuapp.portfolioapbackend.exceptions.TokenTimeExpiredException;
 import java.io.UnsupportedEncodingException;
-import java.time.Duration;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;

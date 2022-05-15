@@ -9,7 +9,6 @@ import com.herokuapp.portfolioapbackend.exceptions.EstudioNotFoundException;
 import com.herokuapp.portfolioapbackend.model.Estudio;
 import com.herokuapp.portfolioapbackend.model.Institucion;
 import com.herokuapp.portfolioapbackend.repository.EstudioRepository;
-import com.herokuapp.portfolioapbackend.repository.InstitucionRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -5,8 +5,6 @@
  */
 package com.herokuapp.portfolioapbackend.dto;
 
-import com.herokuapp.portfolioapbackend.mappers.EstudioMapper;
-import com.herokuapp.portfolioapbackend.mappers.IEstudioMapper;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

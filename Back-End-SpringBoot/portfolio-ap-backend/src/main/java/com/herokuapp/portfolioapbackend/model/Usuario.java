@@ -5,7 +5,6 @@
  */
 package com.herokuapp.portfolioapbackend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

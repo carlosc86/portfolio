@@ -6,7 +6,6 @@
 package com.herokuapp.portfolioapbackend.controller;
 
 import com.herokuapp.portfolioapbackend.dto.EstudioDTO;
-import com.herokuapp.portfolioapbackend.mappers.GenericMapper;
 import com.herokuapp.portfolioapbackend.mappers.IEstudioMapper;
 import com.herokuapp.portfolioapbackend.model.Estudio;
 import com.herokuapp.portfolioapbackend.services.IEstudioService;
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
