@@ -11,7 +11,6 @@ import com.herokuapp.portfolioapbackend.model.Estudio;
 import com.herokuapp.portfolioapbackend.services.IEstudioService;
 import java.util.ArrayList;
 import java.util.List;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -54,13 +53,13 @@ public class EstudioController {
     }
     
     @PostMapping("/estudios")
-    public EstudioDTO postEstudios(@Valid @RequestBody EstudioDTO estudioDTO )throws Exception{
+    public EstudioDTO postEstudios(@RequestBody EstudioDTO estudioDTO )throws Exception{
         /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
         return estudioMapper.toDTO(estudioService.guardar(estudioMapper.toEntity(estudioDTO)));
     }
     
     @PutMapping("/estudios/{id}")
-    public void putEstudios(@PathVariable Long id,@Valid @RequestBody EstudioDTO estudioDto )throws Exception{
+    public void putEstudios(@PathVariable Long id,@RequestBody EstudioDTO estudioDto )throws Exception{
         if(id==estudioDto.getId())
             estudioService.modificar(estudioMapper.toEntity(estudioDto));
     }
