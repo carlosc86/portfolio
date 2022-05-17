@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author carlos
  */
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="https://portfolio-carricondo.firebaseapp.com")
 @RestController
 public class MensajeController {
     

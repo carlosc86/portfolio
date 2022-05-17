@@ -6,7 +6,6 @@
 package com.herokuapp.portfolioapbackend.dto;
 
 import java.io.Serializable;
-import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +17,7 @@ import lombok.Setter;
 public class SeccionDTO implements Serializable{
     
     private long id;
-    @NotNull
+    
     private String nombre;
     private String titulo;
     private String texto;
