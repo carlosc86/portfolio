@@ -8,7 +8,7 @@ package com.herokuapp.portfolioapbackend.validators;
 import com.herokuapp.portfolioapbackend.exceptions.NumberOutOfRangeException;
 
 /**
- *
+ * Clase usada para validar que un entero este entre dos valores
  * @author carlos
  */
 public class IntegerBetweenValidator extends GenericValidator<Integer>{

@@ -9,7 +9,7 @@ import com.herokuapp.portfolioapbackend.exceptions.NotPastDateException;
 import java.time.LocalDate;
 
 /**
- *
+ * Comprueba que una fecha sea anterior a otra pasada como referencia
  * @author carlos
  */
 public class PastThanValidator extends GenericValidator<LocalDate> {

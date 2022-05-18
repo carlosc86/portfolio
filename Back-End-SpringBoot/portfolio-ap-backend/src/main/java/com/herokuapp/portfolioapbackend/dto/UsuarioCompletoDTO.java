@@ -5,7 +5,6 @@
  */
 package com.herokuapp.portfolioapbackend.dto;
 
-import com.herokuapp.portfolioapbackend.model.Habilidad;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,14 +13,11 @@ import lombok.Setter;
  * @author carlos
  */
 @Getter @Setter
-public class HabilidadDTO {
+public class UsuarioCompletoDTO extends UsuarioDTO {
     
-    private long id;
-    private String nombre;
-    private String descripcion;
-    private int porcentaje;
-
-    public HabilidadDTO() {
-    }   
+    private String password;
+    private String privilegios;
+    private String ultimoAcceso;
+    private String fechaNacimiento;
     
 }

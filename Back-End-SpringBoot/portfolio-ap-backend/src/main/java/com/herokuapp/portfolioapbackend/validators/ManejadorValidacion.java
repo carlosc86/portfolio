@@ -9,6 +9,7 @@ import java.time.LocalDate;
 
 /**
  * Fachada para los validadores de datos, para validar los datos que ingresan al backend
+ * Con esta clase se forman las cadenas de responsabilidades para validar los datos.
  * @author carlos
  */
 public class ManejadorValidacion {
@@ -22,10 +23,14 @@ public class ManejadorValidacion {
         this.cadena=eslabon;
     }
     
+    /*Con este metodo deben terminar todas las validaciones que se hagan.
+    * Como parametro se debe pasar el objeto a validar.
+    */
     public void validar(Object aValidar) throws Exception{
         cadena.validar(aValidar);
     }
     
+    /*Con este metodo deben empezar todas las validaciones que se hagan*/
     public ManejadorValidacion nueva(){
         this.cadena=null;
         return this;

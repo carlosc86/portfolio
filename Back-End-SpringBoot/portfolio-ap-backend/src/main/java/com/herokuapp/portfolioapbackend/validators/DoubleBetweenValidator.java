@@ -8,7 +8,7 @@ package com.herokuapp.portfolioapbackend.validators;
 import com.herokuapp.portfolioapbackend.exceptions.NumberOutOfRangeException;
 
 /**
- *
+ * Clase que valida si un tipo de dato double esta entre dos valores
  * @author carlos
  */
 public class DoubleBetweenValidator extends GenericValidator<Double>{

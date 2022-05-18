@@ -35,7 +35,7 @@ public class HabilidadController {
     @Autowired
     private IHabilidadService habilidadService;
     
-    
+    /*Endpoint para obtener todas las habilidades cargadas en la db*/
     @GetMapping("/habilidades")
     public List<HabilidadDTO> getHabilidades()throws Exception{
         List<Habilidad> habilidades= habilidadService.traer();
@@ -46,23 +46,27 @@ public class HabilidadController {
         return retorno;
     }
     
+    /*Endpoint para obtener una habilidad especifica, identificada por el id*/
     @GetMapping("/habilidades/{id}")
     public HabilidadDTO getHabilidad(@PathVariable Long id)throws Exception{
         return habilidadMapper.toDTO(habilidadService.traer(id));
     }
     
+    /*Endpoint para cargar una nueva habilidad*/
     @PostMapping("/habilidades")
     public HabilidadDTO postHabilidad(@RequestBody HabilidadDTO habilidadDto )throws Exception{
         /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
         return habilidadMapper.toDTO(habilidadService.guardar(habilidadMapper.toEntity(habilidadDto)));
     }
     
+    /*Endpoint para modificar una habilidad existente, identificada por el id*/
     @PutMapping("/habilidades/{id}")
     public void putHabilidad(@PathVariable Long id, @RequestBody HabilidadDTO habilidadDto )throws Exception{
         if(id==habilidadDto.getId())
             habilidadService.modificar(habilidadMapper.toEntity(habilidadDto));
     }
     
+    /*Endpoint para borrar una habilidad existente, identificada por el id*/
     @DeleteMapping("/habilidades/{id}")
     public void deleteHabilidad(@PathVariable Long id){
         habilidadService.borrar(id);

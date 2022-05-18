@@ -35,7 +35,7 @@ public class TrabajoController {
     @Autowired
     private ITrabajoService trabajoService;
     
-    
+    /*Enpoint para obtener todas las experiencias laborales cargadas en la db*/
     @GetMapping("/experiencias")
     public List<ExperienciaLaboralDTO> getTrabajo()throws Exception{
         List<Trabajo> lista= trabajoService.traer();
@@ -46,23 +46,27 @@ public class TrabajoController {
         return retorno;
     }
     
+    /*Endpoint para obtener una experiencia laboral en particular*/
     @GetMapping("/experiencias/{id}")
     public ExperienciaLaboralDTO getTrabajo(@PathVariable Long id)throws Exception{
         return experienciaMapper.toDTO(trabajoService.traer(id));
     }
     
+    /*Enpoint para cargar una nueva experiencia laboral*/
     @PostMapping("/experiencias")
     public ExperienciaLaboralDTO postTrabajo(@RequestBody ExperienciaLaboralDTO experiencia )throws Exception{
         /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
         return experienciaMapper.toDTO(trabajoService.guardar(experienciaMapper.toEntity(experiencia)));
     }
     
+    /*Endpoint para modificar una experiencia laboral, especificada por el id*/
     @PutMapping("/experiencias/{id}")
     public void putTrabajo(@PathVariable Long id, @RequestBody ExperienciaLaboralDTO experiencia )throws Exception{
         if(id==experiencia.getId())
             trabajoService.modificar(experienciaMapper.toEntity(experiencia));
     }
     
+    /*Endpoint para borrar una experiencia laboral en particular*/
     @DeleteMapping("/experiencias/{id}")
     public void delete(@PathVariable Long id){
         trabajoService.borrar(id);

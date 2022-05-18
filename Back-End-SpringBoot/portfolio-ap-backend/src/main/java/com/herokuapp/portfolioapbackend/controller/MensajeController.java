@@ -36,7 +36,7 @@ public class MensajeController {
     @Autowired
     private IMensajeService mensajeService;
     
-    
+    /*Endpoint para obtener todos los mensajes guardados en la db*/
     @GetMapping("/mensajes")
     public List<MensajeDTO> getMensaje()throws Exception{
         List<Mensaje> lista= mensajeService.traer();
@@ -47,11 +47,13 @@ public class MensajeController {
         return retorno;
     }
     
+    /*Endpoint para obtener un mensaje especifico, identificado por el id*/
     @GetMapping("/mensajes/{id}")
     public MensajeDTO getMensaje(@PathVariable Long id)throws Exception{
         return mensajeMapper.toDTO(mensajeService.traer(id));
     }
     
+    /*Endpoint para cargar un nuevo mensaje, es accesible sin autorizacion*/
     @PreAuthorize("permitAll()")
     @PostMapping("/mensajes")
     public MensajeDTO postMensaje(@RequestBody MensajeDTO mensajeDto )throws Exception{
@@ -59,6 +61,7 @@ public class MensajeController {
         return mensajeMapper.toDTO(mensajeService.guardar(mensajeMapper.toEntity(mensajeDto)));
     }
     
+    /*Endpoint para modificar un mensaje existente, especificado por el id*/
     @PutMapping("/mensajes/{id}")
     public void putMensaje(@PathVariable Long id, @RequestBody MensajeDTO mensajeDto )throws Exception{
         if(id==mensajeDto.getId()){
@@ -66,6 +69,7 @@ public class MensajeController {
         }
     }
     
+    /*Endpoint para borrar un mensaje existente, identificado por el campo id*/
     @DeleteMapping("/mensajes/{id}")
     public void deleteMensaje(@PathVariable Long id){
         mensajeService.borrar(id);

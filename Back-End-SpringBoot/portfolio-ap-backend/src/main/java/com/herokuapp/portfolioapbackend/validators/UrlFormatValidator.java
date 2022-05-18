@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
+ * Verifica que una direccion url este correctamente formada.
  * @author carlos
  */
 public class UrlFormatValidator extends GenericValidator<String>{

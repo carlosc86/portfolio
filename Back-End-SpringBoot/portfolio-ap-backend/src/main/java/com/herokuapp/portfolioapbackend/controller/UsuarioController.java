@@ -5,8 +5,11 @@
  */
 package com.herokuapp.portfolioapbackend.controller;
 
+import com.herokuapp.portfolioapbackend.dto.UsuarioCompletoDTO;
+import com.herokuapp.portfolioapbackend.mappers.UsuarioCompletoMapper;
 import com.herokuapp.portfolioapbackend.model.Usuario;
 import com.herokuapp.portfolioapbackend.services.IUsuarioService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,40 +30,55 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins="${portfolio.frontend.url}")//Por ahora asi para poder usar angular
 @RestController
 public class UsuarioController {
-    /*
-        CUIDADO!!!, ESTE CONTROLADOR ESTA TRABAJANDO CON ENTIDADES, REHACER!!!
-    */
     
     @Autowired
     private IUsuarioService usuarioService;
     
+    @Autowired
+    private UsuarioCompletoMapper usuarioMapper;
     
+    /*Endpoint para obtener todos los usuarios de la db, por ahora anulado*/
+    /*
     @GetMapping("/usuarios")
-    public List<Usuario> getUsuarios(){
-        return usuarioService.traer();
+    public List<UsuarioCompletoDTO> getUsuarios() throws Exception{
+        List<Usuario> lista=usuarioService.traer();
+        List<UsuarioCompletoDTO> retorno=new ArrayList();
+        for (int i = 0; i < lista.size(); i++) {
+            retorno.add(usuarioMapper.toDTO(lista.get(i)));
+        }
+        return retorno;
     }
+    */
     
+    /*Endpoint para obtener un usuario en particular de la db, dado un id*/
     @GetMapping("/usuarios/{id}")
     @ResponseBody
-    public Usuario getUsuario(@PathVariable("id") Long id){
-        return usuarioService.traer(id);
+    public UsuarioCompletoDTO getUsuario(@PathVariable("id") Long id) throws Exception{
+        return usuarioMapper.toDTO(usuarioService.traer(id));
     }
     
+    /*Endpoint para cargar un nuevo usuario, por ahora anulado*/
+    /*
     @PostMapping("/usuarios")
-    public Usuario postUsuario(@RequestBody Usuario usuario ){
-        return usuarioService.guardar(usuario);
+    public UsuarioCompletoDTO postUsuario(@RequestBody UsuarioCompletoDTO usuario ) throws Exception{
+        //Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo
+        return usuarioMapper.toDTO(usuarioService.guardar(usuarioMapper.toEntity(usuario)));
     }
+    */
     
+    /*Endpoint para modificar un usuario en particular, dado un id*/
     @PutMapping("/usuarios/{id}")
-    public void putUsuario(@PathVariable Long id, @RequestBody Usuario usuario ){
+    public void putUsuario(@PathVariable Long id, @RequestBody UsuarioCompletoDTO usuario ) throws Exception{
         if(id==usuario.getId())
-            usuarioService.modificar(usuario);
+            usuarioService.modificar(usuarioMapper.toEntity(usuario));
     }
     
+    /*Endpoint para elmiminar un usuario dado un id, por ahora anulado*/
+    /*
     @DeleteMapping("/usuarios/{id}")
     public void deleteUsuario(@PathVariable Long id){
         usuarioService.borrar(id);
     }
-    
+    */
     
 }

@@ -35,6 +35,7 @@ public class SeccionController {
     @Autowired
     private ISeccionService seccionService;
     
+    /*Endpoint para obtener todas las secciones cargadas en la db*/
     @GetMapping("/secciones")
     public List<SeccionDTO> getSecciones()throws Exception{
         List<Seccion> lista=seccionService.traer();
@@ -45,23 +46,27 @@ public class SeccionController {
         return retorno;
     }
     
+    /*Endpoint para obtener una seccion en particular, especificada por el campo id*/
     @GetMapping("/secciones/{id}")
     public SeccionDTO getSeccion(@PathVariable Long id)throws Exception{
         return seccionMapper.toDTO(seccionService.traer(id));
     }
     
+    /*Endpoint para cargar una nueva seccion*/
     @PostMapping("/secciones")
     public SeccionDTO postSeccion(@RequestBody SeccionDTO seccionDto)throws Exception{
         /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
         return seccionMapper.toDTO(seccionService.guardar(seccionMapper.toEntity(seccionDto)));
     }
     
+    /*Endpoint para modificar una seccion existente, especificada por el campo id*/
     @PutMapping("/secciones/{id}")
     public void putSeccion(@PathVariable Long id, @RequestBody SeccionDTO seccionDto)throws Exception{
         if(id==seccionDto.getId())
             seccionService.modificar(seccionMapper.toEntity(seccionDto));
     }
     
+    /*Endpoint para eliminar una seccion existente*/
     @DeleteMapping("/secciones/{id}")
     public void deleteSeccion(@PathVariable Long id){
         seccionService.borrar(id);
