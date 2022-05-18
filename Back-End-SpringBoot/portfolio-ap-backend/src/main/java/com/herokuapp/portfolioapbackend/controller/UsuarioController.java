@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author carlos
  */
 //@PreAuthorize("authenticated")
-@CrossOrigin(origins="https://portfolio-carricondo.firebaseapp.com")//Por ahora asi para poder usar angular
+@CrossOrigin(origins="${portfolio.frontend.url}")//Por ahora asi para poder usar angular
 @RestController
 public class UsuarioController {
     /*

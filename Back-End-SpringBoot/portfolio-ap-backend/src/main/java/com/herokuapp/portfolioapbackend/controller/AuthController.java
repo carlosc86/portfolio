@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author carlos
  */
-@CrossOrigin(origins="https://portfolio-carricondo.firebaseapp.com")
+@CrossOrigin(origins="${portfolio.frontend.url}")
 @RestController
 public class AuthController {
     
