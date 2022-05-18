@@ -25,7 +25,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 /**
- *
+ * Filtro para validar las peticiones que tienen el token jwt, si el token es valido
+ * el filtro lo deja pasar sino lo bloquea y envia un mensaje de error 401.
  * @author carlos
  */
 @Component

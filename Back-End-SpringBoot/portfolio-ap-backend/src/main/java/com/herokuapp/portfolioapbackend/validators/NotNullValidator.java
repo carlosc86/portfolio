@@ -8,7 +8,7 @@ package com.herokuapp.portfolioapbackend.validators;
 import com.herokuapp.portfolioapbackend.exceptions.AttributeNullException;
 
 /**
- *
+ * Valida que un objeto no sea nulo
  * @author carlos
  */
 public class NotNullValidator extends GenericValidator<Object> {

@@ -8,7 +8,7 @@ package com.herokuapp.portfolioapbackend.validators;
 import com.herokuapp.portfolioapbackend.exceptions.AttributeNotGreaterException;
 
 /**
- *
+ * Clase que verifica si un valor doble es mayor que otro (dado como refenrencia)
  * @author carlos
  */
 public class GreaterThanValidator extends GenericValidator<Double>{

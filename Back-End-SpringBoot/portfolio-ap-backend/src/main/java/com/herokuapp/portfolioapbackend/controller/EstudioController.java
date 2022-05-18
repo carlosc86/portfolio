@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author carlos
  */
 //@PreAuthorize("authenticated")
-@CrossOrigin(origins="${portfolio.frontend.url}")//Por ahora asi para poder usar angular
+@CrossOrigin(origins="${portfolio.frontend.url}")
 @RestController   
 public class EstudioController {
     
@@ -36,7 +36,7 @@ public class EstudioController {
     @Autowired
     private IEstudioMapper estudioMapper;
     
-    
+    /*Endpoint para obtener todos los estudios de la db*/
     @GetMapping("/estudios")
     public List<EstudioDTO> getEstudios()throws Exception{
         List<EstudioDTO> retorno=new ArrayList();
@@ -47,23 +47,28 @@ public class EstudioController {
         return retorno;
     }
     
+    /*Endpoint para obtener un estudio en particular especificado por el id*/
     @GetMapping("/estudios/{id}")
     public EstudioDTO getEstudio(@PathVariable Long id)throws Exception{
         return estudioMapper.toDTO(estudioService.traer(id));
     }
     
+    /*Endpoint para cargar un nuevo estudio*/
     @PostMapping("/estudios")
     public EstudioDTO postEstudios(@RequestBody EstudioDTO estudioDTO )throws Exception{
         /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
         return estudioMapper.toDTO(estudioService.guardar(estudioMapper.toEntity(estudioDTO)));
     }
     
+    /*Endpoint para modificar un extudio existente, especificado por el id*/
     @PutMapping("/estudios/{id}")
     public void putEstudios(@PathVariable Long id,@RequestBody EstudioDTO estudioDto )throws Exception{
         if(id==estudioDto.getId())
             estudioService.modificar(estudioMapper.toEntity(estudioDto));
     }
     
+    
+    /*Endpoint para borrar un estudio en particular, especificado por el id*/
     @DeleteMapping("/estudios/{id}")
     public void deleteEstudio(@PathVariable Long id){
         estudioService.borrar(id);

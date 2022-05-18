@@ -83,7 +83,7 @@ public class EstudioService implements IEstudioService{
             if(guardada==null){
                 guardada=institucionService.guardar(inst);
             }            
-        }//else lanzar excepcion, institucion nulla
+        }//else lanzar excepcion, institucion nula
         
         return guardada;
     }

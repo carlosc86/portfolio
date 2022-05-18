@@ -5,7 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,7 +30,7 @@ public abstract class Persona {
     
     protected String nombre;
     protected String apellido;
-    protected Date fechaNacimiento;
+    protected LocalDate fechaNacimiento;
     
     
 }

@@ -13,7 +13,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
- *
+ * Clase implementada para hacer uso de los srvicios de authenticacion de 
+ * Sping security
  * @author carlos
  */
 public class MyUserDetails implements UserDetails {

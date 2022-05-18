@@ -50,7 +50,9 @@ public class PortfolioController {
     @Autowired
     private IProyectoService proyectoService;
     
-    @CrossOrigin(origins="http://localhost:4200")//Por ahora asi para poder usar angular
+    
+    /*Endpoint para obtener un DTO del portfolio general, utilizado en la carga inicial del frontend*/
+    @CrossOrigin(origins="${portfolio.frontend.url}")//Por ahora asi para poder usar angular
     @GetMapping("/portfolio")
     @ResponseBody
     public List<PortfolioDTO> getPortfolio()throws Exception{

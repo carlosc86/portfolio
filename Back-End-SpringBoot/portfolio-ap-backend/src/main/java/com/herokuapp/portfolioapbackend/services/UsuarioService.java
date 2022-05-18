@@ -5,6 +5,7 @@
  */
 package com.herokuapp.portfolioapbackend.services;
 
+import com.herokuapp.portfolioapbackend.model.Privilegio;
 import com.herokuapp.portfolioapbackend.model.Usuario;
 import com.herokuapp.portfolioapbackend.repository.UsuarioRepository;
 import java.util.List;
@@ -22,6 +23,8 @@ public class UsuarioService implements IUsuarioService{
     
     @Autowired
     private UsuarioRepository usuarioRepo;
+    @Autowired
+    private IPrivilegioService priviService;
 
     @Override
     public List<Usuario> traer() {
@@ -48,9 +51,14 @@ public class UsuarioService implements IUsuarioService{
     public void modificar(Usuario usuario) {
         Usuario guardado=traer(usuario.getNombreUsuario());
         if (guardado!=null) {
-            guardado.setPassword(new BCryptPasswordEncoder().encode(usuario.getPassword()));
-            guardado.setPrivilegios(usuario.getPrivilegios());
-            guardado.setUltimoAcceso(usuario.getUltimoAcceso());
+            String password=this.gestionarPassword(usuario.getPassword(),guardado.getPassword());
+            if(password!=null){ //si es igual a la anterior o es nula no pasa este chequeo                
+                guardado.setPassword(password);
+            }
+            guardado.setPrivilegios(this.gestionarPrivilegio(usuario.getPrivilegios()));
+            if(usuario.getUltimoAcceso()!=null){
+                guardado.setUltimoAcceso(usuario.getUltimoAcceso());
+            }
             guardado.setRutaIcono(usuario.getRutaIcono());
             usuarioRepo.save(guardado);
         }
@@ -61,4 +69,23 @@ public class UsuarioService implements IUsuarioService{
         usuarioRepo.deleteById(id);
     }
     
+    private Privilegio gestionarPrivilegio(Privilegio privilegio){
+        Privilegio guardado=priviService.traer(privilegio.getNombre());
+        if(guardado==null){
+            guardado=priviService.guardar(privilegio);
+        }
+        return guardado;
+    }
+    
+    private String gestionarPassword(String nuevaPass,String viejaPass){
+        String passGestionada=null;
+        if(nuevaPass!=null){//Si la nueva es distinta de null
+            BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+            if((nuevaPass!=viejaPass)&&!(encoder.matches(nuevaPass, viejaPass))){ //y no es igual a la guardada
+                String nuevaEncriptada=encoder.encode(nuevaPass);
+                passGestionada=nuevaEncriptada;//asigno la nueva pass
+            }
+        }
+        return passGestionada;
+    }
 }

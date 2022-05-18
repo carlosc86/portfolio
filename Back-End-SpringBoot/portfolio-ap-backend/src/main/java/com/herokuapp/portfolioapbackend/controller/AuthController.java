@@ -12,6 +12,8 @@ import com.herokuapp.portfolioapbackend.model.Usuario;
 import com.herokuapp.portfolioapbackend.security.JwtService;
 import com.herokuapp.portfolioapbackend.security.MyUserDetails;
 import com.herokuapp.portfolioapbackend.services.IUsuarioService;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -40,6 +42,8 @@ public class AuthController {
         AuthDTO auth=new AuthDTO();//Se crea aca, pues no necesita mapper
         /*Busco el usuario para generar el dto que se devuelve*/
         Usuario usuarioGuardado=usuarioService.traer(usuario.getUsername());
+        usuarioGuardado.setUltimoAcceso(LocalDateTime.now());//Marco su acceso
+        usuarioService.modificar(usuarioGuardado);//actualizo los datos del usuario
         auth.setUsuario(usuarioMapper.toDTO(usuarioGuardado));
         /*Asigno el token para devolverselo al frontend*/
         auth.setToken(jwt.createToken(usuario.getUsername(), 

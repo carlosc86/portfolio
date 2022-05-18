@@ -5,7 +5,8 @@
  */
 package com.herokuapp.portfolioapbackend.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class Usuario extends Persona{
     private String nombreUsuario;
     private String password;
     private String rutaIcono;
-    private Date ultimoAcceso;
+    private LocalDateTime ultimoAcceso;
     
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="privilegios_id")

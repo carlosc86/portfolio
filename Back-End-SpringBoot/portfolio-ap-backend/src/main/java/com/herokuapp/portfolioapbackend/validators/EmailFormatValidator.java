@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
+ * Clase que valida que la direccion de correo electronico este bien formada
  * @author carlos
  */
 public class EmailFormatValidator extends GenericValidator<String>{

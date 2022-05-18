@@ -8,7 +8,7 @@ package com.herokuapp.portfolioapbackend.validators;
 import com.herokuapp.portfolioapbackend.exceptions.StringEmptyException;
 
 /**
- *
+ * Verifica que una cadena no sea vacia ("").
  * @author carlos
  */
 public class StringNotEmptyValidator extends GenericValidator<String>{

@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- *
+ * Manejador de excepciones para no inundar con datos al usuario del api, se envian
+ * solo respuestas http con algun mensaje de la excepcion
  * @author carlos
  */
 @ControllerAdvice

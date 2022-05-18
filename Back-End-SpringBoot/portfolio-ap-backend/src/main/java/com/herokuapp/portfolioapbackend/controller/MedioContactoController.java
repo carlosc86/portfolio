@@ -36,6 +36,7 @@ public class MedioContactoController {
     private  IMedioContactoService medioService;
     
     
+    /*Endpoint para obtener todos los medios de contacto existentes en la db*/
     @GetMapping("/medios_contacto")
     public List<MedioContactoDTO> getMediosContacto()throws Exception{
         List<MedioContacto> lista=medioService.traer();
@@ -46,23 +47,27 @@ public class MedioContactoController {
         return retorno;
     }
     
+    /*Endpoint para obtener un medio de contacto en particular, especificado por el id*/
     @GetMapping("/medios_contacto/{id}")
     public MedioContactoDTO getMedioContacto(@PathVariable Long id)throws Exception{
         return medioMapper.toDTO(medioService.traer(id));
     }
     
+    /*Endpoint para cargar un nuevo medio de contacto*/
     @PostMapping("/medios_contacto")
     public MedioContactoDTO postMedioContacto(@RequestBody MedioContactoDTO medioDto )throws Exception{ 
         /*Lo convierto en entidad, lo guardo, lo vuelvo a convertir a dto y lo devuelvo*/
         return medioMapper.toDTO(medioService.guardar(medioMapper.toEntity(medioDto)));
     }
     
+    /*Endpoint para modificar un medio de contacto existente, identificado por el id*/
     @PutMapping("/medios_contacto/{id}")
     public void putMedioContacto(@PathVariable Long id, @RequestBody MedioContactoDTO medioDto )throws Exception{
         if(id==medioDto.getId())
             medioService.modificar(medioMapper.toEntity(medioDto));
     }
     
+    /*Endpoint para borrar un medio de contacto, especificado por el id*/
     @DeleteMapping("/medios_contacto/{id}")
     public void deleteMedioContacto(@PathVariable Long id){
         medioService.borrar(id);

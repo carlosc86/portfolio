@@ -22,13 +22,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
- *
+ * Clase de configuracion de los servicios de spring security
  * @author carlos
  */
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled=true)
 public class WebSecurity extends WebSecurityConfigurerAdapter{
     
+    /*Path en donde se debe hacer uso de la autenticacion por basic auth*/
     private final String LOGIN_PATH="/auth";
     
     @Autowired
@@ -36,11 +37,14 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
     @Autowired
     private JwtAuthorizationFilter jwtFilter;
     
+    /* Filtro para bloquear basic auth en cualquier endpoint que no sea el establecido,
+     * en esos se utilizara autenticacion por jwt
+    */
     private OnlyOneBasicAuthFilter basicFilter =new OnlyOneBasicAuthFilter(LOGIN_PATH);
     
     protected void configure(HttpSecurity http) throws Exception{
         /*Configuracion general de la seguridad*/
-        http.csrf().disable() //Deshabilito csrf, talvez tambien deba deshabilitar cors
+        http.csrf().disable() //Deshabilito csrf, tambien deshabilito cors
                 .cors().and()
             
                 .httpBasic() //Tipo de authenticacion basic
@@ -48,16 +52,16 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
                 /*Configuracion de la seguridad en los endpoints*/
                 .and().authorizeHttpRequests().antMatchers(LOGIN_PATH).authenticated() //Ruta de login, solo con auth basic
                 .antMatchers("/portfolio").permitAll()//Portfolio se accede sin autorizacion.
-                .antMatchers(HttpMethod.POST,"/mensajes").permitAll()//Endpoint para dejar mensajes al propietario del portfolio.
+                .antMatchers(HttpMethod.POST,"/mensajes").permitAll()//Endpoint para dejar mensajes al propietario del portfolio, se permite el acceso sin autenticacion.
                 .anyRequest().authenticated()//Las demas solo con autorizacion, en realidad las frenara el filtro jwt
                 /*Configuracion de filtros*/
-                .and().addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(basicFilter, jwtFilter.getClass())
+                .and().addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)//Agrego el filtro de token
+                .addFilterBefore(basicFilter, jwtFilter.getClass())//Agrego el filtro de basic auth
                 ;
     }
     
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userService).passwordEncoder(getPasswordEncoder());//agrego el servicio de usuarios y el codificador de claves
+        auth.userDetailsService(userService).passwordEncoder(getPasswordEncoder());//agrego el servicio de usuarios de spring y el codificador de claves
     }
     
     @Bean

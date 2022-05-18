@@ -9,7 +9,7 @@ import com.herokuapp.portfolioapbackend.exceptions.NotPastDateException;
 import java.time.LocalDate;
 
 /**
- *
+ * Comprueba que una fecha sea anterior a la actual
  * @author carlos
  */
 public class PastValidator extends GenericValidator<LocalDate>{
