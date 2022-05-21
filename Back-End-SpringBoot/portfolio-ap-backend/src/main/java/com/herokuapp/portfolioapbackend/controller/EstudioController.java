@@ -63,8 +63,9 @@ public class EstudioController {
     /*Endpoint para modificar un extudio existente, especificado por el id*/
     @PutMapping("/estudios/{id}")
     public void putEstudios(@PathVariable Long id,@RequestBody EstudioDTO estudioDto )throws Exception{
-        if(id==estudioDto.getId())
+        if(id==estudioDto.getId()){
             estudioService.modificar(estudioMapper.toEntity(estudioDto));
+        }else throw new Exception("La informacion de id suministrada no coincide.");
     }
     
     

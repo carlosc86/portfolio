@@ -62,8 +62,9 @@ public class HabilidadController {
     /*Endpoint para modificar una habilidad existente, identificada por el id*/
     @PutMapping("/habilidades/{id}")
     public void putHabilidad(@PathVariable Long id, @RequestBody HabilidadDTO habilidadDto )throws Exception{
-        if(id==habilidadDto.getId())
+        if(id==habilidadDto.getId()){
             habilidadService.modificar(habilidadMapper.toEntity(habilidadDto));
+        }else throw new Exception("La informacion de id suministrada no coincide.");
     }
     
     /*Endpoint para borrar una habilidad existente, identificada por el id*/

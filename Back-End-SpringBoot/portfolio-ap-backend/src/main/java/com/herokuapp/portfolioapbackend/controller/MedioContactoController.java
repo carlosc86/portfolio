@@ -63,8 +63,9 @@ public class MedioContactoController {
     /*Endpoint para modificar un medio de contacto existente, identificado por el id*/
     @PutMapping("/medios_contacto/{id}")
     public void putMedioContacto(@PathVariable Long id, @RequestBody MedioContactoDTO medioDto )throws Exception{
-        if(id==medioDto.getId())
+        if(id==medioDto.getId()){
             medioService.modificar(medioMapper.toEntity(medioDto));
+        }else throw new Exception("La informacion de id suministrada no coincide.");
     }
     
     /*Endpoint para borrar un medio de contacto, especificado por el id*/
