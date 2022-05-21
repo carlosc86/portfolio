@@ -69,8 +69,9 @@ public class UsuarioController {
     /*Endpoint para modificar un usuario en particular, dado un id*/
     @PutMapping("/usuarios/{id}")
     public void putUsuario(@PathVariable Long id, @RequestBody UsuarioCompletoDTO usuario ) throws Exception{
-        if(id==usuario.getId())
+        if(id==usuario.getId()){
             usuarioService.modificar(usuarioMapper.toEntity(usuario));
+        }else throw new Exception("La informacion de id suministrada no coincide.");
     }
     
     /*Endpoint para elmiminar un usuario dado un id, por ahora anulado*/

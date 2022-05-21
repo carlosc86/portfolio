@@ -62,8 +62,9 @@ public class TrabajoController {
     /*Endpoint para modificar una experiencia laboral, especificada por el id*/
     @PutMapping("/experiencias/{id}")
     public void putTrabajo(@PathVariable Long id, @RequestBody ExperienciaLaboralDTO experiencia )throws Exception{
-        if(id==experiencia.getId())
+        if(id==experiencia.getId()){
             trabajoService.modificar(experienciaMapper.toEntity(experiencia));
+        }else throw new Exception("La informacion de id suministrada no coincide.");
     }
     
     /*Endpoint para borrar una experiencia laboral en particular*/

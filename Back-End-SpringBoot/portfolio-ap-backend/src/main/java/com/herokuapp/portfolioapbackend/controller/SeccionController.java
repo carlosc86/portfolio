@@ -62,8 +62,9 @@ public class SeccionController {
     /*Endpoint para modificar una seccion existente, especificada por el campo id*/
     @PutMapping("/secciones/{id}")
     public void putSeccion(@PathVariable Long id, @RequestBody SeccionDTO seccionDto)throws Exception{
-        if(id==seccionDto.getId())
+        if(id==seccionDto.getId()){
             seccionService.modificar(seccionMapper.toEntity(seccionDto));
+        }else throw new Exception("La informacion de id suministrada no coincide.");
     }
     
     /*Endpoint para eliminar una seccion existente*/

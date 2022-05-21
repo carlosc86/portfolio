@@ -62,8 +62,9 @@ public class ProyectoController {
     /*Endpoint para modificar un proyecto existente, identificado por el campo id*/
     @PutMapping("/proyectos/{id}")
     public void putProyecto(@PathVariable Long id, @RequestBody ProyectoDTO proyectoDto )throws Exception{
-        if(id==proyectoDto.getId())
+        if(id==proyectoDto.getId()){
             proyectoService.modificar(proyectoMapper.toEntity(proyectoDto));
+        }else throw new Exception("La informacion de id suministrada no coincide.");
     }
     
     /*Endpoint para borrar un proeycto existente, especificado por el campo id*/

@@ -66,7 +66,7 @@ public class MensajeController {
     public void putMensaje(@PathVariable Long id, @RequestBody MensajeDTO mensajeDto )throws Exception{
         if(id==mensajeDto.getId()){
             mensajeService.modificar(mensajeMapper.toEntity(mensajeDto));
-        }
+        }else throw new Exception("La informacion de id suministrada no coincide.");
     }
     
     /*Endpoint para borrar un mensaje existente, identificado por el campo id*/

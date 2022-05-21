@@ -64,6 +64,16 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `PORTFOLIO`.`Privilegios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `PORTFOLIO`.`Privilegios` (
+  `idPrivilegio` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  PRIMARY KEY (`idPrivilegio`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `PORTFOLIO`.`Usuarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PORTFOLIO`.`Usuarios` (
@@ -73,12 +83,19 @@ CREATE TABLE IF NOT EXISTS `PORTFOLIO`.`Usuarios` (
   `privilegios` VARCHAR(45) NOT NULL,
   `fechaUltimoAcceso` DATE NULL,
   `Personas_idPersona` INT NOT NULL,
-  PRIMARY KEY (`idUsuario`, `Personas_idPersona`),
+  `Privilegios_idPrivilegio` INT NOT NULL,
+  PRIMARY KEY (`idUsuario`, `Personas_idPersona`, `Privilegios_idPrivilegio`),
   UNIQUE INDEX `nombreUsuario_UNIQUE` (`nombreUsuario` ASC) VISIBLE,
   INDEX `fk_Usuarios_Personas_idx` (`Personas_idPersona` ASC) VISIBLE,
+  INDEX `fk_Usuarios_Privilegios1_idx` (`Privilegios_idPrivilegio` ASC) VISIBLE,
   CONSTRAINT `fk_Usuarios_Personas`
     FOREIGN KEY (`Personas_idPersona`)
     REFERENCES `PORTFOLIO`.`Personas` (`idPersona`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Usuarios_Privilegios1`
+    FOREIGN KEY (`Privilegios_idPrivilegio`)
+    REFERENCES `PORTFOLIO`.`Privilegios` (`idPrivilegio`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -130,6 +147,7 @@ CREATE TABLE IF NOT EXISTS `PORTFOLIO`.`Secciones` (
   `texto` VARCHAR(1024) NULL,
   `urlImagen` VARCHAR(45) NULL,
   `colorFondo` VARCHAR(9) NULL,
+  `colorTexto` VARCHAR(9) NULL,
   `Usuarios_idUsuario` INT NOT NULL,
   PRIMARY KEY (`idSeccion`, `Usuarios_idUsuario`),
   UNIQUE INDEX `nombre_UNIQUE` (`nombre` ASC) VISIBLE,
