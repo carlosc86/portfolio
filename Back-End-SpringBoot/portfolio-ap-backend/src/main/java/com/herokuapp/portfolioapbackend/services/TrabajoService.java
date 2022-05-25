@@ -60,6 +60,8 @@ public class TrabajoService implements ITrabajoService{
             guardado.setFechaInicio(trabajo.getFechaInicio());
             guardado.setFechaFin(trabajo.getFechaFin());
             Empresa empresa=gestionarEmpresa(trabajo.getEmpresa());
+            empresa.setRutaLogo(trabajo.getEmpresa().getRutaLogo());
+            empresa.setDireccion(trabajo.getEmpresa().getDireccion());
             TipoTrabajo tipo=gestionarTipoTrabajo(trabajo.getTipo());
             guardado.setEmpresa(empresa);
             guardado.setTipo(tipo);
